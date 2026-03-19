@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spread — Flip Smarter</title>
+<script defer data-domain="joinspread.app" src="https://plausible.io/js/script.js"></script>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+<div class="page-loader" id="pageLoader">
+  <img src="https://placehold.co/160x40/1a1a1a/FFF?text=Spread" alt="Spread" class="loader-logo" id="loaderLogo">
+  <div class="loader-line" id="loaderLine"><div class="loader-line-fill" id="loaderFill"></div></div>
+  <div class="loader-counter" id="loaderCounter">00</div>
+</div>
+
+<nav id="mainNav">
+  <div class="nav-logo">
+    <img src="https://placehold.co/160x40/1a1a1a/FFF?text=Spread" alt="Spread" class="logo-light" style="height:18px">
+    <img src="https://placehold.co/160x40/FFF/1a1a1a?text=Spread" alt="Spread" class="logo-dark" style="height:18px">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#deal">See a deal</a></li>
+    <li><a href="#niches">Niches</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+  </ul>
+  <a href='/signup' style='text-decoration:none'><button class="nav-cta"><span class="cta-full">Get early access</span><span class="cta-short">Sign up</span></button></a>
+</nav>
+
+<section class="hero">
+  <div class="hero-pin" id="heroPin">
+    <!-- Scattered gallery photos -->
+    <div class="hero-scatter" id="hs0" style="width:180px;height:140px;top:6%;left:4%"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+    <div class="hero-scatter" id="hs1" style="width:160px;height:200px;top:4%;right:6%"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+    <div class="hero-scatter" id="hs2" style="width:200px;height:150px;top:42%;left:1%"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+    <div class="hero-scatter" id="hs3" style="width:170px;height:170px;top:50%;right:2%"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+    <div class="hero-scatter" id="hs4" style="width:150px;height:190px;bottom:6%;left:10%"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+    <div class="hero-scatter" id="hs5" style="width:190px;height:140px;bottom:4%;right:8%"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+    <div class="hero-scatter" id="hs6" style="width:140px;height:120px;top:20%;left:18%"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+    <div class="hero-scatter" id="hs7" style="width:150px;height:130px;top:18%;right:16%"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+
+    <!-- Main hero video -->
+    <div class="hero-main" id="heroMain">
+      <div class="hero-video" style="background:#1a1a1a; display:flex; align-items:center; justify-content:center; color:#fff; font-size:24px;">Hero Video Placeholder</div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-h1"><span class="hero-word"><span>Find</span></span> <span class="hero-word"><span>what's</span></span> <span class="hero-word"><span>underpriced.</span></span><br><span class="hero-word"><span>Sell</span></span> <span class="hero-word"><span>it</span></span> <span class="hero-word"><span>for</span></span> <span class="hero-word"><span>what</span></span> <span class="hero-word"><span>it's</span></span> <span class="hero-word"><span>worth.</span></span></h1>
+        <p class="hero-sub">AI that scans every marketplace, scores every deal, and helps you relist in one tap. Stop scrolling. Start flipping.</p>
+        <div class="hero-actions">
+          <a href='/signup' style='text-decoration:none'><button class="mag-btn btn-hero-main"><span class="btn-fill"></span><span class="btn-text">Join the waitlist</span></button></a>
+          <a href="#deal" class="btn-ghost">See it work →</a>
+        </div>
+      </div>
+      <a class='hero-spinner' href='/signup' style='text-decoration:none'>
+        <svg viewBox="0 0 100 100">
+          <defs>
+            <path id="spinPath" d="M 50,50 m -30,0 a 30,30 0 1,1 60,0 a 30,30 0 1,1 -60,0" fill="none"/>
+          </defs>
+          <g class="spin-group">
+            <text class="spin-text">
+              <textPath href="#spinPath" startOffset="0%">CAPTURE THE SPREAD • FLIP SMARTER • CAPTURE THE SPREAD • FLIP SMARTER •</textPath>
+            </text>
+          </g>
+        </svg>
+        <div class="hero-spinner-arrow">↗</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="feature-section" id="how">
+  <div class="feature-text">
+    <div class="tag gs-reveal">How it works</div>
+    <h2 class="gs-reveal">The AI finds deals you'd never see in time.</h2>
+    <p class="gs-reveal">Spread scans thousands of listings across Facebook Marketplace, Craigslist, OfferUp, eBay, and more — alerting you the second something surfaces 30–60% below market value in your niches.</p>
+    <div class="feature-sub gs-reveal" style="font-size:14px;color:var(--muted);padding-top:20px;border-top:1px solid var(--border)">
+      <strong style="color:var(--charcoal)">6 platforms.</strong> Scanned 24/7. Alerts in under 12 seconds.
+    </div>
+  </div>
+  <div class="feature-img-wrap">
+    <img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt="">
+    <img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt="" class="hide">
+  </div>
+</section>
+
+<section class="feature-section reversed">
+  <div class="feature-text">
+    <div class="tag gs-reveal">Score & relist</div>
+    <h2 class="gs-reveal">Know exactly what to offer. List it before you leave.</h2>
+    <p class="gs-reveal">Every deal gets an AI score — estimated resale value, projected margin, time-to-sell, and the best platform to relist on. One tap generates an optimized listing with AI-written descriptions.</p>
+    <div class="chat-card gs-reveal" id="chatCard">
+      <div class="chat-top"><div class="chat-dot"></div><span>Spread AI · Deal Analysis</span></div>
+      <div class="chat-msgs">
+        <div class="c-msg ai" data-d="300">Found a <strong>Breville Oracle Touch</strong> listed at <span class="mono">$1,200</span></div>
+        <div class="c-msg ai" data-d="1000">Market value: <span class="mono">$1,800–$2,100</span> on eBay</div>
+        <div class="c-msg ai" data-d="1800">Suggested offer: <span class="mono">$750</span> · Projected profit: <span class="mono">+$500</span></div>
+        <div class="c-msg out" data-d="2600">Generate opener message ↗</div>
+        <div class="c-msg ai" data-d="3400">"Hi — is this still available? I can pick up today. Would you take $750 cash?"</div>
+        <div class="c-msg done" data-d="4200">Opener copied · eBay listing drafted</div>
+      </div>
+    </div>
+  </div>
+  <div class="feature-img-wrap">
+    <img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt="">
+    <img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt="" class="hide">
+  </div>
+</section>
+
+<div class="photo-full tall" style="height:100vh;min-height:700px">
+  <img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt="" class="pf-img" style="object-position:center 40%">
+  <div class="photo-full-overlay" style="background:rgba(29,27,24,.48)">
+    <div class="photo-stats-inner">
+      <div class="photo-full-text" style="margin-bottom:64px">
+        <h2 class="gs-reveal">Stop scrolling. Start flipping.</h2>
+        <p class="gs-reveal">Other flippers spend 20 hours a week refreshing marketplace feeds. You spend 20 minutes reviewing deals the AI already found.</p>
+      </div>
+      <div class="stats-row-overlay">
+        <div class="stat-item"><div class="stat-num" data-count="6">0</div><div class="stat-desc">Marketplaces scanned 24/7</div></div>
+        <div class="stat-item"><div class="stat-num" data-count="38" data-suffix="%">0%</div><div class="stat-desc">Average margin per deal</div></div>
+        <div class="stat-item"><div class="stat-num" data-count="20" data-suffix="hrs">0hrs</div><div class="stat-desc">Saved per week vs. manual</div></div>
+        <div class="stat-item"><div class="stat-num" data-count="12" data-suffix="s">0s</div><div class="stat-desc">Avg. alert speed on new listings</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section-pad" id="deal" style="padding-bottom:0">
+  <div class="deal-header-center">
+    <div class="sec-tag gs-reveal">Live opportunities</div>
+    <h2 class="sec-title gs-reveal" style="margin-bottom:0">This is what the AI surfaces every day.</h2>
+    <p class="sec-desc gs-reveal">Real arbitrage opportunities — scored, analyzed, and ready for you to act on. This is what your feed looks like.</p>
+  </div>
+  <div class="deal-stack-outer">
+    <div class="deal-stack-wrap" id="dealStack"></div>
+    <div class="deal-stack-fade" style="background:linear-gradient(to bottom,transparent,var(--cream))"></div>
+  </div>
+</section>
+
+<div class="testimonial-break" id="testimonialBreak">
+  <img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt="" class="tb-bg">
+  <div class="testimonial-break-overlay"></div>
+  <div class="testimonial-inner">
+    <div class="t-big-quote">&ldquo;</div>
+    <div class="testimonial-quote" id="tQuote">
+      <span class="active">I used to spend 3 hours a day refreshing Marketplace. Now Spread sends me the good stuff and I just act on it. Made $1,200 my first month.</span>
+      <span>The deal scoring is scary accurate. It told me to offer $380 on an Aeron listed at $520. I sold it for $710 on Apt Deco two days later.</span>
+      <span>One-click cross-listing changed everything. I find it on Craigslist, hit relist, and the eBay listing writes itself. My volume tripled.</span>
+      <span>Set up my espresso machine niche on a Sunday. Had three scored deals by Monday morning. Closed my first flip by Wednesday.</span>
+    </div>
+    <div class="testimonial-role" id="tRole">
+      <span class="active">Operator plan · Austin, TX</span>
+      <span>Scout plan · Portland, OR</span>
+      <span>Operator plan · Nashville, TN</span>
+      <span>Scout plan · Denver, CO</span>
+    </div>
+    <div class="t-avatars" id="tAvatars">
+      <button class="t-avatar active" onclick="setT(0)">
+        <img src="https://i.pravatar.cc/80?img=32" alt="">
+        <span class="t-avatar-name">Sarah K.</span>
+      </button>
+      <button class="t-avatar" onclick="setT(1)">
+        <img src="https://i.pravatar.cc/80?img=12" alt="">
+        <span class="t-avatar-name">Marcus T.</span>
+      </button>
+      <button class="t-avatar" onclick="setT(2)">
+        <img src="https://i.pravatar.cc/80?img=53" alt="">
+        <span class="t-avatar-name">David L.</span>
+      </button>
+      <button class="t-avatar" onclick="setT(3)">
+        <img src="https://i.pravatar.cc/80?img=44" alt="">
+        <span class="t-avatar-name">Amy R.</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<section class="statement-section" id="statementSection">
+  <div class="statement-tag gs-reveal">Built for flippers</div>
+  <div class="statement-line"><span>Every marketplace has a pricing gap.</span></div>
+  <div class="statement-line"><span>The AI finds it. You capture it.</span></div>
+</section>
+
+<section class="control-section" id="control">
+  <div class="control-left">
+    <div class="tag gs-reveal">Where we're headed</div>
+    <h2 class="gs-reveal">Your money. Your rules. Choose how hands-on you want to be.</h2>
+    <p class="gs-reveal">Today, you control every deal. Soon, the AI handles more — negotiation, auto-buy within your thresholds, and fully autonomous operation. You decide when to let go.</p>
+
+    <div class="control-toggle gs-reveal">
+      <div class="control-toggle-bar">
+        <button class="ct-btn active" onclick="setControl(0)">Manual</button>
+        <button class="ct-btn" onclick="setControl(1)">Assisted <span style="font-size:9px;opacity:.5;margin-left:4px">SOON</span></button>
+        <button class="ct-btn" onclick="setControl(2)">Autopilot <span style="font-size:9px;opacity:.5;margin-left:4px">SOON</span></button>
+      </div>
+      <div class="control-desc" id="controlDesc">
+        <p class="active">Available now. The AI finds deals, scores them, and drafts your relist. You decide what to buy, what to offer, and when to sell. Full control, full visibility, full profit tracking.</p>
+        <p>Coming soon. The AI handles deals within your pre-set thresholds — price range, margin floor, niche category. You get notified on every close but don't need to approve each one.</p>
+        <p>On the roadmap. Fully autonomous. Set your niches, define your risk tolerance, and let the AI run 24/7. Deals execute, seller ships, profit lands. Join the waitlist to get access first.</p>
+      </div>
+    </div>
+
+    <div class="money-steps gs-reveal">
+      <div class="money-step"><div class="step-num">01</div><div class="step-title">Deal found</div><div class="step-desc">AI scans 6 platforms</div></div>
+      <div class="money-step"><div class="step-num">02</div><div class="step-title">Scored</div><div class="step-desc">Profit + risk analysis</div></div>
+      <div class="money-step"><div class="step-num">03</div><div class="step-title">You act</div><div class="step-desc">Message, offer, buy</div></div>
+      <div class="money-step"><div class="step-num">04</div><div class="step-title">Relist</div><div class="step-desc">One-tap cross-listing</div></div>
+    </div>
+  </div>
+  <div class="control-right">
+    <img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt="">
+    <div class="control-right-overlay"></div>
+  </div>
+</section>
+
+<section class="section-pad" id="niches" style="padding-bottom:64px">
+  <div class="niche-header">
+    <div class="sec-tag gs-reveal">Your niches</div>
+    <h2 class="sec-title gs-reveal" style="margin-bottom:0">Pick the markets you know.</h2>
+    <p class="niche-header-sub gs-reveal">Choose the categories you understand. The AI handles scanning, scoring, and listing across every marketplace.</p>
+  </div>
+  <div class="niche-pills" id="nichePills">
+    <button class="niche-pill" onclick="submitNiche('Espresso Machines')">Espresso Machines <span class="pill-spread">$280</span></button>
+    <button class="niche-pill" onclick="submitNiche('Camera Gear')">Camera Gear <span class="pill-spread">$320</span></button>
+    <button class="niche-pill" onclick="submitNiche('Mid-Century Furniture')">Mid-Century Furniture <span class="pill-spread">$450</span></button>
+    <button class="niche-pill" onclick="submitNiche('Power Tools')">Power Tools <span class="pill-spread">$175</span></button>
+    <button class="niche-pill" onclick="submitNiche('Commercial Kitchen')">Commercial Kitchen <span class="pill-spread">$520</span></button>
+    <button class="niche-pill" onclick="submitNiche('Audiophile Gear')">Audiophile Gear <span class="pill-spread">$210</span></button>
+    <button class="niche-pill" onclick="submitNiche('Outdoor Gear')">Outdoor Gear <span class="pill-spread">$140</span></button>
+    <button class="niche-pill" onclick="submitNiche('Vintage Watches')">Vintage Watches <span class="pill-spread">$380</span></button>
+    <button class="niche-pill" onclick="submitNiche('Sneakers')">Sneakers <span class="pill-spread">$95</span></button>
+    <button class="niche-pill" onclick="submitNiche('Vinyl Records')">Vinyl Records <span class="pill-spread">$85</span></button>
+    <button class="niche-pill" onclick="submitNiche('Mechanical Keyboards')">Mechanical Keyboards <span class="pill-spread">$120</span></button>
+    <button class="niche-pill" onclick="submitNiche('Designer Handbags')">Designer Handbags <span class="pill-spread">$340</span></button>
+  </div>
+
+  <div class="niche-search-inline gs-reveal" id="nicheSearch">
+    <div id="nicheDefault">
+      <p class="niche-or">Or search your own</p>
+      <div class="niche-input-wrap">
+        <input type="text" class="niche-input" id="nicheInput" placeholder="Search a niche — vintage watches, vinyl records..." autocomplete="off">
+        <button class="niche-submit" id="nicheSubmit">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+      <div class="niche-suggestions" id="nicheSuggestions"></div>
+    </div>
+    <div id="nicheScanning" style="display:none">
+      <div class="niche-scan-anim">
+        <div class="scan-bar"><div class="scan-fill" id="scanFill"></div></div>
+      </div>
+      <h3 id="scanLabel">Scanning marketplaces...</h3>
+      <p id="scanSub" style="color:var(--muted)">Checking Facebook Marketplace, eBay, Craigslist, OfferUp...</p>
+    </div>
+    <div id="nicheResult" style="display:none">
+      <div class="niche-result-check">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3 id="resultTitle">47 underpriced listings found</h3>
+      <p id="resultSub" style="color:var(--muted);margin-bottom:20px">Average spread: $285. Ready to start sending you alerts.</p>
+      <a href="#" class="niche-result-btn" id="nicheClaimBtn">Claim this niche →</a>
+    </div>
+  </div>
+</section>
+
+<div class="photo-full tall">
+  <img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt="" class="pf-img">
+  <div class="photo-full-overlay" style="background:rgba(29,27,24,.42)">
+    <div class="photo-full-text">
+      <h2 class="gs-reveal">Opportunities land while you sleep.</h2>
+      <p class="gs-reveal">The AI never stops scanning. Wake up to scored deals ready for your review.</p>
+    </div>
+  </div>
+</div>
+
+<section class="pricing-section" id="pricing">
+  <div class="pricing-header">
+    <div>
+      <div class="sec-tag gs-reveal">Pricing</div>
+      <h2 class="sec-title gs-reveal" style="margin-bottom:0">One good flip pays for a year.</h2>
+    </div>
+    <div class="pricing-header-right gs-reveal">No speed throttling, no alert delays. Every plan gets the same fast scanning. Upgrade for more niches and advanced tools.</div>
+  </div>
+  <div class="pricing-grid">
+    <div class="pr-card">
+      <span class="pr-tag">Starter</span>
+      <div class="pr-name">Scout</div>
+      <div class="pr-desc">Find your first flips</div>
+      <div class="pr-price"><span class="amt">$29</span><span class="per">/mo</span></div>
+      <div class="pr-note">Cancel anytime</div>
+      <div class="pr-line"></div>
+      <ul class="pr-list"><li>2 active niches</li><li>Real-time deal alerts</li><li>AI deal scoring</li><li>Profit tracking dashboard</li></ul>
+      <a href='/signup' style='text-decoration:none;display:block'><button class="pr-btn">Start free trial</button></a>
+    </div>
+    <div class="pr-card pop">
+      <span class="pr-tag">Most popular</span>
+      <div class="pr-name">Operator</div>
+      <div class="pr-desc">Scale your operation</div>
+      <div class="pr-price"><span class="amt">$49</span><span class="per">/mo</span></div>
+      <div class="pr-note">Pays for itself in one flip</div>
+      <div class="pr-line"></div>
+      <ul class="pr-list"><li>8 active niches</li><li>One-click cross-listing</li><li>AI opener messages</li><li>Niche trend intelligence</li></ul>
+      <a href='/signup' style='text-decoration:none;display:block'><button class="pr-btn">Start free trial</button></a>
+    </div>
+    <div class="pr-card">
+      <span class="pr-tag">Pro</span>
+      <div class="pr-name">Syndicate</div>
+      <div class="pr-desc">For full-time flippers</div>
+      <div class="pr-price"><span class="amt">$99</span><span class="per">/mo</span></div>
+      <div class="pr-note">Priority access to Autopilot</div>
+      <div class="pr-line"></div>
+      <ul class="pr-list"><li>Unlimited niches</li><li>Multi-platform analytics</li><li>Team seats + shared deals</li><li>Early access: Assisted + Autopilot</li></ul>
+      <a href='/signup' style='text-decoration:none;display:block'><button class="pr-btn">Start free trial</button></a>
+    </div>
+  </div>
+</section>
+
+<section class="scroller-section">
+  <div class="scroller-header">
+    <h2 class="gs-reveal">Built for the way you actually flip.</h2>
+    <p class="gs-reveal">Deals surface in the background. Your life stays in the foreground.</p>
+  </div>
+  <div class="photo-scroller" id="photoScroller">
+    <div class="scroller-img"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+    <div class="scroller-img"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+    <div class="scroller-img"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+    <div class="scroller-img"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+    <div class="scroller-img"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+    <div class="scroller-img"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+    <div class="scroller-img"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+    <div class="scroller-img"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+    <div class="scroller-img"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+    <div class="scroller-img"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+    <div class="scroller-img"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+    <div class="scroller-img"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+    <div class="scroller-img"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+    <div class="scroller-img"><img src="https://placehold.co/800x600/E6DFD5/1D1B18?text=Placeholder" alt=""></div>
+  </div>
+</section>
+
+<section class="closing">
+  <h2 class="gs-reveal">Every marketplace has a spread.<br>Start capturing yours.</h2>
+  <p class="gs-reveal">Same item. Different platforms. Different prices. The AI finds the gap — you keep what's left.</p>
+  <a href='/signup' style='text-decoration:none'><button class="mag-btn btn-dark-main gs-reveal"><span class="btn-fill"></span><span class="btn-text">Start free trial</span></button></a>
+</section>
+
+<footer>
+  <div class="nav-logo"><img src="https://placehold.co/160x40/FFF/1a1a1a?text=Spread" alt="Spread" style="height:15px"></div>
+  <div class="f-links"><a href='/terms'>Terms</a><a href='/privacy'>Privacy</a></div>
+  <span>© 2026 Spread</span>
+</footer>
+
+</body>
+</html>
