@@ -60,6 +60,14 @@ function startHeroAnimations() {
             actions.style.transition = 'opacity 0.8s, transform 0.8s';
         }, 200);
     }
+
+    const scatters = document.querySelectorAll('.hero-scatter');
+    scatters.forEach((el, i) => {
+        el.style.transition = 'opacity 1s ease-out';
+        setTimeout(() => {
+            el.style.opacity = '1';
+        }, i * 100 + 400);
+    });
 }
 
 // 2. NAVBAR SCROLL
@@ -101,7 +109,7 @@ function handleParallax() {
 
         // scatter speed
         heroScatter.forEach((el, i) => {
-            const indexSpeed = 0.2 + (i * 0.05);
+            const indexSpeed = 0.15 + (i * 0.04);
             el.style.transform = `translateY(-${scrollY * indexSpeed}px)`;
         });
     }
