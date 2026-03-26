@@ -1,4 +1,4 @@
-﻿:root{--stone:#F2EDE7;--sand:#E6DFD5;--cream:#FAF7F4;--charcoal:#1D1B18;--charcoal-soft:#3A3632;--muted:#8C857D;--muted-light:#B5AFA7;--border:#DDD6CC;--white:#FFFFFF;--positive:#3D6B4F;--positive-bg:#3D6B4F10;--blue:#5B7FA4;--blue-bg:#5B7FA40E}
+:root{--stone:#F2EDE7;--sand:#E6DFD5;--cream:#FAF7F4;--charcoal:#1D1B18;--charcoal-soft:#3A3632;--muted:#8C857D;--muted-light:#B5AFA7;--border:#DDD6CC;--white:#FFFFFF;--positive:#3D6B4F;--positive-bg:#3D6B4F10;--blue:#5B7FA4;--blue-bg:#5B7FA40E}
 @font-face{font-family:'Messina Sans';src:url('spread-assets/MessinaSans.ttf') format('truetype');font-weight:100 500;font-style:normal;font-display:swap}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--cream);color:var(--charcoal);font-family:'Messina Sans','General Sans',-apple-system,sans-serif;font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.6}
@@ -450,7 +450,6 @@ footer a:hover{color:var(--charcoal)}
   .testimonial-quote{font-size:18px;min-height:80px}
   .niche-search-inline{padding:0}
 }
-</style>
 
 /* Vanilla JS fallback animations for GSAP elements */
 
