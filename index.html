@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+<<<<<<< HEAD
 <meta charset="UTF-8">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,1045 +18,2782 @@
 @font-face{font-family:'Messina Sans';src:url('spread-assets/MessinaSans.ttf') format('truetype');font-weight:100 500;font-style:normal;font-display:swap}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--cream);color:var(--charcoal);font-family:'Messina Sans','General Sans',-apple-system,sans-serif;font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.6}
+=======
+  <meta charset="UTF-8">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Three</title>
+  <script defer data-domain="joinspread.app" src="https://plausible.io/js/script.js"></script>
+  <link
+    href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&f[]=satoshi@300,400,500&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <style>
+    :root {
+      --stone: #F2EDE7;
+      --sand: #E6DFD5;
+      --cream: #FAF7F4;
+      --charcoal: #1D1B18;
+      --charcoal-soft: #3A3632;
+      --muted: #8C857D;
+      --muted-light: #B5AFA7;
+      --border: #DDD6CC;
+      --white: #FFFFFF;
+      --positive: #3D6B4F;
+      --positive-bg: #3D6B4F10;
+      --blue: #5B7FA4;
+      --blue-bg: #5B7FA40E
+    }
+>>>>>>> 89914ae (update lang sa mga images tas added password sa launch screen)
 
-/* Page loader */
-.page-loader{position:fixed;inset:0;z-index:9999;background:#E63222;display:flex;align-items:center;justify-content:center;pointer-events:none;flex-direction:column;gap:24px}
-.loader-logo{width:160px;opacity:0;transform:translateY(16px)}
-.loader-counter{font-family:'JetBrains Mono',monospace;font-size:14px;color:rgba(255,255,255,.5);letter-spacing:2px;opacity:0}
-.loader-line{width:60px;height:2px;background:rgba(255,255,255,.2);border-radius:2px;overflow:hidden;opacity:0}
-.loader-line-fill{width:0;height:100%;background:#fff;border-radius:2px}
+    @font-face {
+      font-family: 'Messina Sans';
+      src: url('spread-assets/MessinaSans.ttf') format('truetype');
+      font-weight: 100 500;
+      font-style: normal;
+      font-display: swap
+    }
 
-nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:4px;padding:8px 8px 8px 28px;z-index:100;border-radius:100px;transition:background .4s,border-color .4s,box-shadow .4s,padding .5s cubic-bezier(.16,1,.3,1),max-width .5s cubic-bezier(.16,1,.3,1);background:rgba(29,27,24,.15);backdrop-filter:blur(32px) saturate(1.4);-webkit-backdrop-filter:blur(32px) saturate(1.4);border:1px solid rgba(255,255,255,.12);box-shadow:none;max-width:620px;opacity:0}
-nav.visible{opacity:1}
-nav.scrolled{background:rgba(250,247,244,.72);border:1px solid rgba(221,214,204,.6);box-shadow:0 2px 20px rgba(29,27,24,.06);max-width:280px;padding:6px 6px 6px 20px;gap:2px}
-.nav-logo{display:flex;align-items:center;margin-right:16px;transition:margin .4s;flex-shrink:0}
-.nav-logo img{height:18px;transition:opacity .3s}
-.nav-logo .logo-light{display:block}
-.nav-logo .logo-dark{display:none}
-nav.scrolled .nav-logo{margin-right:auto}
-nav.scrolled .nav-logo .logo-light{display:none}
-nav.scrolled .nav-logo .logo-dark{display:block}
-.nav-links{display:flex;gap:0;list-style:none;overflow:hidden;max-width:400px;opacity:1;transition:max-width .5s cubic-bezier(.16,1,.3,1),opacity .3s}
-nav.scrolled .nav-links{max-width:0;opacity:0;pointer-events:none}
-.nav-links a{text-decoration:none;font-size:13.5px;font-weight:500;padding:10px 16px;border-radius:100px;transition:all .3s;letter-spacing:-.1px;color:rgba(255,255,255,.7);white-space:nowrap}
-.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
-nav.scrolled .nav-links a{color:var(--muted)}
-nav.scrolled .nav-links a:hover{color:var(--charcoal);background:rgba(29,27,24,.04)}
-.nav-cta{padding:11px 24px;font-size:13.5px;font-weight:500;font-family:'Messina Sans','General Sans',sans-serif;border:none;border-radius:100px;cursor:pointer;transition:all .3s;letter-spacing:-.1px;margin-left:4px;background:#fff;color:var(--charcoal);flex-shrink:0;white-space:nowrap}
-nav.scrolled .nav-cta{background:var(--charcoal);color:var(--cream);padding:9px 18px;font-size:12px;white-space:nowrap}
-.nav-cta:hover{opacity:.88}
-.nav-cta .cta-full{display:inline}
-.nav-cta .cta-short{display:none}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
 
-.mag-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;cursor:pointer;border:none;font-family:'Messina Sans','General Sans',sans-serif;border-radius:100px;z-index:1;transition:color .35s}
-.mag-btn .btn-fill{position:absolute;inset:0;border-radius:100px;transform:scaleX(0);transform-origin:left;z-index:-1;transition:transform .5s cubic-bezier(.16,1,.3,1)}
-.mag-btn:hover .btn-fill{transform:scaleX(1)}
-.mag-btn .btn-text{position:relative;z-index:2;pointer-events:none}
-.btn-hero-main{background:#fff;color:var(--charcoal);padding:16px 36px;font-size:15px;font-weight:500;letter-spacing:-.2px}
-.btn-hero-main .btn-fill{background:var(--stone)}
-.btn-dark-main{background:var(--charcoal);color:var(--cream);padding:16px 36px;font-size:15px;font-weight:500;letter-spacing:-.2px}
-.btn-dark-main .btn-fill{background:var(--charcoal-soft)}
-.btn-ghost{color:rgba(255,255,255,.65);text-decoration:none;font-size:14px;font-weight:500;transition:color .3s;letter-spacing:-.1px}
-.btn-ghost:hover{color:#fff}
+    body {
+      background: var(--cream);
+      color: var(--charcoal);
+      font-family: 'Messina Sans', 'General Sans', -apple-system, sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      font-size: 16px;
+      line-height: 1.6
+    }
 
-.hero{position:relative;height:200vh}
-.hero-pin{position:sticky;top:0;height:100vh;overflow:hidden}
-.hero-main{position:absolute;inset:0;will-change:transform,border-radius;z-index:2;overflow:hidden}
-.hero-video{position:absolute;top:50%;left:50%;width:177.78vh;height:100vh;min-width:100%;min-height:56.25vw;transform:translate(-50%,-50%);border:none;pointer-events:none}
-.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;will-change:transform}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(29,27,24,.82) 0%,rgba(29,27,24,.35) 40%,rgba(29,27,24,.1) 70%,rgba(29,27,24,.02) 100%);z-index:1}
-.hero-content{position:absolute;bottom:0;left:0;z-index:2;padding:0 56px 80px;max-width:800px}
-.hero h1{font-family:'Satoshi','Messina Sans',sans-serif;font-size:clamp(44px,5.8vw,72px);font-weight:500;line-height:1.04;letter-spacing:-2.5px;color:#fff;margin-bottom:20px;overflow:hidden}
-.hero-word{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:6px}
-.hero-word span{display:inline-block;will-change:transform;transform:translateY(110%)}
-.hero-sub{font-size:17px;font-weight:400;color:rgba(255,255,255,.7);max-width:440px;line-height:1.65;margin-bottom:36px;opacity:0}
-.hero-actions{display:flex;align-items:center;gap:20px;opacity:0}
+    /* Page loader */
+    .page-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #E63222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 24px;
+      pointer-events: auto; /* Enable input */
+    }
 
-/* Scattered gallery photos */
-.hero-scatter{position:absolute;border-radius:14px;overflow:hidden;z-index:1;box-shadow:0 4px 20px rgba(29,27,24,.1);will-change:transform;opacity:0}
-.hero-scatter img{width:100%;height:100%;object-fit:cover;display:block}
+    .heart-container {
+      width: 80px;
+      height: 80px;
+      opacity: 0;
+      transform: translateY(16px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-/* Hero spinning text */
-.hero-spinner{position:absolute;bottom:40px;right:56px;z-index:3;width:120px;height:120px;cursor:pointer;opacity:.7;transition:opacity .3s}
-.hero-spinner:hover{opacity:1}
-.hero-spinner:hover .spin-group{animation-duration:6s}
-.spin-group{transform-origin:50px 50px;animation:heroSpin 12s linear infinite}
-@keyframes heroSpin{to{transform:rotate(360deg)}}
-.spin-text{font-size:5.2px;fill:rgba(255,255,255,.85);font-family:'Messina Sans','General Sans',sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:3.5px}
-.hero-spinner-arrow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:22px;font-weight:300;pointer-events:none}
+    .heart-icon {
+      width: 100%;
+      height: 100%;
+      fill: #fff;
+    }
 
-/* Feature sections — photo swap on scroll */
-.feature-section{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:100%;margin:0 auto;align-items:center;min-height:80vh}
-.feature-section.reversed .feature-text{order:2;margin-left:0;padding:80px 56px 80px 32px}
-.feature-section.reversed .feature-img-wrap{order:1}
-.feature-text{max-width:480px;padding:80px 56px;display:flex;flex-direction:column;justify-content:center}
-.feature-text .tag{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:16px}
-.feature-text h2{font-family:'Satoshi','Messina Sans',sans-serif;font-size:clamp(28px,3.2vw,42px);font-weight:500;line-height:1.12;letter-spacing:-1.2px;margin-bottom:20px}
-.feature-text p{font-size:16px;color:var(--charcoal-soft);line-height:1.7;margin-bottom:28px}
-.feature-img-wrap{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/5;background:var(--stone);margin:20px;max-height:70vh;width:calc(100% - 40px)}
-.feature-section:not(.reversed) .feature-img-wrap{margin-left:auto;margin-right:20px}
-.feature-section.reversed .feature-img-wrap{margin-right:auto;margin-left:20px}
-.feature-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
-.feature-img-wrap img.hide{opacity:0;transform:scale(1.04)}
+    .loader-counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: rgba(255, 255, 255, .5);
+      letter-spacing: 2px;
+      opacity: 0
+    }
 
-.chat-card{background:var(--white);border:1px solid var(--border);border-radius:16px;overflow:hidden;max-width:360px;box-shadow:0 1px 4px rgba(29,27,24,.04),0 8px 32px rgba(29,27,24,.06)}
-.chat-top{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;font-size:13px;font-weight:500}
-.chat-dot{width:7px;height:7px;border-radius:50%;background:var(--positive);animation:pulse 2.5s infinite}
-.chat-top span{color:var(--muted)}
-.chat-msgs{padding:16px 18px;display:flex;flex-direction:column;gap:8px;max-height:280px;overflow:hidden}
-.c-msg{font-size:13px;line-height:1.5;padding:10px 14px;border-radius:14px;max-width:88%;opacity:0;transform:translateY(8px)}
-.c-msg.visible{opacity:1;transform:translateY(0);transition:all .35s cubic-bezier(.16,1,.3,1)}
-.c-msg.ai{background:var(--stone);color:var(--charcoal);align-self:flex-start;border-bottom-left-radius:4px}
-.c-msg.out{background:var(--charcoal);color:var(--cream);align-self:flex-end;border-bottom-right-radius:4px}
-.c-msg.done{align-self:center;background:var(--positive-bg);color:var(--positive);font-weight:600;font-size:12px;border-radius:100px;padding:6px 18px}
-.c-msg .mono{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500}
+    .loader-line {
+      width: 60px;
+      height: 2px;
+      background: rgba(255, 255, 255, .2);
+      border-radius: 2px;
+      overflow: hidden;
+      opacity: 0
+    }
 
-/* Photo sections — start full bleed, shrink on scroll */
-.photo-full{width:100%;margin:0 auto;position:relative;overflow:hidden;line-height:0;font-size:0;border-radius:0;will-change:width,border-radius}
-.photo-full img{width:100%;height:100%;object-fit:cover;will-change:transform;display:block}
-.photo-full.tall{height:90vh;min-height:500px}
-.photo-full.mid{min-height:500px}
-.photo-full-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.6;font-size:16px;flex-direction:column}
-.photo-full-text{color:#fff;max-width:540px;padding:0 32px}
-.photo-full-text h2{font-family:'Satoshi','Messina Sans',sans-serif;font-size:clamp(32px,4.5vw,56px);font-weight:500;line-height:1.08;letter-spacing:-2px;margin-bottom:16px}
-.photo-full-text p{font-size:16px;color:rgba(255,255,255,.7);line-height:1.65}
+    .loader-line-fill {
+      width: 0;
+      height: 100%;
+      background: #fff;
+      border-radius: 2px
+    }
 
-.section-pad{padding:100px 56px;max-width:1200px;margin:0 auto}
+    .password-input-wrap {
+      margin-top: 24px;
+      width: 100%;
+      max-width: 240px;
+      opacity: 0;
+      transform: translateY(16px);
+    }
 
-.sec-tag{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:12px}
-.sec-title{font-family:'Satoshi','Messina Sans',sans-serif;font-size:clamp(28px,3.2vw,42px);font-weight:500;line-height:1.12;letter-spacing:-1.2px;margin-bottom:20px}
+    #passIn {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1.5px solid rgba(255, 255, 255, .3);
+      padding: 12px 10px;
+      color: #fff;
+      font-family: 'Messina Sans', 'General Sans', sans-serif;
+      font-size: 14px;
+      outline: none;
+      text-align: center;
+      letter-spacing: 2px;
+      transition: border-color .3s;
+    }
 
-/* Stats — inside photo overlay */
-.photo-stats-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;padding:0 56px}
-.stats-row-overlay{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;width:100%;max-width:900px;padding-top:48px;border-top:1px solid rgba(255,255,255,.15)}
-.stats-row-overlay .stat-item{text-align:center}
-.stats-row-overlay .stat-num{font-size:48px;font-weight:400;letter-spacing:-2px;margin-bottom:4px;color:#fff}
-.stats-row-overlay .stat-desc{font-size:13px;color:rgba(255,255,255,.55)}
+    #passIn:focus {
+      border-bottom-color: #fff;
+    }
 
-/* Deal stack */
-.deal-header-center{text-align:center;max-width:600px;margin:0 auto 56px}
-.deal-header-center .sec-desc{font-size:16px;color:var(--charcoal-soft);line-height:1.7;margin-top:12px}
-.deal-stack-outer{position:relative;overflow:hidden}
-.deal-stack-wrap{position:relative;width:100%;max-width:520px;height:400px;margin:0 auto;cursor:pointer}
-.deal-stack-fade{position:absolute;bottom:0;left:0;right:0;height:80px;z-index:10;pointer-events:none}
-.deal-stack-card{position:absolute;bottom:0;left:50%;width:100%;background:var(--white);border:1px solid var(--border);border-radius:20px 20px 0 0;border-bottom:none;overflow:hidden;box-shadow:0 -2px 8px rgba(29,27,24,.03),0 -8px 32px rgba(29,27,24,.06);will-change:transform}
-.dsc-bar{padding:14px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted)}
-.dsc-bar strong{color:var(--charcoal);font-weight:500}
-.dsc-live{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:500;color:var(--positive)}
-.dsc-live::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--positive);animation:pulse 2.5s infinite}
-.dsc-body{padding:28px 24px 20px;display:grid;grid-template-columns:1fr auto 1fr;align-items:start}
-.dsc-side{min-width:0}
-.dsc-side .s-lbl{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--muted-light);margin-bottom:10px}
-.dsc-side .s-name{font-size:15px;font-weight:500;letter-spacing:-.2px;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dsc-side .s-plat{font-size:12.5px;color:var(--muted);margin-bottom:14px}
-.dsc-side .s-price{font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:400;letter-spacing:-1px}
-.dsc-side .s-price.sell{color:var(--positive)}
-.dsc-arrow{display:flex;align-items:center;justify-content:center;padding:32px 16px 0;color:var(--muted-light);font-size:20px}
-.dsc-profit{padding:0 24px 24px;display:flex;justify-content:space-between;align-items:center}
-.dsc-profit-row{display:flex;align-items:center;gap:16px}
-.dsc-profit-item .plbl{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--muted-light);margin-bottom:2px}
-.dsc-profit-item .pval{font-size:13px;font-weight:500;color:var(--charcoal)}
-.dsc-profit-item .pval.strike{text-decoration:line-through;color:var(--muted-light);font-weight:400}
-.dsc-profit-big{text-align:right}
-.dsc-profit-big .plbl{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--positive);margin-bottom:2px}
-.dsc-profit-big .pval{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:500;color:var(--positive);letter-spacing:-1px}
+    #passIn::placeholder {
+      color: rgba(255, 255, 255, .4);
+      letter-spacing: 0;
+    }
 
-/* Testimonial — avatar pills inspired by 21st dev */
-.testimonial-break{width:calc(100% - 24px);margin:12px auto;min-height:85vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:20px}
-.testimonial-break>.tb-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;object-position:center center}
-.testimonial-break-overlay{position:absolute;inset:0;background:rgba(29,27,24,.75)}
-.testimonial-inner{position:relative;z-index:2;max-width:640px;padding:80px 32px;color:#fff;display:flex;flex-direction:column;align-items:center}
-.t-big-quote{font-size:100px;font-weight:300;color:rgba(255,255,255,.08);line-height:0.5;margin-bottom:32px;pointer-events:none;user-select:none;font-family:Georgia,'Times New Roman',serif}
-.testimonial-quote{font-family:'Satoshi','Messina Sans',sans-serif;font-size:clamp(20px,3vw,30px);font-weight:400;line-height:1.4;letter-spacing:-.3px;margin-bottom:24px;min-height:100px;position:relative;width:100%}
-.testimonial-quote span{opacity:0;position:absolute;left:0;right:0;transition:all .5s cubic-bezier(.16,1,.3,1);filter:blur(4px);transform:scale(.98)}
-.testimonial-quote span.active{opacity:1;position:relative;filter:blur(0);transform:scale(1)}
-.testimonial-role{font-size:12px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:28px;min-height:18px;position:relative;width:100%}
-.testimonial-role span{opacity:0;position:absolute;left:0;right:0;transition:all .5s ease .1s}
-.testimonial-role span.active{opacity:1;position:relative}
-.t-avatars{display:flex;align-items:center;justify-content:center;gap:6px}
-.t-avatar{display:flex;align-items:center;gap:0;padding:4px;border-radius:100px;border:none;background:transparent;cursor:pointer;transition:all .5s cubic-bezier(.16,1,.3,1);flex-shrink:0}
-.t-avatar.active{background:rgba(255,255,255,.15);padding-right:16px}
-.t-avatar:hover:not(.active){background:rgba(255,255,255,.08)}
-.t-avatar img{width:32px;height:32px;border-radius:50%;object-fit:cover;display:block;transition:all .3s;border:2px solid transparent;flex-shrink:0}
-.t-avatar.active img{border-color:rgba(255,255,255,.3)}
-.t-avatar-name{font-size:13px;font-weight:500;color:#fff;white-space:nowrap;display:block;overflow:hidden;max-width:0;opacity:0;transition:all .5s cubic-bezier(.16,1,.3,1);font-family:'Messina Sans','General Sans',sans-serif}
-.t-avatar.active .t-avatar-name{max-width:100px;opacity:1;margin-left:8px}
 
-/* Money / Control section — 100vh */
-.control-section{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;background:var(--charcoal);position:relative;overflow:hidden;width:calc(100% - 24px);margin:12px auto;border-radius:20px;z-index:4;margin-top:-100px;box-shadow:0 -20px 60px rgba(29,27,24,.3)}
-.control-left{display:flex;flex-direction:column;justify-content:center;padding:80px 64px;color:#fff}
-.control-left .tag{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.35);margin-bottom:16px}
-.control-left h2{font-family:'Satoshi','Messina Sans',sans-serif;font-size:clamp(28px,3.5vw,48px);font-weight:500;line-height:1.1;letter-spacing:-1.5px;margin-bottom:20px;max-width:440px}
-.control-left>p{font-size:16px;color:rgba(255,255,255,.55);line-height:1.7;max-width:400px;margin-bottom:48px}
-.control-right{position:relative;overflow:hidden}
-.control-right img{width:100%;height:100%;object-fit:cover;display:block}
-.control-right-overlay{position:absolute;inset:0;background:linear-gradient(to right,var(--charcoal) 0%,rgba(29,27,24,.3) 30%,transparent 55%)}
 
-/* Toggle UI */
-.control-toggle{margin-bottom:40px}
-.control-toggle-bar{display:flex;background:rgba(255,255,255,.06);border-radius:12px;padding:4px;gap:4px;margin-bottom:20px}
-.ct-btn{flex:1;padding:12px 16px;border:none;background:transparent;color:rgba(255,255,255,.4);font-family:'Messina Sans','General Sans',sans-serif;font-size:13px;font-weight:500;border-radius:10px;cursor:pointer;transition:all .3s;letter-spacing:-.1px}
-.ct-btn.active{background:rgba(255,255,255,.12);color:#fff}
-.ct-btn:hover:not(.active){color:rgba(255,255,255,.7)}
-.control-desc{min-height:80px}
-.control-desc p{font-size:14px;color:rgba(255,255,255,.5);line-height:1.65;display:none}
-.control-desc p.active{display:block}
 
-/* Money flow steps */
-.money-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(255,255,255,.06);border-radius:12px;overflow:hidden}
-.money-step{padding:20px 16px;text-align:center;background:var(--charcoal)}
-.money-step .step-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.2);margin-bottom:8px}
-.money-step .step-title{font-size:13px;font-weight:500;color:#fff;margin-bottom:4px}
-.money-step .step-desc{font-size:11.5px;color:rgba(255,255,255,.35);line-height:1.5}
 
-/* Statement section */
-.statement-section{padding:220px 56px;text-align:center;max-width:100%;margin:0 auto;overflow:hidden}
-.statement-tag{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:40px}
-.statement-line{font-family:'Satoshi','Messina Sans',sans-serif;font-size:clamp(40px,5.8vw,84px);font-weight:500;line-height:1.08;letter-spacing:-3px;color:var(--charcoal);overflow:hidden;white-space:nowrap}
-.statement-line span{display:inline-block;opacity:0;filter:blur(8px);transform:translateY(40%)}
-.statement-line+.statement-line{margin-top:0}
+    .mag-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+      border: none;
+      font-family: 'Messina Sans', 'General Sans', sans-serif;
+      border-radius: 100px;
+      z-index: 1;
+      transition: color .35s
+    }
 
-/* Niches — flowing pills + search */
-.niche-header{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:48px}
-.niche-header .sec-tag{margin-bottom:16px}
-.niche-header .sec-title{max-width:560px}
-.niche-header-sub{font-size:16px;color:var(--charcoal-soft);line-height:1.7;max-width:480px;margin-top:8px}
-.niche-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:56px}
-.niche-pill{padding:12px 24px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--charcoal);font-size:15px;font-weight:400;font-family:'Messina Sans','General Sans',sans-serif;cursor:pointer;transition:all .35s cubic-bezier(.16,1,.3,1);opacity:0;transform:translateY(10px);letter-spacing:-.1px}
-.niche-pill.in{opacity:1;transform:translateY(0)}
-.niche-pill:hover{background:var(--charcoal);color:var(--cream);border-color:var(--charcoal)}
-.niche-pill .pill-spread{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);margin-left:8px;transition:color .35s}
-.niche-pill:hover .pill-spread{color:rgba(255,255,255,.5)}
-.niche-input-wrap{position:relative;margin-top:20px}
-.niche-search-inline{max-width:480px;margin:0 auto;text-align:center;padding:0}
-.niche-or{font-size:13px;color:var(--muted);margin-bottom:14px;text-transform:uppercase;letter-spacing:1px}
-.niche-search-inline h3{font-family:'Satoshi','Messina Sans',sans-serif;font-size:20px;font-weight:500;letter-spacing:-.4px;margin-bottom:6px}
-.niche-input{width:100%;padding:18px 56px 18px 24px;background:var(--white);border:1px solid var(--border);border-radius:100px;color:var(--charcoal);font-family:'Messina Sans','General Sans',sans-serif;font-size:15px;outline:none;transition:border-color .3s,box-shadow .3s}
-.niche-input::placeholder{color:var(--muted-light)}
-.niche-input:focus{border-color:var(--charcoal);box-shadow:0 0 0 4px rgba(29,27,24,.05),0 4px 24px rgba(29,27,24,.08)}
-.niche-submit{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;border:none;background:var(--charcoal);color:var(--cream);font-size:18px;cursor:pointer;transition:all .25s cubic-bezier(.16,1,.3,1);font-family:'Messina Sans','General Sans',sans-serif;display:flex;align-items:center;justify-content:center}
-.niche-submit:hover{background:var(--charcoal-soft);transform:translateY(-50%) scale(1.06)}
-.niche-suggestions{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px;min-height:28px;justify-content:center}
-.niche-sug{font-size:12px;padding:5px 12px;border-radius:100px;background:var(--white);color:var(--muted);border:1px solid var(--border);cursor:pointer;transition:all .2s;font-family:'Messina Sans','General Sans',sans-serif}
-.niche-sug:hover{background:var(--charcoal);color:#fff;border-color:var(--charcoal)}
-.niche-sug.matched{background:var(--positive);color:#fff;border-color:var(--positive)}
-.niche-scan-anim{margin-bottom:20px}
-.scan-bar{width:200px;height:3px;background:var(--border);border-radius:3px;margin:0 auto;overflow:hidden}
-.scan-fill{height:100%;width:0;background:var(--charcoal);border-radius:3px;transition:width 2.5s cubic-bezier(.4,0,.2,1)}
-.niche-result-check{width:48px;height:48px;border-radius:50%;background:var(--positive-bg);border:2px solid var(--positive);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;color:var(--positive)}
-.niche-result-btn{display:inline-block;padding:12px 28px;background:var(--charcoal);color:var(--cream);border-radius:100px;text-decoration:none;font-size:14px;font-weight:500;transition:all .2s}
-.niche-result-btn:hover{background:var(--charcoal-soft)}
+    .mag-btn .btn-fill {
+      position: absolute;
+      inset: 0;
+      border-radius: 100px;
+      transform: scaleX(0);
+      transform-origin: left;
+      z-index: -1;
+      transition: transform .5s cubic-bezier(.16, 1, .3, 1)
+    }
 
-/* Pricing */
-.pricing-section{padding:100px 56px;max-width:1200px;margin:0 auto}
-.pricing-header{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:48px}
-.pricing-header-right{font-size:16px;color:var(--charcoal-soft);line-height:1.7}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.pr-card{background:var(--stone);padding:40px 32px;position:relative;border-radius:20px;border:1px solid var(--border);transition:transform .3s,box-shadow .3s;opacity:0;transform:translateY(20px)}
-.pr-card.in{opacity:1;transform:translateY(0);transition:opacity .5s ease,transform .5s cubic-bezier(.16,1,.3,1)}
-.pr-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(29,27,24,.08)}
-.pr-card.pop{background:var(--charcoal);color:#fff;border-color:var(--charcoal);box-shadow:0 8px 40px rgba(29,27,24,.18)}
-.pr-card.pop:hover{transform:translateY(-3px);box-shadow:0 12px 48px rgba(29,27,24,.25)}
-.pr-card.pop .pr-desc{color:rgba(255,255,255,.5)}
-.pr-card.pop .pr-note{color:rgba(255,255,255,.35)}
-.pr-card.pop .pr-price .per{color:rgba(255,255,255,.4)}
-.pr-card.pop .pr-list li{color:rgba(255,255,255,.7)}
-.pr-card.pop .pr-list li::before{border-color:var(--positive);background:rgba(61,107,79,.2)}
-.pr-card.pop .pr-line{background:rgba(255,255,255,.1)}
-.pr-tag{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:24px;color:var(--muted);display:block}
-.pr-card.pop .pr-tag{color:var(--positive)}
-.pr-name{font-size:24px;font-weight:400;letter-spacing:-.5px;margin-bottom:4px}
-.pr-desc{font-size:14px;color:var(--muted);margin-bottom:24px}
-.pr-price{display:flex;align-items:baseline;gap:3px;margin-bottom:4px}
-.pr-price .amt{font-size:44px;font-weight:400;letter-spacing:-2px}
-.pr-price .per{font-size:14px;color:var(--muted)}
-.pr-note{font-size:13px;color:var(--muted-light);margin-bottom:28px}
-.pr-line{height:1px;background:var(--border);margin-bottom:24px}
-.pr-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
-.pr-list li{font-size:14px;color:var(--charcoal-soft);display:flex;align-items:center;gap:10px}
-.pr-list li::before{content:'';width:16px;height:16px;border-radius:50%;background:var(--positive-bg);border:1.5px solid var(--positive);flex-shrink:0}
-.pr-btn{width:100%;padding:14px;border:1px solid var(--border);background:transparent;color:var(--charcoal);font-family:'Messina Sans','General Sans',sans-serif;font-size:14px;font-weight:500;border-radius:100px;cursor:pointer;transition:all .3s}
-.pr-btn:hover{background:var(--charcoal);color:var(--cream);border-color:var(--charcoal)}
-.pr-card.pop .pr-btn{background:#fff;color:var(--charcoal);border-color:#fff}
-.pr-card.pop .pr-btn:hover{background:var(--stone)}
+    .mag-btn:hover .btn-fill {
+      transform: scaleX(1)
+    }
 
-/* Scroller */
-.scroller-section{padding:100px 0 0;overflow:hidden}
-.scroller-header{text-align:center;margin-bottom:48px;padding:0 56px}
-.scroller-header h2{font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.8px;margin-bottom:8px}
-.scroller-header p{font-size:15px;color:var(--muted)}
-.photo-scroller{display:flex;gap:16px;width:max-content;will-change:transform}
-.scroller-img{width:320px;height:400px;border-radius:16px;overflow:hidden;flex-shrink:0}
-.scroller-img img{width:100%;height:100%;object-fit:cover;display:block}
+    .mag-btn .btn-text {
+      position: relative;
+      z-index: 2;
+      pointer-events: none
+    }
 
-.closing{text-align:center;padding:120px 56px 140px;max-width:1200px;margin:0 auto}
-.closing h2{font-family:'Satoshi','Messina Sans',sans-serif;font-size:clamp(32px,4.5vw,56px);font-weight:500;line-height:1.08;letter-spacing:-2px;margin-bottom:16px}
-.closing p{font-size:17px;color:var(--muted);max-width:400px;margin:0 auto 40px;line-height:1.65}
+    .btn-hero-main {
+      background: #fff;
+      color: var(--charcoal);
+      padding: 16px 36px;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -.2px
+    }
 
-footer{border-top:1px solid var(--border);padding:28px 56px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);max-width:1200px;margin:0 auto}
-footer a{color:var(--muted);text-decoration:none;transition:color .2s}
-footer a:hover{color:var(--charcoal)}
-.f-links{display:flex;gap:24px}
+    .btn-hero-main .btn-fill {
+      background: var(--stone)
+    }
 
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+    .btn-dark-main {
+      background: var(--charcoal);
+      color: var(--cream);
+      padding: 16px 36px;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -.2px
+    }
 
-/* Spacing between sections */
-.photo-full+section,.photo-full+.section-pad,.photo-full+.pricing-section{margin-top:0}
+    .btn-dark-main .btn-fill {
+      background: var(--charcoal-soft)
+    }
 
-@media(max-width:1100px){
-  .niche-grid{grid-template-columns:repeat(3,1fr)}
-}
-@media(max-width:960px){
-  .control-section{grid-template-columns:1fr;min-height:auto}
-  .control-left{padding:64px 32px}
-  .control-right{height:50vh}
-  .money-steps{grid-template-columns:repeat(2,1fr)}
-  .feature-section{grid-template-columns:1fr;gap:24px;min-height:auto}
-  .feature-section.reversed .feature-text{order:0;padding:60px 32px 0}
-  .feature-section.reversed .feature-img-wrap{order:0}
-  .feature-text{padding:60px 32px 0}
-  .feature-img-wrap{aspect-ratio:3/2;margin:20px 32px;width:calc(100% - 64px)}
-  .feature-section:not(.reversed) .feature-img-wrap,.feature-section.reversed .feature-img-wrap{margin:20px 32px}
-  .pricing-header{grid-template-columns:1fr;gap:16px}
-  .niche-pills{gap:8px}
-  .deal-stack-wrap{max-width:100%;height:360px}
-  .statement-section{padding:160px 32px}
-  .statement-line{font-size:clamp(32px,5.2vw,56px)}
-  .pricing-grid{grid-template-columns:1fr}
-  .stats-row-overlay{grid-template-columns:repeat(2,1fr);gap:16px}
-  .section-pad,.pricing-section{padding:80px 32px}
-  .hero-content{padding:0 32px 56px}
-  .hero-scatter{display:none}
-  .hero-spinner{width:90px;height:90px;bottom:32px;right:32px}
-  .hero-spinner-arrow{font-size:18px}
-  .spin-text{font-size:4.5px}
-  .closing{padding:80px 32px 100px}
-  .scroller-img{width:260px;height:340px}
-  .scroller-header{padding:0 32px}
-}
-@media(max-width:600px){
-  nav{padding:5px 5px 5px 16px;top:12px}
-  .nav-links{display:none}
-  .nav-logo{margin-right:auto}
-  .nav-logo img{height:15px}
-  .nav-cta{font-size:12px;padding:9px 16px;white-space:nowrap}
-  .nav-cta .cta-full{display:none}
-  .nav-cta .cta-short{display:inline}
-  nav.scrolled{max-width:220px;padding:5px 5px 5px 14px}
+    .btn-ghost {
+      color: rgba(255, 255, 255, .65);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color .3s;
+      letter-spacing: -.1px
+    }
 
-  .hero{height:130vh}
-  .hero-content{padding:0 24px 40px}
-  .hero h1{font-size:clamp(32px,9vw,48px);letter-spacing:-1.5px}
-  .hero-sub{font-size:15px;max-width:100%;margin-bottom:28px}
-  .hero-spinner{display:none}
-  .hero-scatter{display:none}
-  .hero-actions{flex-direction:column;align-items:flex-start;gap:14px}
-  .btn-hero-main{padding:14px 32px;font-size:14px;width:100%;text-align:center;justify-content:center}
-  .btn-ghost{font-size:13px}
+    .btn-ghost:hover {
+      color: #fff
+    }
 
-  .feature-section{grid-template-columns:1fr;gap:20px;min-height:auto}
-  .feature-section.reversed .feature-text{order:0;padding:48px 24px 0}
-  .feature-section.reversed .feature-img-wrap{order:0}
-  .feature-text{padding:48px 24px 0}
-  .feature-text h2{font-size:clamp(24px,7vw,32px);margin-bottom:14px}
-  .feature-text p{font-size:15px;max-width:100%}
-  .feature-img-wrap{aspect-ratio:3/2;border-radius:16px;margin:16px 12px;width:calc(100% - 24px)}
-  .feature-section:not(.reversed) .feature-img-wrap,.feature-section.reversed .feature-img-wrap{margin:16px 12px}
+    .hero {
+      position: relative;
+      height: 200vh
+    }
 
-  .chat-card{max-width:100%}
-  .chat-msgs{padding:14px 16px}
-  .c-msg{font-size:13px;padding:9px 12px}
+    .hero-pin {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden
+    }
 
-  .photo-full.tall{height:80vh;min-height:500px}
-  .photo-full-text h2{font-size:clamp(24px,7vw,36px)}
-  .photo-full-text p{font-size:14px}
+    .hero-main {
+      position: absolute;
+      inset: 0;
+      will-change: transform, border-radius;
+      z-index: 2;
+      overflow: hidden
+    }
 
-  .stats-row-overlay{grid-template-columns:repeat(2,1fr);gap:12px;padding-top:32px}
-  .stats-row-overlay .stat-num{font-size:32px}
-  .stats-row-overlay .stat-desc{font-size:11px}
-  .photo-stats-inner{padding:0 24px}
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 177.78vh;
+      height: 100vh;
+      min-width: 100%;
+      min-height: 56.25vw;
+      transform: translate(-50%, -50%);
+      border: none;
+      pointer-events: none
+    }
 
-  .section-pad,.pricing-section{padding:56px 24px}
-  .sec-title{font-size:clamp(24px,7vw,32px)}
-  .deal-header-center{margin-bottom:40px}
-  .deal-header-center .sec-desc{font-size:14px}
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      will-change: transform
+    }
 
-  .deal-stack-wrap{height:300px}
-  .dsc-body{grid-template-columns:1fr;gap:8px;padding:20px 16px 14px}
-  .dsc-arrow{padding:0;justify-content:flex-start;font-size:16px}
-  .dsc-side .s-lbl{font-size:10px;margin-bottom:6px}
-  .dsc-side .s-name{font-size:14px}
-  .dsc-side .s-plat{font-size:11px;margin-bottom:8px}
-  .dsc-side .s-price{font-size:20px}
-  .dsc-bar{font-size:11px;padding:10px 16px}
-  .dsc-profit{padding:0 16px 16px;flex-direction:column;gap:12px;align-items:flex-start}
-  .dsc-profit-row{gap:12px}
-  .dsc-profit-item .plbl{font-size:9px}
-  .dsc-profit-item .pval{font-size:12px}
-  .dsc-profit-big{text-align:left}
-  .dsc-profit-big .pval{font-size:22px}
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(29, 27, 24, .82) 0%, rgba(29, 27, 24, .35) 40%, rgba(29, 27, 24, .1) 70%, rgba(29, 27, 24, .02) 100%);
+      z-index: 1
+    }
 
-  .testimonial-break{min-height:65vh;width:calc(100% - 16px);border-radius:16px}
-  .testimonial-inner{padding:48px 24px}
-  .t-big-quote{font-size:64px;margin-bottom:20px}
-  .testimonial-quote{font-size:clamp(18px,5vw,24px);min-height:90px}
-  .testimonial-role{font-size:10px;letter-spacing:1px;margin-bottom:24px}
-  .t-avatar img{width:28px;height:28px}
-  .t-avatar-name{font-size:12px}
+    .hero-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 2;
+      padding: 0 56px 80px;
+      max-width: 800px
+    }
 
-  .control-section{grid-template-columns:1fr;min-height:auto;width:calc(100% - 16px);border-radius:16px}
-  .control-left{padding:48px 24px}
-  .control-left h2{font-size:clamp(24px,7vw,32px)}
-  .control-left>p{font-size:15px;margin-bottom:32px;max-width:100%}
-  .control-right{height:40vh;order:1}
-  .control-right-overlay{background:linear-gradient(to bottom,var(--charcoal) 0%,transparent 40%)}
-  .control-toggle{margin-bottom:28px}
-  .ct-btn{padding:12px 10px;font-size:12px;min-height:44px}
-  .control-desc{min-height:70px}
-  .control-desc p{font-size:13px}
-  .money-steps{grid-template-columns:repeat(2,1fr)}
-  .money-step{padding:16px 12px}
-  .money-step .step-title{font-size:12px}
-  .money-step .step-desc{font-size:10.5px}
+    .hero h1 {
+      font-family: 'Satoshi', 'Messina Sans', sans-serif;
+      font-size: clamp(44px, 5.8vw, 72px);
+      font-weight: 500;
+      line-height: 1.04;
+      letter-spacing: -2.5px;
+      color: #fff;
+      margin-bottom: 20px;
+      overflow: hidden
+    }
 
-  .niche-header{gap:12px;margin-bottom:32px}
-  .niche-header-sub{font-size:14px}
-  .niche-pills{gap:6px}
-  .niche-pill{padding:10px 18px;font-size:13px}
-  .niche-pill .pill-spread{font-size:11px;margin-left:6px}
-  .statement-section{padding:120px 24px}
-  .statement-line{font-size:clamp(26px,7.5vw,40px);letter-spacing:-1px;white-space:normal}
+    .hero-word {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: top;
+      padding-bottom: 6px
+    }
 
-  .niche-search-inline{margin:32px auto 0;padding:0}
-  .niche-search-inline h3{font-size:18px}
-  .niche-input{padding:14px 48px 14px 16px;font-size:14px}
+    .hero-word span {
+      display: inline-block;
+      will-change: transform;
+      transform: translateY(110%)
+    }
 
-  .pricing-header{gap:12px;margin-bottom:32px}
-  .pricing-header-right{font-size:14px}
-  .pricing-grid{gap:12px}
-  .pr-card{padding:32px 24px;border-radius:16px}
-  .pr-name{font-size:20px}
-  .pr-price .amt{font-size:36px}
-  .pr-btn{min-height:48px;font-size:14px}
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, .7);
+      max-width: 440px;
+      line-height: 1.65;
+      margin-bottom: 36px;
+      opacity: 0
+    }
 
-  .scroller-section{padding:56px 0 0}
-  .scroller-header{padding:0 24px;margin-bottom:32px}
-  .scroller-header h2{font-size:clamp(20px,6vw,28px)}
-  .scroller-img{width:200px;height:260px;border-radius:12px}
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      opacity: 0
+    }
 
-  .closing{padding:56px 24px 64px}
-  .closing h2{font-size:clamp(28px,8vw,40px)}
-  .closing p{font-size:15px;margin-bottom:32px}
-  .btn-dark-main{padding:14px 32px;font-size:14px}
+    /* Scattered gallery photos */
+    .hero-scatter {
+      position: absolute;
+      border-radius: 14px;
+      overflow: hidden;
+      z-index: 1;
+      box-shadow: 0 4px 20px rgba(29, 27, 24, .1);
+      will-change: transform;
+      opacity: 0
+    }
 
-  footer{padding:24px;flex-direction:column;gap:16px;text-align:center}
-  .f-links{justify-content:center}
-}
+    .hero-scatter img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
 
-/* ═══ SMALL PHONES (iPhone SE, etc) ═══ */
-@media(max-width:380px){
-  .hero h1{font-size:28px}
-  .hero-content{padding:0 20px 32px}
-  .feature-text{padding:40px 20px 0}
-  .feature-img-wrap{margin:12px 8px !important}
-  .section-pad,.pricing-section{padding:48px 20px}
-  .control-left{padding:40px 20px}
-  .deal-stack-wrap{height:280px}
-  .t-big-quote{font-size:48px}
-  .testimonial-quote{font-size:18px;min-height:80px}
-  .niche-search-inline{padding:0}
-}
-</style>
+
+
+    /* Feature sections — photo swap on scroll */
+    .feature-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      max-width: 100%;
+      margin: 0 auto;
+      align-items: center;
+      min-height: 80vh
+    }
+
+    .feature-section.reversed .feature-text {
+      order: 2;
+      margin-left: 0;
+      padding: 80px 56px 80px 32px
+    }
+
+    .feature-section.reversed .feature-img-wrap {
+      order: 1
+    }
+
+    .feature-text {
+      max-width: 480px;
+      padding: 80px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center
+    }
+
+    .feature-text .tag {
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-bottom: 16px
+    }
+
+    .feature-text h2 {
+      font-family: 'Satoshi', 'Messina Sans', sans-serif;
+      font-size: clamp(28px, 3.2vw, 42px);
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: -1.2px;
+      margin-bottom: 20px
+    }
+
+    .feature-text p {
+      font-size: 16px;
+      color: var(--charcoal-soft);
+      line-height: 1.7;
+      margin-bottom: 28px
+    }
+
+    .feature-img-wrap {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: var(--stone);
+      margin: 20px;
+      max-height: 70vh;
+      width: calc(100% - 40px)
+    }
+
+    .feature-section:not(.reversed) .feature-img-wrap {
+      margin-left: auto;
+      margin-right: 20px
+    }
+
+    .feature-section.reversed .feature-img-wrap {
+      margin-right: auto;
+      margin-left: 20px
+    }
+
+    .feature-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      position: absolute;
+      inset: 0;
+      transition: opacity .6s cubic-bezier(.16, 1, .3, 1), transform .6s cubic-bezier(.16, 1, .3, 1)
+    }
+
+    .feature-img-wrap img.hide {
+      opacity: 0;
+      transform: scale(1.04)
+    }
+
+    .chat-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      max-width: 360px;
+      box-shadow: 0 1px 4px rgba(29, 27, 24, .04), 0 8px 32px rgba(29, 27, 24, .06)
+    }
+
+    .chat-top {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 500
+    }
+
+    .chat-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--positive);
+      animation: pulse 2.5s infinite
+    }
+
+    .chat-top span {
+      color: var(--muted)
+    }
+
+    .chat-msgs {
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 280px;
+      overflow: hidden
+    }
+
+    .c-msg {
+      font-size: 13px;
+      line-height: 1.5;
+      padding: 10px 14px;
+      border-radius: 14px;
+      max-width: 88%;
+      opacity: 0;
+      transform: translateY(8px)
+    }
+
+    .c-msg.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all .35s cubic-bezier(.16, 1, .3, 1)
+    }
+
+    .c-msg.ai {
+      background: var(--stone);
+      color: var(--charcoal);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px
+    }
+
+    .c-msg.out {
+      background: var(--charcoal);
+      color: var(--cream);
+      align-self: flex-end;
+      border-bottom-right-radius: 4px
+    }
+
+    .c-msg.done {
+      align-self: center;
+      background: var(--positive-bg);
+      color: var(--positive);
+      font-weight: 600;
+      font-size: 12px;
+      border-radius: 100px;
+      padding: 6px 18px
+    }
+
+    .c-msg .mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500
+    }
+
+    /* Photo sections — start full bleed, shrink on scroll */
+    .photo-full {
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      line-height: 0;
+      font-size: 0;
+      border-radius: 0;
+      will-change: width, border-radius
+    }
+
+    .photo-full img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      will-change: transform;
+      display: block
+    }
+
+    .photo-full.tall {
+      height: 90vh;
+      min-height: 500px
+    }
+
+    .photo-full.mid {
+      min-height: 500px
+    }
+
+    .photo-full-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1.6;
+      font-size: 16px;
+      flex-direction: column
+    }
+
+    .photo-full-text {
+      color: #fff;
+      max-width: 540px;
+      padding: 0 32px
+    }
+
+    .photo-full-text h2 {
+      font-family: 'Satoshi', 'Messina Sans', sans-serif;
+      font-size: clamp(32px, 4.5vw, 56px);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin-bottom: 16px
+    }
+
+    .photo-full-text p {
+      font-size: 16px;
+      color: rgba(255, 255, 255, .7);
+      line-height: 1.65
+    }
+
+    .section-pad {
+      padding: 100px 56px;
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .sec-tag {
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-bottom: 12px
+    }
+
+    .sec-title {
+      font-family: 'Satoshi', 'Messina Sans', sans-serif;
+      font-size: clamp(28px, 3.2vw, 42px);
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: -1.2px;
+      margin-bottom: 20px
+    }
+
+    /* Stats — inside photo overlay */
+    .photo-stats-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 0 56px
+    }
+
+    .stats-row-overlay {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      width: 100%;
+      max-width: 900px;
+      padding-top: 48px;
+      border-top: 1px solid rgba(255, 255, 255, .15)
+    }
+
+    .stats-row-overlay .stat-item {
+      text-align: center
+    }
+
+    .stats-row-overlay .stat-num {
+      font-size: 48px;
+      font-weight: 400;
+      letter-spacing: -2px;
+      margin-bottom: 4px;
+      color: #fff
+    }
+
+    .stats-row-overlay .stat-desc {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .55)
+    }
+
+    /* Deal stack */
+    .deal-header-center {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 56px
+    }
+
+    .deal-header-center .sec-desc {
+      font-size: 16px;
+      color: var(--charcoal-soft);
+      line-height: 1.7;
+      margin-top: 12px
+    }
+
+    .deal-stack-outer {
+      position: relative;
+      overflow: hidden
+    }
+
+    .deal-stack-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      height: 400px;
+      margin: 0 auto;
+      cursor: pointer
+    }
+
+    .deal-stack-fade {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      z-index: 10;
+      pointer-events: none
+    }
+
+    .deal-stack-card {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 100%;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px 20px 0 0;
+      border-bottom: none;
+      overflow: hidden;
+      box-shadow: 0 -2px 8px rgba(29, 27, 24, .03), 0 -8px 32px rgba(29, 27, 24, .06);
+      will-change: transform
+    }
+
+    .dsc-bar {
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--muted)
+    }
+
+    .dsc-bar strong {
+      color: var(--charcoal);
+      font-weight: 500
+    }
+
+    .dsc-live {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--positive)
+    }
+
+    .dsc-live::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--positive);
+      animation: pulse 2.5s infinite
+    }
+
+    .dsc-body {
+      padding: 28px 24px 20px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: start
+    }
+
+    .dsc-side {
+      min-width: 0
+    }
+
+    .dsc-side .s-lbl {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted-light);
+      margin-bottom: 10px
+    }
+
+    .dsc-side .s-name {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -.2px;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .dsc-side .s-plat {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-bottom: 14px
+    }
+
+    .dsc-side .s-price {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -1px
+    }
+
+    .dsc-side .s-price.sell {
+      color: var(--positive)
+    }
+
+    .dsc-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px 0;
+      color: var(--muted-light);
+      font-size: 20px
+    }
+
+    .dsc-profit {
+      padding: 0 24px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .dsc-profit-row {
+      display: flex;
+      align-items: center;
+      gap: 16px
+    }
+
+    .dsc-profit-item .plbl {
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted-light);
+      margin-bottom: 2px
+    }
+
+    .dsc-profit-item .pval {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--charcoal)
+    }
+
+    .dsc-profit-item .pval.strike {
+      text-decoration: line-through;
+      color: var(--muted-light);
+      font-weight: 400
+    }
+
+    .dsc-profit-big {
+      text-align: right
+    }
+
+    .dsc-profit-big .plbl {
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--positive);
+      margin-bottom: 2px
+    }
+
+    .dsc-profit-big .pval {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 26px;
+      font-weight: 500;
+      color: var(--positive);
+      letter-spacing: -1px
+    }
+
+    /* Testimonial — avatar pills inspired by 21st dev */
+    .testimonial-break {
+      width: calc(100% - 24px);
+      margin: 12px auto;
+      min-height: 85vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-radius: 20px
+    }
+
+    .testimonial-break>.tb-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      object-position: center center
+    }
+
+    .testimonial-break-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(29, 27, 24, .75)
+    }
+
+    .testimonial-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+      padding: 80px 32px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center
+    }
+
+    .t-big-quote {
+      font-size: 100px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, .08);
+      line-height: 0.5;
+      margin-bottom: 32px;
+      pointer-events: none;
+      user-select: none;
+      font-family: Georgia, 'Times New Roman', serif
+    }
+
+    .testimonial-quote {
+      font-family: 'Satoshi', 'Messina Sans', sans-serif;
+      font-size: clamp(20px, 3vw, 30px);
+      font-weight: 400;
+      line-height: 1.4;
+      letter-spacing: -.3px;
+      margin-bottom: 24px;
+      min-height: 100px;
+      position: relative;
+      width: 100%
+    }
+
+    .testimonial-quote span {
+      opacity: 0;
+      position: absolute;
+      left: 0;
+      right: 0;
+      transition: all .5s cubic-bezier(.16, 1, .3, 1);
+      filter: blur(4px);
+      transform: scale(.98)
+    }
+
+    .testimonial-quote span.active {
+      opacity: 1;
+      position: relative;
+      filter: blur(0);
+      transform: scale(1)
+    }
+
+    .testimonial-role {
+      font-size: 12px;
+      color: rgba(255, 255, 255, .4);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 28px;
+      min-height: 18px;
+      position: relative;
+      width: 100%
+    }
+
+    .testimonial-role span {
+      opacity: 0;
+      position: absolute;
+      left: 0;
+      right: 0;
+      transition: all .5s ease .1s
+    }
+
+    .testimonial-role span.active {
+      opacity: 1;
+      position: relative
+    }
+
+    .t-avatars {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px
+    }
+
+    .t-avatar {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 4px;
+      border-radius: 100px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      transition: all .5s cubic-bezier(.16, 1, .3, 1);
+      flex-shrink: 0
+    }
+
+    .t-avatar.active {
+      background: rgba(255, 255, 255, .15);
+      padding-right: 16px
+    }
+
+    .t-avatar:hover:not(.active) {
+      background: rgba(255, 255, 255, .08)
+    }
+
+    .t-avatar img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      transition: all .3s;
+      border: 2px solid transparent;
+      flex-shrink: 0
+    }
+
+    .t-avatar.active img {
+      border-color: rgba(255, 255, 255, .3)
+    }
+
+    .t-avatar-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: #fff;
+      white-space: nowrap;
+      display: block;
+      overflow: hidden;
+      max-width: 0;
+      opacity: 0;
+      transition: all .5s cubic-bezier(.16, 1, .3, 1);
+      font-family: 'Messina Sans', 'General Sans', sans-serif
+    }
+
+    .t-avatar.active .t-avatar-name {
+      max-width: 100px;
+      opacity: 1;
+      margin-left: 8px
+    }
+
+    /* Money / Control section — 100vh */
+    .control-section {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--charcoal);
+      position: relative;
+      overflow: hidden;
+      width: calc(100% - 24px);
+      margin: 12px auto;
+      border-radius: 20px;
+      z-index: 4;
+      margin-top: -100px;
+      box-shadow: 0 -20px 60px rgba(29, 27, 24, .3)
+    }
+
+    .control-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 64px;
+      color: #fff
+    }
+
+    .control-left .tag {
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255, 255, 255, .35);
+      margin-bottom: 16px
+    }
+
+    .control-left h2 {
+      font-family: 'Satoshi', 'Messina Sans', sans-serif;
+      font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+      max-width: 440px
+    }
+
+    .control-left>p {
+      font-size: 16px;
+      color: rgba(255, 255, 255, .55);
+      line-height: 1.7;
+      max-width: 400px;
+      margin-bottom: 48px
+    }
+
+    .control-right {
+      position: relative;
+      overflow: hidden
+    }
+
+    .control-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .control-right-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--charcoal) 0%, rgba(29, 27, 24, .3) 30%, transparent 55%)
+    }
+
+    /* Toggle UI */
+    .control-toggle {
+      margin-bottom: 40px
+    }
+
+    .control-toggle-bar {
+      display: flex;
+      background: rgba(255, 255, 255, .06);
+      border-radius: 12px;
+      padding: 4px;
+      gap: 4px;
+      margin-bottom: 20px
+    }
+
+    .ct-btn {
+      flex: 1;
+      padding: 12px 16px;
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, .4);
+      font-family: 'Messina Sans', 'General Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all .3s;
+      letter-spacing: -.1px
+    }
+
+    .ct-btn.active {
+      background: rgba(255, 255, 255, .12);
+      color: #fff
+    }
+
+    .ct-btn:hover:not(.active) {
+      color: rgba(255, 255, 255, .7)
+    }
+
+    .control-desc {
+      min-height: 80px
+    }
+
+    .control-desc p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, .5);
+      line-height: 1.65;
+      display: none
+    }
+
+    .control-desc p.active {
+      display: block
+    }
+
+    /* Money flow steps */
+    .money-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: rgba(255, 255, 255, .06);
+      border-radius: 12px;
+      overflow: hidden
+    }
+
+    .money-step {
+      padding: 20px 16px;
+      text-align: center;
+      background: var(--charcoal)
+    }
+
+    .money-step .step-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: rgba(255, 255, 255, .2);
+      margin-bottom: 8px
+    }
+
+    .money-step .step-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 4px
+    }
+
+    .money-step .step-desc {
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, .35);
+      line-height: 1.5
+    }
+
+    /* Statement section */
+    .statement-section {
+      padding: 220px 56px;
+      text-align: center;
+      max-width: 100%;
+      margin: 0 auto;
+      overflow: hidden
+    }
+
+    .statement-tag {
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted);
+      margin-bottom: 40px
+    }
+
+    .statement-line {
+      font-family: 'Satoshi', 'Messina Sans', sans-serif;
+      font-size: clamp(40px, 5.8vw, 84px);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -3px;
+      color: var(--charcoal);
+      overflow: hidden;
+      white-space: nowrap
+    }
+
+    .statement-line span {
+      display: inline-block;
+      opacity: 0;
+      filter: blur(8px);
+      transform: translateY(40%)
+    }
+
+    .statement-line+.statement-line {
+      margin-top: 0
+    }
+
+    /* Niches — flowing pills + search */
+    .niche-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 48px
+    }
+
+    .niche-header .sec-tag {
+      margin-bottom: 16px
+    }
+
+    .niche-header .sec-title {
+      max-width: 560px
+    }
+
+    .niche-header-sub {
+      font-size: 16px;
+      color: var(--charcoal-soft);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-top: 8px
+    }
+
+    .niche-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 56px
+    }
+
+    .niche-pill {
+      padding: 12px 24px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--charcoal);
+      font-size: 15px;
+      font-weight: 400;
+      font-family: 'Messina Sans', 'General Sans', sans-serif;
+      cursor: pointer;
+      transition: all .35s cubic-bezier(.16, 1, .3, 1);
+      opacity: 0;
+      transform: translateY(10px);
+      letter-spacing: -.1px
+    }
+
+    .niche-pill.in {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .niche-pill:hover {
+      background: var(--charcoal);
+      color: var(--cream);
+      border-color: var(--charcoal)
+    }
+
+    .niche-pill .pill-spread {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      margin-left: 8px;
+      transition: color .35s
+    }
+
+    .niche-pill:hover .pill-spread {
+      color: rgba(255, 255, 255, .5)
+    }
+
+    .niche-input-wrap {
+      position: relative;
+      margin-top: 20px
+    }
+
+    .niche-search-inline {
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0
+    }
+
+    .niche-or {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px
+    }
+
+    .niche-search-inline h3 {
+      font-family: 'Satoshi', 'Messina Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -.4px;
+      margin-bottom: 6px
+    }
+
+    .niche-input {
+      width: 100%;
+      padding: 18px 56px 18px 24px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      color: var(--charcoal);
+      font-family: 'Messina Sans', 'General Sans', sans-serif;
+      font-size: 15px;
+      outline: none;
+      transition: border-color .3s, box-shadow .3s
+    }
+
+    .niche-input::placeholder {
+      color: var(--muted-light)
+    }
+
+    .niche-input:focus {
+      border-color: var(--charcoal);
+      box-shadow: 0 0 0 4px rgba(29, 27, 24, .05), 0 4px 24px rgba(29, 27, 24, .08)
+    }
+
+    .niche-submit {
+      position: absolute;
+      right: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: none;
+      background: var(--charcoal);
+      color: var(--cream);
+      font-size: 18px;
+      cursor: pointer;
+      transition: all .25s cubic-bezier(.16, 1, .3, 1);
+      font-family: 'Messina Sans', 'General Sans', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .niche-submit:hover {
+      background: var(--charcoal-soft);
+      transform: translateY(-50%) scale(1.06)
+    }
+
+    .niche-suggestions {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      min-height: 28px;
+      justify-content: center
+    }
+
+    .niche-sug {
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 100px;
+      background: var(--white);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all .2s;
+      font-family: 'Messina Sans', 'General Sans', sans-serif
+    }
+
+    .niche-sug:hover {
+      background: var(--charcoal);
+      color: #fff;
+      border-color: var(--charcoal)
+    }
+
+    .niche-sug.matched {
+      background: var(--positive);
+      color: #fff;
+      border-color: var(--positive)
+    }
+
+    .niche-scan-anim {
+      margin-bottom: 20px
+    }
+
+    .scan-bar {
+      width: 200px;
+      height: 3px;
+      background: var(--border);
+      border-radius: 3px;
+      margin: 0 auto;
+      overflow: hidden
+    }
+
+    .scan-fill {
+      height: 100%;
+      width: 0;
+      background: var(--charcoal);
+      border-radius: 3px;
+      transition: width 2.5s cubic-bezier(.4, 0, .2, 1)
+    }
+
+    .niche-result-check {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--positive-bg);
+      border: 2px solid var(--positive);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      color: var(--positive)
+    }
+
+
+
+    /* Pricing */
+
+
+    /* Scroller */
+    .scroller-section {
+      padding: 100px 0 0;
+      overflow: hidden
+    }
+
+    .scroller-header {
+      text-align: center;
+      margin-bottom: 48px;
+      padding: 0 56px
+    }
+
+    .scroller-header h2 {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 400;
+      letter-spacing: -.8px;
+      margin-bottom: 8px
+    }
+
+    .scroller-header p {
+      font-size: 15px;
+      color: var(--muted)
+    }
+
+    .photo-scroller {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      will-change: transform
+    }
+
+    .scroller-img {
+      width: 320px;
+      height: 400px;
+      border-radius: 16px;
+      overflow: hidden;
+      flex-shrink: 0
+    }
+
+    .scroller-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .closing {
+      text-align: center;
+      padding: 120px 56px 140px;
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .closing h2 {
+      font-family: 'Satoshi', 'Messina Sans', sans-serif;
+      font-size: clamp(32px, 4.5vw, 56px);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin-bottom: 16px
+    }
+
+    .closing p {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 400px;
+      margin: 0 auto 40px;
+      line-height: 1.65
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s
+    }
+
+    footer a:hover {
+      color: var(--charcoal)
+    }
+
+    .f-links {
+      display: flex;
+      gap: 24px
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .3
+      }
+    }
+
+    /* Spacing between sections */
+    .photo-full+section,
+    .photo-full+.section-pad,
+    .photo-full+.pricing-section {
+      margin-top: 0
+    }
+
+    @media(max-width:1100px) {
+      .niche-grid {
+        grid-template-columns: repeat(3, 1fr)
+      }
+    }
+
+    @media(max-width:960px) {
+      .control-section {
+        grid-template-columns: 1fr;
+        min-height: auto
+      }
+
+      .control-left {
+        padding: 64px 32px
+      }
+
+      .control-right {
+        height: 50vh
+      }
+
+      .money-steps {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .feature-section {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        min-height: auto
+      }
+
+      .feature-section.reversed .feature-text {
+        order: 0;
+        padding: 60px 32px 0
+      }
+
+      .feature-section.reversed .feature-img-wrap {
+        order: 0
+      }
+
+      .feature-text {
+        padding: 60px 32px 0
+      }
+
+      .feature-img-wrap {
+        aspect-ratio: 3/2;
+        margin: 20px 32px;
+        width: calc(100% - 64px)
+      }
+
+      .feature-section:not(.reversed) .feature-img-wrap,
+      .feature-section.reversed .feature-img-wrap {
+        margin: 20px 32px
+      }
+
+      .pricing-header {
+        grid-template-columns: 1fr;
+        gap: 16px
+      }
+
+      .niche-pills {
+        gap: 8px
+      }
+
+      .deal-stack-wrap {
+        max-width: 100%;
+        height: 360px
+      }
+
+      .statement-section {
+        padding: 160px 32px
+      }
+
+      .statement-line {
+        font-size: clamp(32px, 5.2vw, 56px)
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr
+      }
+
+      .stats-row-overlay {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px
+      }
+
+      .section-pad,
+      .pricing-section {
+        padding: 80px 32px
+      }
+
+      .hero-content {
+        padding: 0 32px 56px
+      }
+
+      .hero-scatter {
+        display: none
+      }
+
+      .hero-spinner {
+        width: 90px;
+        height: 90px;
+        bottom: 32px;
+        right: 32px
+      }
+
+      .hero-spinner-arrow {
+        font-size: 18px
+      }
+
+      .spin-text {
+        font-size: 4.5px
+      }
+
+      .closing {
+        padding: 80px 32px 100px
+      }
+
+      .scroller-img {
+        width: 260px;
+        height: 340px
+      }
+
+      .scroller-header {
+        padding: 0 32px
+      }
+    }
+
+    @media(max-width:600px) {
+
+
+      .hero {
+        height: 130vh
+      }
+
+      .hero-content {
+        padding: 0 24px 40px
+      }
+
+      .hero h1 {
+        font-size: clamp(32px, 9vw, 48px);
+        letter-spacing: -1.5px
+      }
+
+      .hero-sub {
+        font-size: 15px;
+        max-width: 100%;
+        margin-bottom: 28px
+      }
+
+      .hero-spinner {
+        display: none
+      }
+
+      .hero-scatter {
+        display: none
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px
+      }
+
+      .btn-hero-main {
+        padding: 14px 32px;
+        font-size: 14px;
+        width: 100%;
+        text-align: center;
+        justify-content: center
+      }
+
+      .btn-ghost {
+        font-size: 13px
+      }
+
+      .feature-section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        min-height: auto
+      }
+
+      .feature-section.reversed .feature-text {
+        order: 0;
+        padding: 48px 24px 0
+      }
+
+      .feature-section.reversed .feature-img-wrap {
+        order: 0
+      }
+
+      .feature-text {
+        padding: 48px 24px 0
+      }
+
+      .feature-text h2 {
+        font-size: clamp(24px, 7vw, 32px);
+        margin-bottom: 14px
+      }
+
+      .feature-text p {
+        font-size: 15px;
+        max-width: 100%
+      }
+
+      .feature-img-wrap {
+        aspect-ratio: 3/2;
+        border-radius: 16px;
+        margin: 16px 12px;
+        width: calc(100% - 24px)
+      }
+
+      .feature-section:not(.reversed) .feature-img-wrap,
+      .feature-section.reversed .feature-img-wrap {
+        margin: 16px 12px
+      }
+
+      .chat-card {
+        max-width: 100%
+      }
+
+      .chat-msgs {
+        padding: 14px 16px
+      }
+
+      .c-msg {
+        font-size: 13px;
+        padding: 9px 12px
+      }
+
+      .photo-full.tall {
+        height: 80vh;
+        min-height: 500px
+      }
+
+      .photo-full-text h2 {
+        font-size: clamp(24px, 7vw, 36px)
+      }
+
+      .photo-full-text p {
+        font-size: 14px
+      }
+
+      .stats-row-overlay {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding-top: 32px
+      }
+
+      .stats-row-overlay .stat-num {
+        font-size: 32px
+      }
+
+      .stats-row-overlay .stat-desc {
+        font-size: 11px
+      }
+
+      .photo-stats-inner {
+        padding: 0 24px
+      }
+
+      .section-pad {
+        padding: 56px 24px
+      }
+
+      .sec-title {
+        font-size: clamp(24px, 7vw, 32px)
+      }
+
+      .deal-header-center {
+        margin-bottom: 40px
+      }
+
+      .deal-header-center .sec-desc {
+        font-size: 14px
+      }
+
+      .deal-stack-wrap {
+        height: 300px
+      }
+
+      .dsc-body {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 20px 16px 14px
+      }
+
+      .dsc-arrow {
+        padding: 0;
+        justify-content: flex-start;
+        font-size: 16px
+      }
+
+      .dsc-side .s-lbl {
+        font-size: 10px;
+        margin-bottom: 6px
+      }
+
+      .dsc-side .s-name {
+        font-size: 14px
+      }
+
+      .dsc-side .s-plat {
+        font-size: 11px;
+        margin-bottom: 8px
+      }
+
+      .dsc-side .s-price {
+        font-size: 20px
+      }
+
+      .dsc-bar {
+        font-size: 11px;
+        padding: 10px 16px
+      }
+
+      .dsc-profit {
+        padding: 0 16px 16px;
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start
+      }
+
+      .dsc-profit-row {
+        gap: 12px
+      }
+
+      .dsc-profit-item .plbl {
+        font-size: 9px
+      }
+
+      .dsc-profit-item .pval {
+        font-size: 12px
+      }
+
+      .dsc-profit-big {
+        text-align: left
+      }
+
+      .dsc-profit-big .pval {
+        font-size: 22px
+      }
+
+      .testimonial-break {
+        min-height: 65vh;
+        width: calc(100% - 16px);
+        border-radius: 16px
+      }
+
+      .testimonial-inner {
+        padding: 48px 24px
+      }
+
+      .t-big-quote {
+        font-size: 64px;
+        margin-bottom: 20px
+      }
+
+      .testimonial-quote {
+        font-size: clamp(18px, 5vw, 24px);
+        min-height: 90px
+      }
+
+      .testimonial-role {
+        font-size: 10px;
+        letter-spacing: 1px;
+        margin-bottom: 24px
+      }
+
+      .t-avatar img {
+        width: 28px;
+        height: 28px
+      }
+
+      .t-avatar-name {
+        font-size: 12px
+      }
+
+      .control-section {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        width: calc(100% - 16px);
+        border-radius: 16px
+      }
+
+      .control-left {
+        padding: 48px 24px
+      }
+
+      .control-left h2 {
+        font-size: clamp(24px, 7vw, 32px)
+      }
+
+      .control-left>p {
+        font-size: 15px;
+        margin-bottom: 32px;
+        max-width: 100%
+      }
+
+      .control-right {
+        height: 40vh;
+        order: 1
+      }
+
+      .control-right-overlay {
+        background: linear-gradient(to bottom, var(--charcoal) 0%, transparent 40%)
+      }
+
+      .control-toggle {
+        margin-bottom: 28px
+      }
+
+      .ct-btn {
+        padding: 12px 10px;
+        font-size: 12px;
+        min-height: 44px
+      }
+
+      .control-desc {
+        min-height: 70px
+      }
+
+      .control-desc p {
+        font-size: 13px
+      }
+
+      .money-steps {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .money-step {
+        padding: 16px 12px
+      }
+
+      .money-step .step-title {
+        font-size: 12px
+      }
+
+      .money-step .step-desc {
+        font-size: 10.5px
+      }
+
+      .niche-header {
+        gap: 12px;
+        margin-bottom: 32px
+      }
+
+      .niche-header-sub {
+        font-size: 14px
+      }
+
+      .niche-pills {
+        gap: 6px
+      }
+
+      .niche-pill {
+        padding: 10px 18px;
+        font-size: 13px
+      }
+
+      .niche-pill .pill-spread {
+        font-size: 11px;
+        margin-left: 6px
+      }
+
+      .statement-section {
+        padding: 120px 24px
+      }
+
+      .statement-line {
+        font-size: clamp(26px, 7.5vw, 40px);
+        letter-spacing: -1px;
+        white-space: normal
+      }
+
+      .niche-search-inline {
+        margin: 32px auto 0;
+        padding: 0
+      }
+
+      .niche-search-inline h3 {
+        font-size: 18px
+      }
+
+      .niche-input {
+        padding: 14px 48px 14px 16px;
+        font-size: 14px
+      }
+
+
+
+      .scroller-section {
+        padding: 56px 0 0
+      }
+
+      .scroller-header {
+        padding: 0 24px;
+        margin-bottom: 32px
+      }
+
+      .scroller-header h2 {
+        font-size: clamp(20px, 6vw, 28px)
+      }
+
+      .scroller-img {
+        width: 200px;
+        height: 260px;
+        border-radius: 12px
+      }
+
+      .closing {
+        padding: 56px 24px 64px
+      }
+
+      .closing h2 {
+        font-size: clamp(28px, 8vw, 40px)
+      }
+
+      .closing p {
+        font-size: 15px;
+        margin-bottom: 32px
+      }
+
+      .btn-dark-main {
+        padding: 14px 32px;
+        font-size: 14px
+      }
+
+      footer {
+        padding: 24px;
+        flex-direction: column;
+        gap: 16px;
+        text-align: center
+      }
+
+      .f-links {
+        justify-content: center
+      }
+    }
+
+    /* ═══ SMALL PHONES (iPhone SE, etc) ═══ */
+    @media(max-width:380px) {
+      .hero h1 {
+        font-size: 28px
+      }
+
+      .hero-content {
+        padding: 0 20px 32px
+      }
+
+      .feature-text {
+        padding: 40px 20px 0
+      }
+
+      .feature-img-wrap {
+        margin: 12px 8px !important
+      }
+
+      .section-pad {
+        padding: 48px 20px
+      }
+
+      .control-left {
+        padding: 40px 20px
+      }
+
+      .deal-stack-wrap {
+        height: 280px
+      }
+
+      .t-big-quote {
+        font-size: 48px
+      }
+
+      .testimonial-quote {
+        font-size: 18px;
+        min-height: 80px
+      }
+
+      .niche-search-inline {
+        padding: 0
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="page-loader" id="pageLoader">
-  <img src="spread-assets/logo-light.svg" alt="Spread" class="loader-logo" id="loaderLogo">
-  <div class="loader-line" id="loaderLine"><div class="loader-line-fill" id="loaderFill"></div></div>
-  <div class="loader-counter" id="loaderCounter">00</div>
-</div>
-
-<nav id="mainNav">
-  <div class="nav-logo">
-    <img src="spread-assets/logo-light.svg" alt="Spread" class="logo-light" style="height:18px">
-    <img src="spread-assets/logo-dark.svg" alt="Spread" class="logo-dark" style="height:18px">
+  <div class="page-loader" id="pageLoader">
+    <div class="heart-container" id="heartContainer">
+      <svg class="heart-icon" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+      </svg>
+    </div>
+    <div class="loader-line" id="loaderLine">
+      <div class="loader-line-fill" id="loaderFill"></div>
+    </div>
+    <div class="loader-counter" id="loaderCounter">00</div>
+    <div class="password-input-wrap" id="passwordInputWrap">
+      <input type="password" id="passIn" placeholder="Enter Password" autocomplete="off">
+    </div>
   </div>
-  <ul class="nav-links">
-    <li><a href="#how">How it works</a></li>
-    <li><a href="#deal">See a deal</a></li>
-    <li><a href="#niches">Niches</a></li>
-    <li><a href="#pricing">Pricing</a></li>
-  </ul>
-  <a href='/signup' style='text-decoration:none'><button class="nav-cta"><span class="cta-full">Get early access</span><span class="cta-short">Sign up</span></button></a>
-</nav>
 
-<section class="hero">
-  <div class="hero-pin" id="heroPin">
-    <!-- Scattered gallery photos -->
-    <div class="hero-scatter" id="hs0" style="width:180px;height:140px;top:6%;left:4%"><img src="spread-assets/scroll1.jpg" alt=""></div>
-    <div class="hero-scatter" id="hs1" style="width:160px;height:200px;top:4%;right:6%"><img src="spread-assets/sticky2a.jpg" alt=""></div>
-    <div class="hero-scatter" id="hs2" style="width:200px;height:150px;top:42%;left:1%"><img src="spread-assets/scroll3.jpg" alt=""></div>
-    <div class="hero-scatter" id="hs3" style="width:170px;height:170px;top:50%;right:2%"><img src="spread-assets/scroll5.jpg" alt=""></div>
-    <div class="hero-scatter" id="hs4" style="width:150px;height:190px;bottom:6%;left:10%"><img src="spread-assets/sticky1b.jpg" alt=""></div>
-    <div class="hero-scatter" id="hs5" style="width:190px;height:140px;bottom:4%;right:8%"><img src="spread-assets/scroll4.jpg" alt=""></div>
-    <div class="hero-scatter" id="hs6" style="width:140px;height:120px;top:20%;left:18%"><img src="spread-assets/scroll6.jpg" alt=""></div>
-    <div class="hero-scatter" id="hs7" style="width:150px;height:130px;top:18%;right:16%"><img src="spread-assets/scroll2.jpg" alt=""></div>
 
-    <!-- Main hero video -->
-    <div class="hero-main" id="heroMain">
-      <iframe class="hero-video" src="https://app.vidzflow.com/v/8JRj9LpmLu?dq=1080&ap=true&muted=true&loop=true&ctp=false&bv=false&piv=false&playsinline=true&controls=" title="Spread" frameborder="0" scrolling="no" allow="autoplay; fullscreen" allowfullscreen></iframe>
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <h1 class="hero-h1"><span class="hero-word"><span>Find</span></span> <span class="hero-word"><span>what's</span></span> <span class="hero-word"><span>underpriced.</span></span><br><span class="hero-word"><span>Sell</span></span> <span class="hero-word"><span>it</span></span> <span class="hero-word"><span>for</span></span> <span class="hero-word"><span>what</span></span> <span class="hero-word"><span>it's</span></span> <span class="hero-word"><span>worth.</span></span></h1>
-        <p class="hero-sub">AI that scans every marketplace, scores every deal, and helps you relist in one tap. Stop scrolling. Start flipping.</p>
-        <div class="hero-actions">
-          <a href='/signup' style='text-decoration:none'><button class="mag-btn btn-hero-main"><span class="btn-fill"></span><span class="btn-text">Join the waitlist</span></button></a>
-          <a href="#deal" class="btn-ghost">See it work →</a>
+
+  <section class="hero">
+    <div class="hero-pin" id="heroPin">
+      <!-- Scattered gallery photos -->
+      <div class="hero-scatter" id="hs0" style="width:180px;height:140px;top:6%;left:4%"><img
+          src="spread-assets/placeholder.png" alt=""></div>
+      <div class="hero-scatter" id="hs1" style="width:160px;height:200px;top:4%;right:6%"><img
+          src="spread-assets/placeholder.png" alt=""></div>
+      <div class="hero-scatter" id="hs2" style="width:200px;height:150px;top:42%;left:1%"><img
+          src="spread-assets/placeholder.png" alt=""></div>
+      <div class="hero-scatter" id="hs3" style="width:170px;height:170px;top:50%;right:2%"><img
+          src="spread-assets/placeholder.png" alt=""></div>
+      <div class="hero-scatter" id="hs4" style="width:150px;height:190px;bottom:6%;left:10%"><img
+          src="spread-assets/placeholder.png" alt=""></div>
+      <div class="hero-scatter" id="hs5" style="width:190px;height:140px;bottom:4%;right:8%"><img
+          src="spread-assets/placeholder.png" alt=""></div>
+      <div class="hero-scatter" id="hs6" style="width:140px;height:120px;top:20%;left:18%"><img
+          src="spread-assets/placeholder.png" alt=""></div>
+      <div class="hero-scatter" id="hs7" style="width:150px;height:130px;top:18%;right:16%"><img
+          src="spread-assets/placeholder.png" alt=""></div>
+
+      <!-- Main hero video -->
+      <div class="hero-main" id="heroMain">
+        <img class="hero-video" src="spread-assets/placeholder.png" style="width: 100%; height: 100%; object-fit: cover;" alt="">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h1 class="hero-h1"><span class="hero-word"><span>Find</span></span> <span
+              class="hero-word"><span>what's</span></span> <span
+              class="hero-word"><span>underpriced.</span></span><br><span class="hero-word"><span>Sell</span></span>
+            <span class="hero-word"><span>it</span></span> <span class="hero-word"><span>for</span></span> <span
+              class="hero-word"><span>what</span></span> <span class="hero-word"><span>it's</span></span> <span
+              class="hero-word"><span>worth.</span></span></h1>
+          <p class="hero-sub">AI that scans every marketplace, scores every deal, and helps you relist in one tap. Stop
+            scrolling. Start flipping.</p>
+          <div class="hero-actions">
+            <a href="#deal" class="btn-ghost">See it work →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="feature-section" id="how">
+    <div class="feature-text">
+      <div class="tag gs-reveal">How it works</div>
+      <h2 class="gs-reveal">The AI finds deals you'd never see in time.</h2>
+      <p class="gs-reveal">Spread scans thousands of listings across Facebook Marketplace, Craigslist, OfferUp, eBay,
+        and more — alerting you the second something surfaces 30–60% below market value in your niches.</p>
+      <div class="feature-sub gs-reveal"
+        style="font-size:14px;color:var(--muted);padding-top:20px;border-top:1px solid var(--border)">
+        <strong style="color:var(--charcoal)">6 platforms.</strong> Scanned 24/7. Alerts in under 12 seconds.
+      </div>
+    </div>
+    <div class="feature-img-wrap">
+      <img src="spread-assets/placeholder.png" alt="">
+      <img src="spread-assets/placeholder.png" alt="" class="hide">
+    </div>
+  </section>
+
+  <section class="feature-section reversed">
+    <div class="feature-text">
+      <div class="tag gs-reveal">Score & relist</div>
+      <h2 class="gs-reveal">Know exactly what to offer. List it before you leave.</h2>
+      <p class="gs-reveal">Every deal gets an AI score — estimated resale value, projected margin, time-to-sell, and the
+        best platform to relist on. One tap generates an optimized listing with AI-written descriptions.</p>
+      <div class="chat-card gs-reveal" id="chatCard">
+        <div class="chat-top">
+          <div class="chat-dot"></div><span>Spread AI · Deal Analysis</span>
+        </div>
+        <div class="chat-msgs">
+          <div class="c-msg ai" data-d="300">Found a <strong>Breville Oracle Touch</strong> listed at <span
+              class="mono">$1,200</span></div>
+          <div class="c-msg ai" data-d="1000">Market value: <span class="mono">$1,800–$2,100</span> on eBay</div>
+          <div class="c-msg ai" data-d="1800">Suggested offer: <span class="mono">$750</span> · Projected profit: <span
+              class="mono">+$500</span></div>
+          <div class="c-msg out" data-d="2600">Generate opener message ↗</div>
+          <div class="c-msg ai" data-d="3400">"Hi — is this still available? I can pick up today. Would you take $750
+            cash?"</div>
+          <div class="c-msg done" data-d="4200">Opener copied · eBay listing drafted</div>
         </div>
       </div>
-      <a class='hero-spinner' href='/signup' style='text-decoration:none'>
-        <svg viewBox="0 0 100 100">
-          <defs>
-            <path id="spinPath" d="M 50,50 m -30,0 a 30,30 0 1,1 60,0 a 30,30 0 1,1 -60,0" fill="none"/>
-          </defs>
-          <g class="spin-group">
-            <text class="spin-text">
-              <textPath href="#spinPath" startOffset="0%">CAPTURE THE SPREAD • FLIP SMARTER • CAPTURE THE SPREAD • FLIP SMARTER •</textPath>
-            </text>
-          </g>
-        </svg>
-        <div class="hero-spinner-arrow">↗</div>
-      </a>
     </div>
-  </div>
-</section>
-
-<section class="feature-section" id="how">
-  <div class="feature-text">
-    <div class="tag gs-reveal">How it works</div>
-    <h2 class="gs-reveal">The AI finds deals you'd never see in time.</h2>
-    <p class="gs-reveal">Spread scans thousands of listings across Facebook Marketplace, Craigslist, OfferUp, eBay, and more — alerting you the second something surfaces 30–60% below market value in your niches.</p>
-    <div class="feature-sub gs-reveal" style="font-size:14px;color:var(--muted);padding-top:20px;border-top:1px solid var(--border)">
-      <strong style="color:var(--charcoal)">6 platforms.</strong> Scanned 24/7. Alerts in under 12 seconds.
+    <div class="feature-img-wrap">
+      <img src="spread-assets/placeholder.png" alt="">
+      <img src="spread-assets/placeholder.png" alt="" class="hide">
     </div>
-  </div>
-  <div class="feature-img-wrap">
-    <img src="spread-assets/sticky1a.jpg" alt="">
-    <img src="spread-assets/sticky1b.jpg" alt="" class="hide">
-  </div>
-</section>
+  </section>
 
-<section class="feature-section reversed">
-  <div class="feature-text">
-    <div class="tag gs-reveal">Score & relist</div>
-    <h2 class="gs-reveal">Know exactly what to offer. List it before you leave.</h2>
-    <p class="gs-reveal">Every deal gets an AI score — estimated resale value, projected margin, time-to-sell, and the best platform to relist on. One tap generates an optimized listing with AI-written descriptions.</p>
-    <div class="chat-card gs-reveal" id="chatCard">
-      <div class="chat-top"><div class="chat-dot"></div><span>Spread AI · Deal Analysis</span></div>
-      <div class="chat-msgs">
-        <div class="c-msg ai" data-d="300">Found a <strong>Breville Oracle Touch</strong> listed at <span class="mono">$1,200</span></div>
-        <div class="c-msg ai" data-d="1000">Market value: <span class="mono">$1,800–$2,100</span> on eBay</div>
-        <div class="c-msg ai" data-d="1800">Suggested offer: <span class="mono">$750</span> · Projected profit: <span class="mono">+$500</span></div>
-        <div class="c-msg out" data-d="2600">Generate opener message ↗</div>
-        <div class="c-msg ai" data-d="3400">"Hi — is this still available? I can pick up today. Would you take $750 cash?"</div>
-        <div class="c-msg done" data-d="4200">Opener copied · eBay listing drafted</div>
+  <div class="photo-full tall" style="height:100vh;min-height:700px">
+    <img src="spread-assets/placeholder.png" alt="" class="pf-img" style="object-position:center 40%">
+    <div class="photo-full-overlay" style="background:rgba(29,27,24,.48)">
+      <div class="photo-stats-inner">
+        <div class="photo-full-text" style="margin-bottom:64px">
+          <h2 class="gs-reveal">Stop scrolling. Start flipping.</h2>
+          <p class="gs-reveal">Other flippers spend 20 hours a week refreshing marketplace feeds. You spend 20 minutes
+            reviewing deals the AI already found.</p>
+        </div>
+        <div class="stats-row-overlay">
+          <div class="stat-item">
+            <div class="stat-num" data-count="6">0</div>
+            <div class="stat-desc">Marketplaces scanned 24/7</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" data-count="38" data-suffix="%">0%</div>
+            <div class="stat-desc">Average margin per deal</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" data-count="20" data-suffix="hrs">0hrs</div>
+            <div class="stat-desc">Saved per week vs. manual</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" data-count="12" data-suffix="s">0s</div>
+            <div class="stat-desc">Avg. alert speed on new listings</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="feature-img-wrap">
-    <img src="spread-assets/sticky2a.jpg" alt="">
-    <img src="spread-assets/sticky2b.jpg" alt="" class="hide">
-  </div>
-</section>
 
-<div class="photo-full tall" style="height:100vh;min-height:700px">
-  <img src="spread-assets/break1.jpg" alt="" class="pf-img" style="object-position:center 40%">
-  <div class="photo-full-overlay" style="background:rgba(29,27,24,.48)">
-    <div class="photo-stats-inner">
-      <div class="photo-full-text" style="margin-bottom:64px">
-        <h2 class="gs-reveal">Stop scrolling. Start flipping.</h2>
-        <p class="gs-reveal">Other flippers spend 20 hours a week refreshing marketplace feeds. You spend 20 minutes reviewing deals the AI already found.</p>
+  <section class="section-pad" id="deal" style="padding-bottom:0">
+    <div class="deal-header-center">
+      <div class="sec-tag gs-reveal">Live opportunities</div>
+      <h2 class="sec-title gs-reveal" style="margin-bottom:0">This is what the AI surfaces every day.</h2>
+      <p class="sec-desc gs-reveal">Real arbitrage opportunities — scored, analyzed, and ready for you to act on. This
+        is what your feed looks like.</p>
+    </div>
+    <div class="deal-stack-outer">
+      <div class="deal-stack-wrap" id="dealStack"></div>
+      <div class="deal-stack-fade" style="background:linear-gradient(to bottom,transparent,var(--cream))"></div>
+    </div>
+  </section>
+
+  <div class="testimonial-break" id="testimonialBreak">
+    <img src="spread-assets/placeholder.png" alt="" class="tb-bg">
+    <div class="testimonial-break-overlay"></div>
+    <div class="testimonial-inner">
+      <div class="t-big-quote">&ldquo;</div>
+      <div class="testimonial-quote" id="tQuote">
+        <span class="active">I used to spend 3 hours a day refreshing Marketplace. Now Spread sends me the good stuff
+          and I just act on it. Made $1,200 my first month.</span>
+        <span>The deal scoring is scary accurate. It told me to offer $380 on an Aeron listed at $520. I sold it for
+          $710 on Apt Deco two days later.</span>
+        <span>One-click cross-listing changed everything. I find it on Craigslist, hit relist, and the eBay listing
+          writes itself. My volume tripled.</span>
+        <span>Set up my espresso machine niche on a Sunday. Had three scored deals by Monday morning. Closed my first
+          flip by Wednesday.</span>
       </div>
-      <div class="stats-row-overlay">
-        <div class="stat-item"><div class="stat-num" data-count="6">0</div><div class="stat-desc">Marketplaces scanned 24/7</div></div>
-        <div class="stat-item"><div class="stat-num" data-count="38" data-suffix="%">0%</div><div class="stat-desc">Average margin per deal</div></div>
-        <div class="stat-item"><div class="stat-num" data-count="20" data-suffix="hrs">0hrs</div><div class="stat-desc">Saved per week vs. manual</div></div>
-        <div class="stat-item"><div class="stat-num" data-count="12" data-suffix="s">0s</div><div class="stat-desc">Avg. alert speed on new listings</div></div>
+      <div class="testimonial-role" id="tRole">
+        <span class="active">Operator plan · Austin, TX</span>
+        <span>Scout plan · Portland, OR</span>
+        <span>Operator plan · Nashville, TN</span>
+        <span>Scout plan · Denver, CO</span>
       </div>
-    </div>
-  </div>
-</div>
-
-<section class="section-pad" id="deal" style="padding-bottom:0">
-  <div class="deal-header-center">
-    <div class="sec-tag gs-reveal">Live opportunities</div>
-    <h2 class="sec-title gs-reveal" style="margin-bottom:0">This is what the AI surfaces every day.</h2>
-    <p class="sec-desc gs-reveal">Real arbitrage opportunities — scored, analyzed, and ready for you to act on. This is what your feed looks like.</p>
-  </div>
-  <div class="deal-stack-outer">
-    <div class="deal-stack-wrap" id="dealStack"></div>
-    <div class="deal-stack-fade" style="background:linear-gradient(to bottom,transparent,var(--cream))"></div>
-  </div>
-</section>
-
-<div class="testimonial-break" id="testimonialBreak">
-  <img src="spread-assets/testimonial-bg-v2.jpg" alt="" class="tb-bg">
-  <div class="testimonial-break-overlay"></div>
-  <div class="testimonial-inner">
-    <div class="t-big-quote">&ldquo;</div>
-    <div class="testimonial-quote" id="tQuote">
-      <span class="active">I used to spend 3 hours a day refreshing Marketplace. Now Spread sends me the good stuff and I just act on it. Made $1,200 my first month.</span>
-      <span>The deal scoring is scary accurate. It told me to offer $380 on an Aeron listed at $520. I sold it for $710 on Apt Deco two days later.</span>
-      <span>One-click cross-listing changed everything. I find it on Craigslist, hit relist, and the eBay listing writes itself. My volume tripled.</span>
-      <span>Set up my espresso machine niche on a Sunday. Had three scored deals by Monday morning. Closed my first flip by Wednesday.</span>
-    </div>
-    <div class="testimonial-role" id="tRole">
-      <span class="active">Operator plan · Austin, TX</span>
-      <span>Scout plan · Portland, OR</span>
-      <span>Operator plan · Nashville, TN</span>
-      <span>Scout plan · Denver, CO</span>
-    </div>
-    <div class="t-avatars" id="tAvatars">
-      <button class="t-avatar active" onclick="setT(0)">
-        <img src="https://i.pravatar.cc/80?img=32" alt="">
-        <span class="t-avatar-name">Sarah K.</span>
-      </button>
-      <button class="t-avatar" onclick="setT(1)">
-        <img src="https://i.pravatar.cc/80?img=12" alt="">
-        <span class="t-avatar-name">Marcus T.</span>
-      </button>
-      <button class="t-avatar" onclick="setT(2)">
-        <img src="https://i.pravatar.cc/80?img=53" alt="">
-        <span class="t-avatar-name">David L.</span>
-      </button>
-      <button class="t-avatar" onclick="setT(3)">
-        <img src="https://i.pravatar.cc/80?img=44" alt="">
-        <span class="t-avatar-name">Amy R.</span>
-      </button>
-    </div>
-  </div>
-</div>
-
-<section class="statement-section" id="statementSection">
-  <div class="statement-tag gs-reveal">Built for flippers</div>
-  <div class="statement-line"><span>Every marketplace has a pricing gap.</span></div>
-  <div class="statement-line"><span>The AI finds it. You capture it.</span></div>
-</section>
-
-<section class="control-section" id="control">
-  <div class="control-left">
-    <div class="tag gs-reveal">Where we're headed</div>
-    <h2 class="gs-reveal">Your money. Your rules. Choose how hands-on you want to be.</h2>
-    <p class="gs-reveal">Today, you control every deal. Soon, the AI handles more — negotiation, auto-buy within your thresholds, and fully autonomous operation. You decide when to let go.</p>
-
-    <div class="control-toggle gs-reveal">
-      <div class="control-toggle-bar">
-        <button class="ct-btn active" onclick="setControl(0)">Manual</button>
-        <button class="ct-btn" onclick="setControl(1)">Assisted <span style="font-size:9px;opacity:.5;margin-left:4px">SOON</span></button>
-        <button class="ct-btn" onclick="setControl(2)">Autopilot <span style="font-size:9px;opacity:.5;margin-left:4px">SOON</span></button>
-      </div>
-      <div class="control-desc" id="controlDesc">
-        <p class="active">Available now. The AI finds deals, scores them, and drafts your relist. You decide what to buy, what to offer, and when to sell. Full control, full visibility, full profit tracking.</p>
-        <p>Coming soon. The AI handles deals within your pre-set thresholds — price range, margin floor, niche category. You get notified on every close but don't need to approve each one.</p>
-        <p>On the roadmap. Fully autonomous. Set your niches, define your risk tolerance, and let the AI run 24/7. Deals execute, seller ships, profit lands. Join the waitlist to get access first.</p>
-      </div>
-    </div>
-
-    <div class="money-steps gs-reveal">
-      <div class="money-step"><div class="step-num">01</div><div class="step-title">Deal found</div><div class="step-desc">AI scans 6 platforms</div></div>
-      <div class="money-step"><div class="step-num">02</div><div class="step-title">Scored</div><div class="step-desc">Profit + risk analysis</div></div>
-      <div class="money-step"><div class="step-num">03</div><div class="step-title">You act</div><div class="step-desc">Message, offer, buy</div></div>
-      <div class="money-step"><div class="step-num">04</div><div class="step-title">Relist</div><div class="step-desc">One-tap cross-listing</div></div>
-    </div>
-  </div>
-  <div class="control-right">
-    <img src="spread-assets/control-photo.jpg" alt="">
-    <div class="control-right-overlay"></div>
-  </div>
-</section>
-
-<section class="section-pad" id="niches" style="padding-bottom:64px">
-  <div class="niche-header">
-    <div class="sec-tag gs-reveal">Your niches</div>
-    <h2 class="sec-title gs-reveal" style="margin-bottom:0">Pick the markets you know.</h2>
-    <p class="niche-header-sub gs-reveal">Choose the categories you understand. The AI handles scanning, scoring, and listing across every marketplace.</p>
-  </div>
-  <div class="niche-pills" id="nichePills">
-    <button class="niche-pill" onclick="submitNiche('Espresso Machines')">Espresso Machines <span class="pill-spread">$280</span></button>
-    <button class="niche-pill" onclick="submitNiche('Camera Gear')">Camera Gear <span class="pill-spread">$320</span></button>
-    <button class="niche-pill" onclick="submitNiche('Mid-Century Furniture')">Mid-Century Furniture <span class="pill-spread">$450</span></button>
-    <button class="niche-pill" onclick="submitNiche('Power Tools')">Power Tools <span class="pill-spread">$175</span></button>
-    <button class="niche-pill" onclick="submitNiche('Commercial Kitchen')">Commercial Kitchen <span class="pill-spread">$520</span></button>
-    <button class="niche-pill" onclick="submitNiche('Audiophile Gear')">Audiophile Gear <span class="pill-spread">$210</span></button>
-    <button class="niche-pill" onclick="submitNiche('Outdoor Gear')">Outdoor Gear <span class="pill-spread">$140</span></button>
-    <button class="niche-pill" onclick="submitNiche('Vintage Watches')">Vintage Watches <span class="pill-spread">$380</span></button>
-    <button class="niche-pill" onclick="submitNiche('Sneakers')">Sneakers <span class="pill-spread">$95</span></button>
-    <button class="niche-pill" onclick="submitNiche('Vinyl Records')">Vinyl Records <span class="pill-spread">$85</span></button>
-    <button class="niche-pill" onclick="submitNiche('Mechanical Keyboards')">Mechanical Keyboards <span class="pill-spread">$120</span></button>
-    <button class="niche-pill" onclick="submitNiche('Designer Handbags')">Designer Handbags <span class="pill-spread">$340</span></button>
-  </div>
-
-  <div class="niche-search-inline gs-reveal" id="nicheSearch">
-    <div id="nicheDefault">
-      <p class="niche-or">Or search your own</p>
-      <div class="niche-input-wrap">
-        <input type="text" class="niche-input" id="nicheInput" placeholder="Search a niche — vintage watches, vinyl records..." autocomplete="off">
-        <button class="niche-submit" id="nicheSubmit">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      <div class="t-avatars" id="tAvatars">
+        <button class="t-avatar active" onclick="setT(0)">
+          <img src="spread-assets/placeholder.png" alt="">
+          <span class="t-avatar-name">Sarah K.</span>
+        </button>
+        <button class="t-avatar" onclick="setT(1)">
+          <img src="spread-assets/placeholder.png" alt="">
+          <span class="t-avatar-name">Marcus T.</span>
+        </button>
+        <button class="t-avatar" onclick="setT(2)">
+          <img src="spread-assets/placeholder.png" alt="">
+          <span class="t-avatar-name">David L.</span>
+        </button>
+        <button class="t-avatar" onclick="setT(3)">
+          <img src="spread-assets/placeholder.png" alt="">
+          <span class="t-avatar-name">Amy R.</span>
         </button>
       </div>
-      <div class="niche-suggestions" id="nicheSuggestions"></div>
     </div>
-    <div id="nicheScanning" style="display:none">
-      <div class="niche-scan-anim">
-        <div class="scan-bar"><div class="scan-fill" id="scanFill"></div></div>
+  </div>
+
+  <section class="statement-section" id="statementSection">
+    <div class="statement-tag gs-reveal">Built for flippers</div>
+    <div class="statement-line"><span>Every marketplace has a pricing gap.</span></div>
+    <div class="statement-line"><span>The AI finds it. You capture it.</span></div>
+  </section>
+
+  <section class="control-section" id="control">
+    <div class="control-left">
+      <div class="tag gs-reveal">Where we're headed</div>
+      <h2 class="gs-reveal">Your money. Your rules. Choose how hands-on you want to be.</h2>
+      <p class="gs-reveal">Today, you control every deal. Soon, the AI handles more — negotiation, auto-buy within your
+        thresholds, and fully autonomous operation. You decide when to let go.</p>
+
+      <div class="control-toggle gs-reveal">
+        <div class="control-toggle-bar">
+          <button class="ct-btn active" onclick="setControl(0)">Manual</button>
+          <button class="ct-btn" onclick="setControl(1)">Assisted <span
+              style="font-size:9px;opacity:.5;margin-left:4px">SOON</span></button>
+          <button class="ct-btn" onclick="setControl(2)">Autopilot <span
+              style="font-size:9px;opacity:.5;margin-left:4px">SOON</span></button>
+        </div>
+        <div class="control-desc" id="controlDesc">
+          <p class="active">Available now. The AI finds deals, scores them, and drafts your relist. You decide what to
+            buy, what to offer, and when to sell. Full control, full visibility, full profit tracking.</p>
+          <p>Coming soon. The AI handles deals within your pre-set thresholds — price range, margin floor, niche
+            category. You get notified on every close but don't need to approve each one.</p>
+          <p>On the roadmap. Fully autonomous. Set your niches, define your risk tolerance, and let the AI run 24/7.
+            Deals execute, seller ships, profit lands. Join the waitlist to get access first.</p>
+        </div>
       </div>
-      <h3 id="scanLabel">Scanning marketplaces...</h3>
-      <p id="scanSub" style="color:var(--muted)">Checking Facebook Marketplace, eBay, Craigslist, OfferUp...</p>
-    </div>
-    <div id="nicheResult" style="display:none">
-      <div class="niche-result-check">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+
+      <div class="money-steps gs-reveal">
+        <div class="money-step">
+          <div class="step-num">01</div>
+          <div class="step-title">Deal found</div>
+          <div class="step-desc">AI scans 6 platforms</div>
+        </div>
+        <div class="money-step">
+          <div class="step-num">02</div>
+          <div class="step-title">Scored</div>
+          <div class="step-desc">Profit + risk analysis</div>
+        </div>
+        <div class="money-step">
+          <div class="step-num">03</div>
+          <div class="step-title">You act</div>
+          <div class="step-desc">Message, offer, buy</div>
+        </div>
+        <div class="money-step">
+          <div class="step-num">04</div>
+          <div class="step-title">Relist</div>
+          <div class="step-desc">One-tap cross-listing</div>
+        </div>
       </div>
-      <h3 id="resultTitle">47 underpriced listings found</h3>
-      <p id="resultSub" style="color:var(--muted);margin-bottom:20px">Average spread: $285. Ready to start sending you alerts.</p>
-      <a href="#" class="niche-result-btn" id="nicheClaimBtn">Claim this niche →</a>
+    </div>
+    <div class="control-right">
+      <img src="spread-assets/placeholder.png" alt="">
+      <div class="control-right-overlay"></div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="niches" style="padding-bottom:64px">
+    <div class="niche-header">
+      <div class="sec-tag gs-reveal">Your niches</div>
+      <h2 class="sec-title gs-reveal" style="margin-bottom:0">Pick the markets you know.</h2>
+      <p class="niche-header-sub gs-reveal">Choose the categories you understand. The AI handles scanning, scoring, and
+        listing across every marketplace.</p>
+    </div>
+    <div class="niche-pills" id="nichePills">
+      <button class="niche-pill" onclick="submitNiche('Espresso Machines')">Espresso Machines <span
+          class="pill-spread">$280</span></button>
+      <button class="niche-pill" onclick="submitNiche('Camera Gear')">Camera Gear <span
+          class="pill-spread">$320</span></button>
+      <button class="niche-pill" onclick="submitNiche('Mid-Century Furniture')">Mid-Century Furniture <span
+          class="pill-spread">$450</span></button>
+      <button class="niche-pill" onclick="submitNiche('Power Tools')">Power Tools <span
+          class="pill-spread">$175</span></button>
+      <button class="niche-pill" onclick="submitNiche('Commercial Kitchen')">Commercial Kitchen <span
+          class="pill-spread">$520</span></button>
+      <button class="niche-pill" onclick="submitNiche('Audiophile Gear')">Audiophile Gear <span
+          class="pill-spread">$210</span></button>
+      <button class="niche-pill" onclick="submitNiche('Outdoor Gear')">Outdoor Gear <span
+          class="pill-spread">$140</span></button>
+      <button class="niche-pill" onclick="submitNiche('Vintage Watches')">Vintage Watches <span
+          class="pill-spread">$380</span></button>
+      <button class="niche-pill" onclick="submitNiche('Sneakers')">Sneakers <span
+          class="pill-spread">$95</span></button>
+      <button class="niche-pill" onclick="submitNiche('Vinyl Records')">Vinyl Records <span
+          class="pill-spread">$85</span></button>
+      <button class="niche-pill" onclick="submitNiche('Mechanical Keyboards')">Mechanical Keyboards <span
+          class="pill-spread">$120</span></button>
+      <button class="niche-pill" onclick="submitNiche('Designer Handbags')">Designer Handbags <span
+          class="pill-spread">$340</span></button>
+    </div>
+
+    <div class="niche-search-inline gs-reveal" id="nicheSearch">
+      <div id="nicheDefault">
+        <p class="niche-or">Or search your own</p>
+        <div class="niche-input-wrap">
+          <input type="text" class="niche-input" id="nicheInput"
+            placeholder="Search a niche — vintage watches, vinyl records..." autocomplete="off">
+          <button class="niche-submit" id="nicheSubmit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </button>
+        </div>
+        <div class="niche-suggestions" id="nicheSuggestions"></div>
+      </div>
+      <div id="nicheScanning" style="display:none">
+        <div class="niche-scan-anim">
+          <div class="scan-bar">
+            <div class="scan-fill" id="scanFill"></div>
+          </div>
+        </div>
+        <h3 id="scanLabel">Scanning marketplaces...</h3>
+        <p id="scanSub" style="color:var(--muted)">Checking Facebook Marketplace, eBay, Craigslist, OfferUp...</p>
+      </div>
+      <div id="nicheResult" style="display:none">
+        <div class="niche-result-check">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+        <h3 id="resultTitle">47 underpriced listings found</h3>
+        <p id="resultSub" style="color:var(--muted);margin-bottom:20px">Average spread: $285. Ready to start sending you
+          alerts.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="photo-full tall">
+    <img src="spread-assets/placeholder.png" alt="" class="pf-img">
+    <div class="photo-full-overlay" style="background:rgba(29,27,24,.42)">
+      <div class="photo-full-text">
+        <h2 class="gs-reveal">Opportunities land while you sleep.</h2>
+        <p class="gs-reveal">The AI never stops scanning. Wake up to scored deals ready for your review.</p>
+      </div>
     </div>
   </div>
-</section>
 
-<div class="photo-full tall">
-  <img src="spread-assets/break2.jpg" alt="" class="pf-img">
-  <div class="photo-full-overlay" style="background:rgba(29,27,24,.42)">
-    <div class="photo-full-text">
-      <h2 class="gs-reveal">Opportunities land while you sleep.</h2>
-      <p class="gs-reveal">The AI never stops scanning. Wake up to scored deals ready for your review.</p>
+
+
+  <section class="scroller-section">
+    <div class="scroller-header">
+      <h2 class="gs-reveal">Built for the way you actually flip.</h2>
+      <p class="gs-reveal">Deals surface in the background. Your life stays in the foreground.</p>
     </div>
-  </div>
-</div>
-
-<section class="pricing-section" id="pricing">
-  <div class="pricing-header">
-    <div>
-      <div class="sec-tag gs-reveal">Pricing</div>
-      <h2 class="sec-title gs-reveal" style="margin-bottom:0">One good flip pays for a year.</h2>
+    <div class="photo-scroller" id="photoScroller">
+      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
     </div>
-    <div class="pricing-header-right gs-reveal">No speed throttling, no alert delays. Every plan gets the same fast scanning. Upgrade for more niches and advanced tools.</div>
-  </div>
-  <div class="pricing-grid">
-    <div class="pr-card">
-      <span class="pr-tag">Starter</span>
-      <div class="pr-name">Scout</div>
-      <div class="pr-desc">Find your first flips</div>
-      <div class="pr-price"><span class="amt">$29</span><span class="per">/mo</span></div>
-      <div class="pr-note">Cancel anytime</div>
-      <div class="pr-line"></div>
-      <ul class="pr-list"><li>2 active niches</li><li>Real-time deal alerts</li><li>AI deal scoring</li><li>Profit tracking dashboard</li></ul>
-      <a href='/signup' style='text-decoration:none;display:block'><button class="pr-btn">Start free trial</button></a>
-    </div>
-    <div class="pr-card pop">
-      <span class="pr-tag">Most popular</span>
-      <div class="pr-name">Operator</div>
-      <div class="pr-desc">Scale your operation</div>
-      <div class="pr-price"><span class="amt">$49</span><span class="per">/mo</span></div>
-      <div class="pr-note">Pays for itself in one flip</div>
-      <div class="pr-line"></div>
-      <ul class="pr-list"><li>8 active niches</li><li>One-click cross-listing</li><li>AI opener messages</li><li>Niche trend intelligence</li></ul>
-      <a href='/signup' style='text-decoration:none;display:block'><button class="pr-btn">Start free trial</button></a>
-    </div>
-    <div class="pr-card">
-      <span class="pr-tag">Pro</span>
-      <div class="pr-name">Syndicate</div>
-      <div class="pr-desc">For full-time flippers</div>
-      <div class="pr-price"><span class="amt">$99</span><span class="per">/mo</span></div>
-      <div class="pr-note">Priority access to Autopilot</div>
-      <div class="pr-line"></div>
-      <ul class="pr-list"><li>Unlimited niches</li><li>Multi-platform analytics</li><li>Team seats + shared deals</li><li>Early access: Assisted + Autopilot</li></ul>
-      <a href='/signup' style='text-decoration:none;display:block'><button class="pr-btn">Start free trial</button></a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="scroller-section">
-  <div class="scroller-header">
-    <h2 class="gs-reveal">Built for the way you actually flip.</h2>
-    <p class="gs-reveal">Deals surface in the background. Your life stays in the foreground.</p>
-  </div>
-  <div class="photo-scroller" id="photoScroller">
-    <div class="scroller-img"><img src="spread-assets/scroll1.jpg" alt=""></div>
-    <div class="scroller-img"><img src="spread-assets/scroll2.jpg" alt=""></div>
-    <div class="scroller-img"><img src="spread-assets/scroll3.jpg" alt=""></div>
-    <div class="scroller-img"><img src="spread-assets/scroll4.jpg" alt=""></div>
-    <div class="scroller-img"><img src="spread-assets/scroll5.jpg" alt=""></div>
-    <div class="scroller-img"><img src="spread-assets/scroll6.jpg" alt=""></div>
-    <div class="scroller-img"><img src="spread-assets/scroll7.jpg" alt=""></div>
-    <div class="scroller-img"><img src="spread-assets/scroll1.jpg" alt=""></div>
-    <div class="scroller-img"><img src="spread-assets/scroll2.jpg" alt=""></div>
-    <div class="scroller-img"><img src="spread-assets/scroll3.jpg" alt=""></div>
-    <div class="scroller-img"><img src="spread-assets/scroll4.jpg" alt=""></div>
-    <div class="scroller-img"><img src="spread-assets/scroll5.jpg" alt=""></div>
-    <div class="scroller-img"><img src="spread-assets/scroll6.jpg" alt=""></div>
-    <div class="scroller-img"><img src="spread-assets/scroll7.jpg" alt=""></div>
-  </div>
-</section>
+  <section class="closing">
+    <h2 class="gs-reveal">Every marketplace has a spread.<br>Start capturing yours.</h2>
+    <p class="gs-reveal">Same item. Different platforms. Different prices. The AI finds the gap — you keep what's left.
+    </p>
 
-<section class="closing">
-  <h2 class="gs-reveal">Every marketplace has a spread.<br>Start capturing yours.</h2>
-  <p class="gs-reveal">Same item. Different platforms. Different prices. The AI finds the gap — you keep what's left.</p>
-  <a href='/signup' style='text-decoration:none'><button class="mag-btn btn-dark-main gs-reveal"><span class="btn-fill"></span><span class="btn-text">Start free trial</span></button></a>
-</section>
+  </section>
 
-<footer>
-  <div class="nav-logo"><img src="spread-assets/logo-dark.svg" alt="Spread" style="height:15px"></div>
-  <div class="f-links"><a href='/terms'>Terms</a><a href='/privacy'>Privacy</a></div>
-  <span>© 2026 Spread</span>
-</footer>
+  <footer>
+    <div class="nav-logo"><img src="spread-assets/logo-dark.svg" alt="Spread" style="height:15px"></div>
+    <div class="f-links"><a href='/terms'>Terms</a><a href='/privacy'>Privacy</a></div>
+    <span>© 2026 Spread</span>
+  </footer>
 
-<script>
-gsap.registerPlugin(ScrollTrigger);
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
 
-/* ═══ PAGE LOADER ═══ */
-const loader=document.getElementById('pageLoader');
-const loaderLogo=document.getElementById('loaderLogo');
-const mainNav=document.getElementById('mainNav');
+    /* ═══ PAGE LOADER ═══ */
+    const loader = document.getElementById('pageLoader');
+    const heartContainer = document.getElementById('heartContainer');
+    const passIn = document.getElementById('passIn');
 
-// Prevent scroll during load
-document.body.style.overflow='hidden';
+    // Prevent scroll during load
+    document.body.style.overflow = 'hidden';
 
-const loadTL=gsap.timeline({
-  onComplete:()=>{
-    document.body.style.overflow='';
-    loader.style.display='none';
-    // Init Lenis smooth scroll
-    const lenis=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)),touchMultiplier:1.5});
-    lenis.on('scroll',ScrollTrigger.update);
-    gsap.ticker.add(time=>lenis.raf(time*1000));
-    gsap.ticker.lagSmoothing(0);
-    initPage();
-  }
-});
+    // The actual loading timeline
+    const loadTL = gsap.timeline({
+      paused: true,
+      onComplete: () => {
+        document.body.style.overflow = '';
+        loader.style.display = 'none';
+        // Init Lenis smooth scroll
+        const lenis = new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), touchMultiplier: 1.5 });
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add(time => lenis.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
+        initPage();
+      }
+    });
 
-const loaderCounter=document.getElementById('loaderCounter');
-const loaderFill=document.getElementById('loaderFill');
+    const loaderCounter = document.getElementById('loaderCounter');
+    const loaderFill = document.getElementById('loaderFill');
 
-// Logo + elements fade in
-loadTL.to(loaderLogo,{opacity:1,y:0,duration:.6,ease:'power2.out'},0);
-loadTL.to('#loaderLine',{opacity:1,duration:.3,ease:'none'},.3);
-loadTL.to(loaderCounter,{opacity:1,duration:.3,ease:'none'},.3);
+    // Counters tick up 00 → 100
+    loadTL.to({ val: 0 }, {
+      val: 100, duration: 1.4, ease: 'power2.inOut',
+      onUpdate: function () {
+        const v = Math.round(this.targets()[0].val);
+        loaderCounter.textContent = String(v).padStart(2, '0');
+        loaderFill.style.width = v + '%';
+      }
+    }, 0);
 
-// Counter ticks up 00 → 100 while bar fills
-loadTL.to({val:0},{val:100,duration:1.4,ease:'power2.inOut',
-  onUpdate:function(){
-    const v=Math.round(this.targets()[0].val);
-    loaderCounter.textContent=String(v).padStart(2,'0');
-    loaderFill.style.width=v+'%';
-  }
-},.4);
+    // Fade out elements
+    loadTL.to([heartContainer, loaderCounter, '#loaderLine'], { opacity: 0, y: -8, duration: .3, ease: 'power2.in', stagger: .04 }, 1.6);
 
-// Everything fades out
-loadTL.to([loaderLogo,loaderCounter,'#loaderLine'],{opacity:0,y:-8,duration:.3,ease:'power2.in',stagger:.04},2);
+    // Red curtain slides up
+    loadTL.to(loader, { yPercent: -100, duration: .7, ease: 'power3.inOut' }, 1.8);
 
-// Red curtain slides up
-loadTL.to(loader,{yPercent:-100,duration:.7,ease:'power3.inOut'},2.2);
+    // Entrance: show heart and password
+    const entranceTL = gsap.timeline();
+    entranceTL.to(heartContainer, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' });
+    entranceTL.to('#passwordInputWrap', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.4');
 
-function initPage(){
+    // Pulsing heart
+    gsap.to(heartContainer, { scale: 1.15, repeat: -1, yoyo: true, duration: 0.8, ease: 'power1.inOut' });
 
-/* ═══ NAV — show + collapse on scroll ═══ */
-gsap.to(mainNav,{opacity:1,duration:.6,ease:'power2.out'});
+    // Password logic: check on every input for automatic entry
+    passIn.addEventListener('input', () => {
+      const val = passIn.value.toLowerCase();
+      if (val === 'love' || val === '3years') {
+        checkPass(true);
+      }
+    });
 
-ScrollTrigger.create({trigger:'.hero',start:'top top',end:'15% top',
-  onLeave:()=>mainNav.classList.add('scrolled'),
-  onEnterBack:()=>mainNav.classList.remove('scrolled')
-});
+    passIn.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') checkPass(false);
+    });
 
-/* Hero text entrance — words slide up with stagger */
-const heroWords=document.querySelectorAll('.hero-word span');
-gsap.to(heroWords,{
-  y:'0%',opacity:1,duration:1.2,stagger:0.06,ease:'power3.out',delay:.3,
-  onComplete:()=>{
-    // Override CSS initial state so scroll-back works
-    heroWords.forEach(w=>{w.style.transform='translateY(0%)';w.style.opacity='1'});
-  }
-});
-gsap.fromTo('.hero-sub',{y:30,opacity:0},{y:0,opacity:1,duration:1,ease:'power3.out',delay:1});
-gsap.fromTo('.hero-actions',{y:24,opacity:0},{y:0,opacity:1,duration:.8,ease:'power3.out',delay:1.2});
+    function checkPass(isAuto) {
+      const val = passIn.value.toLowerCase();
+      const isCorrect = (val === 'love' || val === '3years');
 
-/* Hero content fades out on scroll */
-gsap.to('.hero-content',{opacity:0,y:-60,ease:'none',scrollTrigger:{trigger:'.hero',start:'3% top',end:'14% top',scrub:true}});
-gsap.to('.hero-spinner',{opacity:0,ease:'none',scrollTrigger:{trigger:'.hero',start:'3% top',end:'10% top',scrub:true}});
+      if (isCorrect) {
+        gsap.to('#passwordInputWrap', { opacity: 0, y: -10, duration: 0.4, ease: 'power2.in', onComplete: () => {
+          document.getElementById('passwordInputWrap').style.display = 'none';
+          // Show loader line and counter
+          gsap.to(['#loaderLine', loaderCounter], { opacity: 1, duration: 0.4 });
+          loadTL.play();
+        }});
+      } else if (!isAuto) {
+        // Only shake if manually submitted and incorrect
+        gsap.to('#passwordInputWrap', { x: 10, repeat: 3, yoyo: true, duration: 0.06, ease: 'power2.inOut', onComplete: () => {
+          gsap.to('#passwordInputWrap', { x: 0, duration: 0.06 });
+          passIn.value = '';
+        }});
+      }
+    }
 
-/* Hero: main scales down fast to thumbnail size */
-const heroMain=document.getElementById('heroMain');
-gsap.to(heroMain,{
-  scale:.25,borderRadius:'28px',
-  ease:'none',
-  scrollTrigger:{trigger:'.hero',start:'top top',end:'30% top',scrub:true}
-});
+    function initPage() {
 
-/* Scattered gallery: fade in + scroll up at staggered speeds */
-const scatterSpeeds=[-280,-400,-220,-360,-300,-250,-420,-240];
-document.querySelectorAll('.hero-scatter').forEach((el,i)=>{
-  gsap.to(el,{opacity:1,ease:'none',scrollTrigger:{trigger:'.hero',start:'8% top',end:'18% top',scrub:true}});
-  gsap.fromTo(el,{y:400+i*30},{y:scatterSpeeds[i]||(-300),ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-});
+      /* ═══ NAV — show + collapse on scroll ═══ */
 
-/* Statement section line reveals — blur to sharp */
-const stLines=document.querySelectorAll('.statement-line span');
-stLines.forEach((span,i)=>{
-  gsap.to(span,{y:'0%',opacity:1,filter:'blur(0px)',duration:1.2,ease:'power3.out',scrollTrigger:{trigger:span.parentElement,start:'top 82%',toggleActions:'play none none none'},delay:i*.25});
-});
 
-/* Feature section photo swaps */
-document.querySelectorAll('.feature-img-wrap').forEach(wrap=>{
-  gsap.from(wrap,{y:40,opacity:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:wrap,start:'top 88%',toggleActions:'play none none none'}});
-  const imgs=wrap.querySelectorAll('img');
-  if(imgs.length<2)return;
-  ScrollTrigger.create({
-    trigger:wrap,
-    start:'40% center',
-    onEnter:()=>{imgs[0].classList.add('hide');imgs[1].classList.remove('hide')},
-    onLeaveBack:()=>{imgs[0].classList.remove('hide');imgs[1].classList.add('hide')}
-  });
-});
+      /* Hero text entrance — words slide up with stagger */
+      const heroWords = document.querySelectorAll('.hero-word span');
+      gsap.to(heroWords, {
+        y: '0%', opacity: 1, duration: 1.2, stagger: 0.06, ease: 'power3.out', delay: .3,
+        onComplete: () => {
+          // Override CSS initial state so scroll-back works
+          heroWords.forEach(w => { w.style.transform = 'translateY(0%)'; w.style.opacity = '1' });
+        }
+      });
+      gsap.fromTo('.hero-sub', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 1 });
+      gsap.fromTo('.hero-actions', { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .8, ease: 'power3.out', delay: 1.2 });
 
-document.querySelectorAll('.pf-img').forEach(img=>{
-  const wrap=img.closest('.photo-full');
-  gsap.fromTo(img,{scale:1.25,y:'-12%'},{scale:1.02,y:'4%',ease:'none',scrollTrigger:{trigger:wrap,start:'top bottom',end:'bottom top',scrub:true}});
-});
+      /* Hero content fades out on scroll */
+      gsap.to('.hero-content', { opacity: 0, y: -60, ease: 'none', scrollTrigger: { trigger: '.hero', start: '3% top', end: '14% top', scrub: true } });
+      gsap.to('.hero-spinner', { opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: '3% top', end: '10% top', scrub: true } });
 
-/* Photo breaks: full bleed → rounded card on scroll */
-document.querySelectorAll('.photo-full').forEach(el=>{
-  gsap.to(el,{
-    width:'calc(100% - 32px)',
-    borderRadius:'24px',
-    ease:'none',
-    scrollTrigger:{trigger:el,start:'top 80%',end:'top 20%',scrub:true}
-  });
-});
+      /* Hero: main scales down fast to thumbnail size */
+      const heroMain = document.getElementById('heroMain');
+      gsap.to(heroMain, {
+        scale: .25, borderRadius: '28px',
+        ease: 'none',
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: '30% top', scrub: true }
+      });
 
-document.querySelectorAll('.gs-reveal').forEach(el=>{
-  gsap.from(el,{y:28,opacity:0,duration:.7,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%',toggleActions:'play none none none'}});
-});
+      /* Scattered gallery: fade in + scroll up at staggered speeds */
+      const scatterSpeeds = [-280, -400, -220, -360, -300, -250, -420, -240];
+      document.querySelectorAll('.hero-scatter').forEach((el, i) => {
+        gsap.to(el, { opacity: 1, ease: 'none', scrollTrigger: { trigger: '.hero', start: '8% top', end: '18% top', scrub: true } });
+        gsap.fromTo(el, { y: 400 + i * 30 }, { y: scatterSpeeds[i] || (-300), ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+      });
 
-ScrollTrigger.create({trigger:'.niche-pills',start:'top 85%',onEnter:()=>{document.querySelectorAll('.niche-pill').forEach((el,i)=>{setTimeout(()=>el.classList.add('in'),i*50)})},once:true});
-ScrollTrigger.create({trigger:'.pricing-grid',start:'top 85%',onEnter:()=>{document.querySelectorAll('.pr-card').forEach((el,i)=>{setTimeout(()=>el.classList.add('in'),i*100)})},once:true});
+      /* Statement section line reveals — blur to sharp */
+      const stLines = document.querySelectorAll('.statement-line span');
+      stLines.forEach((span, i) => {
+        gsap.to(span, { y: '0%', opacity: 1, filter: 'blur(0px)', duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: span.parentElement, start: 'top 82%', toggleActions: 'play none none none' }, delay: i * .25 });
+      });
 
-/* Control section slides up over testimonial */
-gsap.from('.control-section',{y:120,ease:'none',scrollTrigger:{trigger:'.control-section',start:'top bottom',end:'top 60%',scrub:true}});
+      /* Feature section photo swaps */
+      document.querySelectorAll('.feature-img-wrap').forEach(wrap => {
+        gsap.from(wrap, { y: 40, opacity: 0, duration: .8, ease: 'power3.out', scrollTrigger: { trigger: wrap, start: 'top 88%', toggleActions: 'play none none none' } });
+        const imgs = wrap.querySelectorAll('img');
+        if (imgs.length < 2) return;
+        ScrollTrigger.create({
+          trigger: wrap,
+          start: '40% center',
+          onEnter: () => { imgs[0].classList.add('hide'); imgs[1].classList.remove('hide') },
+          onLeaveBack: () => { imgs[0].classList.remove('hide'); imgs[1].classList.add('hide') }
+        });
+      });
 
-ScrollTrigger.create({trigger:'.stats-row-overlay',start:'top 82%',onEnter:()=>{
-  document.querySelectorAll('.stat-num[data-count]').forEach(el=>{
-    const t=parseInt(el.dataset.count),p=el.dataset.prefix||'',s=el.dataset.suffix||'';
-    gsap.to({val:0},{val:t,duration:1.4,ease:'power2.out',onUpdate:function(){el.textContent=p+Math.round(this.targets()[0].val)+s}});
-  });
-},once:true});
+      document.querySelectorAll('.pf-img').forEach(img => {
+        const wrap = img.closest('.photo-full');
+        gsap.fromTo(img, { scale: 1.25, y: '-12%' }, { scale: 1.02, y: '4%', ease: 'none', scrollTrigger: { trigger: wrap, start: 'top bottom', end: 'bottom top', scrub: true } });
+      });
 
-const chatCard=document.getElementById('chatCard');
-ScrollTrigger.create({trigger:chatCard,start:'top 78%',onEnter:()=>{chatCard.querySelectorAll('.c-msg').forEach(m=>{setTimeout(()=>m.classList.add('visible'),parseInt(m.dataset.d)||0)})},once:true});
+      /* Photo breaks: full bleed → rounded card on scroll */
+      document.querySelectorAll('.photo-full').forEach(el => {
+        gsap.to(el, {
+          width: 'calc(100% - 32px)',
+          borderRadius: '24px',
+          ease: 'none',
+          scrollTrigger: { trigger: el, start: 'top 80%', end: 'top 20%', scrub: true }
+        });
+      });
 
-document.querySelectorAll('.mag-btn').forEach(btn=>{
-  btn.addEventListener('mousemove',e=>{
-    const r=btn.getBoundingClientRect(),x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;
-    gsap.to(btn,{x:x*.2,y:y*.25,duration:.4,ease:'power2.out'});
-  });
-  btn.addEventListener('mouseleave',()=>{gsap.to(btn,{x:0,y:0,duration:.6,ease:'elastic.out(1,0.4)'})});
-});
+      document.querySelectorAll('.gs-reveal').forEach(el => {
+        gsap.from(el, { y: 28, opacity: 0, duration: .7, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' } });
+      });
 
-const scroller=document.getElementById('photoScroller');
-const halfW=scroller.scrollWidth/2;
-gsap.to(scroller,{x:-halfW,ease:'none',duration:40,repeat:-1,modifiers:{x:gsap.utils.unitize(x=>parseFloat(x)%halfW)}});
+      ScrollTrigger.create({ trigger: '.niche-pills', start: 'top 85%', onEnter: () => { document.querySelectorAll('.niche-pill').forEach((el, i) => { setTimeout(() => el.classList.add('in'), i * 50) }) }, once: true });
 
-/* ═══ DEAL CARD STACK ═══ */
-const dealData=[
-  {id:'#4,291',label:'Espresso Machine',name:'Breville Oracle Touch',buyPlat:'FB Marketplace · Nashville',sellPlat:'eBay · National',ask:'$1,200',bought:'$750',fee:'−$90',sold:'$1,340',profit:'+$500'},
-  {id:'#4,292',label:'Office Chair',name:'Herman Miller Aeron',buyPlat:'Craigslist · Atlanta',sellPlat:'Apt Deco · National',ask:'$520',bought:'$380',fee:'−$48',sold:'$710',profit:'+$282'},
-  {id:'#4,293',label:'Camera Body',name:'Canon EOS R6 Mark II',buyPlat:'OfferUp · Denver',sellPlat:'eBay · National',ask:'$1,800',bought:'$1,400',fee:'−$120',sold:'$2,050',profit:'+$530'},
-  {id:'#4,294',label:'Turntable',name:'Technics SL-1200GR',buyPlat:'FB Marketplace · Austin',sellPlat:'Reverb · National',ask:'$900',bought:'$620',fee:'−$55',sold:'$980',profit:'+$305'},
-  {id:'#4,295',label:'Cookware',name:'Le Creuset Dutch Oven 7.25qt',buyPlat:'FB Marketplace · Portland',sellPlat:'eBay · National',ask:'$180',bought:'$120',fee:'−$18',sold:'$245',profit:'+$107'},
-];
-function buildDealCard(d){
-  const el=document.createElement('div');
-  el.className='deal-stack-card';
-  el.innerHTML=`<div class="dsc-bar"><span>Deal ${d.id} — <strong>${d.label}</strong></span><div class="dsc-live">AI Score: 94</div></div><div class="dsc-body"><div class="dsc-side"><div class="s-lbl">Listed At</div><div class="s-name">${d.name}</div><div class="s-plat">${d.buyPlat}</div><div class="s-price">${d.ask}</div></div><div class="dsc-arrow">→</div><div class="dsc-side"><div class="s-lbl">Resale Value</div><div class="s-name">${d.name}</div><div class="s-plat">${d.sellPlat}</div><div class="s-price sell">${d.sold}</div></div></div><div class="dsc-profit"><div class="dsc-profit-row"><div class="dsc-profit-item"><div class="plbl">Offer</div><div class="pval">${d.bought}</div></div><div class="dsc-profit-item"><div class="plbl">Est. Fee</div><div class="pval">${d.fee}</div></div></div><div class="dsc-profit-big"><div class="plbl">Projected Profit</div><div class="pval">${d.profit}</div></div></div>`;
-  return el;
-}
-const stackEl=document.getElementById('dealStack');
-let stackCards=[],stackIdx=0,stackAnimating=false;
-const positions=[{scale:1,y:12},{scale:.96,y:-14},{scale:.92,y:-40}];
-function initStack(){for(let i=0;i<3;i++){const c=buildDealCard(dealData[(stackIdx+i)%dealData.length]);stackEl.appendChild(c);stackCards.push(c);gsap.set(c,{xPercent:-50,left:'50%',bottom:0,...positions[i],zIndex:3-i})}stackIdx=3}
-function cycleStack(){if(stackAnimating)return;stackAnimating=true;const front=stackCards[0];gsap.to(front,{y:380,scale:1,duration:.7,ease:'power2.inOut',onComplete:()=>front.remove()});gsap.to(stackCards[1],{...positions[0],zIndex:3,duration:.7,ease:'power2.inOut'});gsap.to(stackCards[2],{...positions[1],zIndex:2,duration:.7,ease:'power2.inOut'});const nc=buildDealCard(dealData[stackIdx%dealData.length]);stackEl.appendChild(nc);gsap.set(nc,{xPercent:-50,left:'50%',bottom:0,scale:.88,y:-60,zIndex:1,opacity:0});gsap.to(nc,{...positions[2],zIndex:1,opacity:1,duration:.7,ease:'power2.inOut'});stackCards=[stackCards[1],stackCards[2],nc];stackIdx++;setTimeout(()=>{stackAnimating=false},750)}
-initStack();
-let autoTimer=setInterval(cycleStack,4000);
-stackEl.addEventListener('click',()=>{cycleStack();clearInterval(autoTimer);autoTimer=setInterval(cycleStack,4000)});
 
-/* ═══ TESTIMONIAL ═══ */
-const tQ=document.querySelectorAll('#tQuote span'),tR=document.querySelectorAll('#tRole span'),tAv=document.querySelectorAll('.t-avatar');
-let tIdx=0;
-function setT(i){
-  tQ.forEach(s=>s.classList.remove('active'));
-  tR.forEach(s=>s.classList.remove('active'));
-  tAv.forEach(a=>a.classList.remove('active'));
-  tQ[i].classList.add('active');
-  tR[i].classList.add('active');
-  tAv[i].classList.add('active');
-  tIdx=i;
-  clearInterval(tTimer);
-  tTimer=setInterval(()=>setT((tIdx+1)%tQ.length),5000);
-}
-let tTimer=setInterval(()=>setT((tIdx+1)%tQ.length),5000);
+      /* Control section slides up over testimonial */
+      gsap.from('.control-section', { y: 120, ease: 'none', scrollTrigger: { trigger: '.control-section', start: 'top bottom', end: 'top 60%', scrub: true } });
 
-} // end initPage
+      ScrollTrigger.create({
+        trigger: '.stats-row-overlay', start: 'top 82%', onEnter: () => {
+          document.querySelectorAll('.stat-num[data-count]').forEach(el => {
+            const t = parseInt(el.dataset.count), p = el.dataset.prefix || '', s = el.dataset.suffix || '';
+            gsap.to({ val: 0 }, { val: t, duration: 1.4, ease: 'power2.out', onUpdate: function () { el.textContent = p + Math.round(this.targets()[0].val) + s } });
+          });
+        }, once: true
+      });
 
-/* ═══ CONTROL TOGGLE ═══ */
-function setControl(i){
-  document.querySelectorAll('.ct-btn').forEach((b,j)=>b.classList.toggle('active',j===i));
-  document.querySelectorAll('#controlDesc p').forEach((p,j)=>p.classList.toggle('active',j===i));
-}
+      const chatCard = document.getElementById('chatCard');
+      ScrollTrigger.create({ trigger: chatCard, start: 'top 78%', onEnter: () => { chatCard.querySelectorAll('.c-msg').forEach(m => { setTimeout(() => m.classList.add('visible'), parseInt(m.dataset.d) || 0) }) }, once: true });
 
-/* ═══ NICHE SEARCH ═══ */
-const nicheDB=['Vintage watches','Vinyl records','Bike parts','Sneakers','Handbags','Mechanical keyboards','Vintage guitars','Film cameras','Designer furniture','Rare books','Lego sets','Vintage clothing','Golf clubs','Fishing gear','Board games','Telescopes','Art prints','Musical instruments','Vintage jewelry','Drones','3D printers','KitchenAid mixers','Dyson products','Vintage rugs','Surfboards'];
-const nicheInput=document.getElementById('nicheInput');
-const nicheSug=document.getElementById('nicheSuggestions');
-const nicheSubmitBtn=document.getElementById('nicheSubmit');
+      document.querySelectorAll('.mag-btn').forEach(btn => {
+        btn.addEventListener('mousemove', e => {
+          const r = btn.getBoundingClientRect(), x = e.clientX - r.left - r.width / 2, y = e.clientY - r.top - r.height / 2;
+          gsap.to(btn, { x: x * .2, y: y * .25, duration: .4, ease: 'power2.out' });
+        });
+        btn.addEventListener('mouseleave', () => { gsap.to(btn, { x: 0, y: 0, duration: .6, ease: 'elastic.out(1,0.4)' }) });
+      });
 
-function submitNiche(val){
-  if(!val||val.trim().length<2)return;
-  document.getElementById('nicheDefault').style.display='none';
-  document.getElementById('nicheScanning').style.display='block';
-  document.getElementById('scanLabel').textContent='Scanning "'+val.trim()+'" across marketplaces...';
-  setTimeout(()=>{document.getElementById('scanFill').style.width='100%'},50);
-  setTimeout(()=>{
-    document.getElementById('nicheScanning').style.display='none';
-    document.getElementById('nicheResult').style.display='block';
-    const count=Math.floor(Math.random()*80)+20;
-    const spread=Math.floor(Math.random()*300)+120;
-    document.getElementById('resultTitle').textContent=count+' underpriced listings found';
-    document.getElementById('resultSub').textContent='Average spread: $'+spread+'. Ready to start sending you alerts.';
-    document.getElementById('nicheClaimBtn').href='signup.html?niche='+encodeURIComponent(val.trim());
-    if(typeof plausible!=='undefined')plausible('Niche Search',{props:{niche:val.trim()}});
-  },2800);
-}
+      const scroller = document.getElementById('photoScroller');
+      const halfW = scroller.scrollWidth / 2;
+      gsap.to(scroller, { x: -halfW, ease: 'none', duration: 40, repeat: -1, modifiers: { x: gsap.utils.unitize(x => parseFloat(x) % halfW) } });
 
-nicheInput.addEventListener('input',function(){
-  const q=this.value.toLowerCase().trim();
-  nicheSug.innerHTML='';
-  if(q.length<2)return;
-  const matches=nicheDB.filter(n=>n.toLowerCase().includes(q)).slice(0,4);
-  if(matches.length===0&&q.length>2){
-    nicheSug.innerHTML='<span class="niche-sug" onclick="nicheInput.value=\''+this.value+'\';submitNiche(\''+this.value+'\')">Search "'+this.value+'"</span>';
-    return;
-  }
-  matches.forEach(m=>{
-    const s=document.createElement('span');
-    s.className='niche-sug';
-    s.textContent=m;
-    s.addEventListener('click',()=>{nicheInput.value=m;submitNiche(m)});
-    nicheSug.appendChild(s);
-  });
-});
+      /* ═══ DEAL CARD STACK ═══ */
+      const dealData = [
+        { id: '#4,291', label: 'Espresso Machine', name: 'Breville Oracle Touch', buyPlat: 'FB Marketplace · Nashville', sellPlat: 'eBay · National', ask: '$1,200', bought: '$750', fee: '−$90', sold: '$1,340', profit: '+$500' },
+        { id: '#4,292', label: 'Office Chair', name: 'Herman Miller Aeron', buyPlat: 'Craigslist · Atlanta', sellPlat: 'Apt Deco · National', ask: '$520', bought: '$380', fee: '−$48', sold: '$710', profit: '+$282' },
+        { id: '#4,293', label: 'Camera Body', name: 'Canon EOS R6 Mark II', buyPlat: 'OfferUp · Denver', sellPlat: 'eBay · National', ask: '$1,800', bought: '$1,400', fee: '−$120', sold: '$2,050', profit: '+$530' },
+        { id: '#4,294', label: 'Turntable', name: 'Technics SL-1200GR', buyPlat: 'FB Marketplace · Austin', sellPlat: 'Reverb · National', ask: '$900', bought: '$620', fee: '−$55', sold: '$980', profit: '+$305' },
+        { id: '#4,295', label: 'Cookware', name: 'Le Creuset Dutch Oven 7.25qt', buyPlat: 'FB Marketplace · Portland', sellPlat: 'eBay · National', ask: '$180', bought: '$120', fee: '−$18', sold: '$245', profit: '+$107' },
+      ];
+      function buildDealCard(d) {
+        const el = document.createElement('div');
+        el.className = 'deal-stack-card';
+        el.innerHTML = `<div class="dsc-bar"><span>Deal ${d.id} — <strong>${d.label}</strong></span><div class="dsc-live">AI Score: 94</div></div><div class="dsc-body"><div class="dsc-side"><div class="s-lbl">Listed At</div><div class="s-name">${d.name}</div><div class="s-plat">${d.buyPlat}</div><div class="s-price">${d.ask}</div></div><div class="dsc-arrow">→</div><div class="dsc-side"><div class="s-lbl">Resale Value</div><div class="s-name">${d.name}</div><div class="s-plat">${d.sellPlat}</div><div class="s-price sell">${d.sold}</div></div></div><div class="dsc-profit"><div class="dsc-profit-row"><div class="dsc-profit-item"><div class="plbl">Offer</div><div class="pval">${d.bought}</div></div><div class="dsc-profit-item"><div class="plbl">Est. Fee</div><div class="pval">${d.fee}</div></div></div><div class="dsc-profit-big"><div class="plbl">Projected Profit</div><div class="pval">${d.profit}</div></div></div>`;
+        return el;
+      }
+      const stackEl = document.getElementById('dealStack');
+      let stackCards = [], stackIdx = 0, stackAnimating = false;
+      const positions = [{ scale: 1, y: 12 }, { scale: .96, y: -14 }, { scale: .92, y: -40 }];
+      function initStack() { for (let i = 0; i < 3; i++) { const c = buildDealCard(dealData[(stackIdx + i) % dealData.length]); stackEl.appendChild(c); stackCards.push(c); gsap.set(c, { xPercent: -50, left: '50%', bottom: 0, ...positions[i], zIndex: 3 - i }) } stackIdx = 3 }
+      function cycleStack() { if (stackAnimating) return; stackAnimating = true; const front = stackCards[0]; gsap.to(front, { y: 380, scale: 1, duration: .7, ease: 'power2.inOut', onComplete: () => front.remove() }); gsap.to(stackCards[1], { ...positions[0], zIndex: 3, duration: .7, ease: 'power2.inOut' }); gsap.to(stackCards[2], { ...positions[1], zIndex: 2, duration: .7, ease: 'power2.inOut' }); const nc = buildDealCard(dealData[stackIdx % dealData.length]); stackEl.appendChild(nc); gsap.set(nc, { xPercent: -50, left: '50%', bottom: 0, scale: .88, y: -60, zIndex: 1, opacity: 0 }); gsap.to(nc, { ...positions[2], zIndex: 1, opacity: 1, duration: .7, ease: 'power2.inOut' }); stackCards = [stackCards[1], stackCards[2], nc]; stackIdx++; setTimeout(() => { stackAnimating = false }, 750) }
+      initStack();
+      let autoTimer = setInterval(cycleStack, 4000);
+      stackEl.addEventListener('click', () => { cycleStack(); clearInterval(autoTimer); autoTimer = setInterval(cycleStack, 4000) });
 
-nicheInput.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();submitNiche(this.value)}});
-nicheSubmitBtn.addEventListener('click',()=>submitNiche(nicheInput.value));
-</script>
+      /* ═══ TESTIMONIAL ═══ */
+      const tQ = document.querySelectorAll('#tQuote span'), tR = document.querySelectorAll('#tRole span'), tAv = document.querySelectorAll('.t-avatar');
+      let tIdx = 0;
+      function setT(i) {
+        tQ.forEach(s => s.classList.remove('active'));
+        tR.forEach(s => s.classList.remove('active'));
+        tAv.forEach(a => a.classList.remove('active'));
+        tQ[i].classList.add('active');
+        tR[i].classList.add('active');
+        tAv[i].classList.add('active');
+        tIdx = i;
+        clearInterval(tTimer);
+        tTimer = setInterval(() => setT((tIdx + 1) % tQ.length), 5000);
+      }
+      let tTimer = setInterval(() => setT((tIdx + 1) % tQ.length), 5000);
+
+    } // end initPage
+
+    /* ═══ CONTROL TOGGLE ═══ */
+    function setControl(i) {
+      document.querySelectorAll('.ct-btn').forEach((b, j) => b.classList.toggle('active', j === i));
+      document.querySelectorAll('#controlDesc p').forEach((p, j) => p.classList.toggle('active', j === i));
+    }
+
+    /* ═══ NICHE SEARCH ═══ */
+    const nicheDB = ['Vintage watches', 'Vinyl records', 'Bike parts', 'Sneakers', 'Handbags', 'Mechanical keyboards', 'Vintage guitars', 'Film cameras', 'Designer furniture', 'Rare books', 'Lego sets', 'Vintage clothing', 'Golf clubs', 'Fishing gear', 'Board games', 'Telescopes', 'Art prints', 'Musical instruments', 'Vintage jewelry', 'Drones', '3D printers', 'KitchenAid mixers', 'Dyson products', 'Vintage rugs', 'Surfboards'];
+    const nicheInput = document.getElementById('nicheInput');
+    const nicheSug = document.getElementById('nicheSuggestions');
+    const nicheSubmitBtn = document.getElementById('nicheSubmit');
+
+    function submitNiche(val) {
+      if (!val || val.trim().length < 2) return;
+      document.getElementById('nicheDefault').style.display = 'none';
+      document.getElementById('nicheScanning').style.display = 'block';
+      document.getElementById('scanLabel').textContent = 'Scanning "' + val.trim() + '" across marketplaces...';
+      setTimeout(() => { document.getElementById('scanFill').style.width = '100%' }, 50);
+      setTimeout(() => {
+        document.getElementById('nicheScanning').style.display = 'none';
+        document.getElementById('nicheResult').style.display = 'block';
+        const count = Math.floor(Math.random() * 80) + 20;
+        const spread = Math.floor(Math.random() * 300) + 120;
+        document.getElementById('resultTitle').textContent = count + ' underpriced listings found';
+        document.getElementById('resultSub').textContent = 'Average spread: $' + spread + '. Ready to start sending you alerts.';
+
+        if (typeof plausible !== 'undefined') plausible('Niche Search', { props: { niche: val.trim() } });
+      }, 2800);
+    }
+
+    nicheInput.addEventListener('input', function () {
+      const q = this.value.toLowerCase().trim();
+      nicheSug.innerHTML = '';
+      if (q.length < 2) return;
+      const matches = nicheDB.filter(n => n.toLowerCase().includes(q)).slice(0, 4);
+      if (matches.length === 0 && q.length > 2) {
+        nicheSug.innerHTML = '<span class="niche-sug" onclick="nicheInput.value=\'' + this.value + '\';submitNiche(\'' + this.value + '\')">Search "' + this.value + '"</span>';
+        return;
+      }
+      matches.forEach(m => {
+        const s = document.createElement('span');
+        s.className = 'niche-sug';
+        s.textContent = m;
+        s.addEventListener('click', () => { nicheInput.value = m; submitNiche(m) });
+        nicheSug.appendChild(s);
+      });
+    });
+
+    nicheInput.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); submitNiche(this.value) } });
+    nicheSubmitBtn.addEventListener('click', () => submitNiche(nicheInput.value));
+  </script>
 </body>
+
 </html>

@@ -83,7 +83,7 @@ window.addEventListener('scroll', () => {
 // 3. SCROLL PARALLAX (Hero scale & Hero scatter)
 const heroMain = document.getElementById('heroMain');
 const heroContent = document.querySelector('.hero-content');
-const heroSpinner = document.querySelector('.hero-spinner');
+
 const heroScatter = document.querySelectorAll('.hero-scatter');
 
 function handleParallax() {
@@ -103,9 +103,7 @@ function handleParallax() {
             heroContent.style.opacity = op;
             heroContent.style.transform = `translateY(-${scrollY * 0.2}px)`;
         }
-        if (heroSpinner) {
-            heroSpinner.style.opacity = Math.max(0, 1 - (scrollY / 200));
-        }
+
 
         // scatter speed
         heroScatter.forEach((el, i) => {
@@ -167,7 +165,7 @@ const io = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
 
-document.querySelectorAll('.gs-reveal, .chat-card, .statement-line, .pr-card, .niche-pill, .stats-row-overlay').forEach(el => io.observe(el));
+document.querySelectorAll('.gs-reveal, .chat-card, .statement-line, .niche-pill, .stats-row-overlay').forEach(el => io.observe(el));
 
 // Feature Image Swap
 const observerImg = new IntersectionObserver(entries => {
