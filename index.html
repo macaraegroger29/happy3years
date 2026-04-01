@@ -2,27 +2,10 @@
 <html lang="en">
 
 <head>
-<<<<<<< HEAD
-<meta charset="UTF-8">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1095.75</title>
-<script defer data-domain="joinspread.app" src="https://plausible.io/js/script.js"></script>
-<link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-<style>
-:root{--stone:#F2EDE7;--sand:#E6DFD5;--cream:#FAF7F4;--charcoal:#1D1B18;--charcoal-soft:#3A3632;--muted:#8C857D;--muted-light:#B5AFA7;--border:#DDD6CC;--white:#FFFFFF;--positive:#3D6B4F;--positive-bg:#3D6B4F10;--blue:#5B7FA4;--blue-bg:#5B7FA40E}
-@font-face{font-family:'Messina Sans';src:url('spread-assets/MessinaSans.ttf') format('truetype');font-weight:100 500;font-style:normal;font-display:swap}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--cream);color:var(--charcoal);font-family:'Messina Sans','General Sans',-apple-system,sans-serif;font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.6}
-=======
   <meta charset="UTF-8">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Three</title>
+  <title>1095.75</title>
   <script defer data-domain="joinspread.app" src="https://plausible.io/js/script.js"></script>
   <link
     href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&f[]=satoshi@300,400,500&display=swap"
@@ -47,7 +30,6 @@ body{background:var(--cream);color:var(--charcoal);font-family:'Messina Sans','G
       --blue: #5B7FA4;
       --blue-bg: #5B7FA40E
     }
->>>>>>> 89914ae (update lang sa mga images tas added password sa launch screen)
 
     @font-face {
       font-family: 'Messina Sans';
@@ -85,7 +67,8 @@ body{background:var(--cream);color:var(--charcoal);font-family:'Messina Sans','G
       justify-content: center;
       flex-direction: column;
       gap: 24px;
-      pointer-events: auto; /* Enable input */
+      pointer-events: auto;
+      /* Enable input */
     }
 
     .heart-container {
@@ -2143,7 +2126,8 @@ body{background:var(--cream);color:var(--charcoal);font-family:'Messina Sans','G
   <div class="page-loader" id="pageLoader">
     <div class="heart-container" id="heartContainer">
       <svg class="heart-icon" viewBox="0 0 24 24">
-        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        <path
+          d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
       </svg>
     </div>
     <div class="loader-line" id="loaderLine">
@@ -2179,7 +2163,8 @@ body{background:var(--cream);color:var(--charcoal);font-family:'Messina Sans','G
 
       <!-- Main hero video -->
       <div class="hero-main" id="heroMain">
-        <img class="hero-video" src="spread-assets/placeholder.png" style="width: 100%; height: 100%; object-fit: cover;" alt="">
+        <img class="hero-video" src="spread-assets/placeholder.png"
+          style="width: 100%; height: 100%; object-fit: cover;" alt="">
         <div class="hero-overlay"></div>
         <div class="hero-content">
           <h1 class="hero-h1"><span class="hero-word"><span>Find</span></span> <span
@@ -2187,7 +2172,8 @@ body{background:var(--cream);color:var(--charcoal);font-family:'Messina Sans','G
               class="hero-word"><span>underpriced.</span></span><br><span class="hero-word"><span>Sell</span></span>
             <span class="hero-word"><span>it</span></span> <span class="hero-word"><span>for</span></span> <span
               class="hero-word"><span>what</span></span> <span class="hero-word"><span>it's</span></span> <span
-              class="hero-word"><span>worth.</span></span></h1>
+              class="hero-word"><span>worth.</span></span>
+          </h1>
           <p class="hero-sub">AI that scans every marketplace, scores every deal, and helps you relist in one tap. Stop
             scrolling. Start flipping.</p>
           <div class="hero-actions">
@@ -2583,18 +2569,22 @@ body{background:var(--cream);color:var(--charcoal);font-family:'Messina Sans','G
       const isCorrect = (val === 'love' || val === '3years');
 
       if (isCorrect) {
-        gsap.to('#passwordInputWrap', { opacity: 0, y: -10, duration: 0.4, ease: 'power2.in', onComplete: () => {
-          document.getElementById('passwordInputWrap').style.display = 'none';
-          // Show loader line and counter
-          gsap.to(['#loaderLine', loaderCounter], { opacity: 1, duration: 0.4 });
-          loadTL.play();
-        }});
+        gsap.to('#passwordInputWrap', {
+          opacity: 0, y: -10, duration: 0.4, ease: 'power2.in', onComplete: () => {
+            document.getElementById('passwordInputWrap').style.display = 'none';
+            // Show loader line and counter
+            gsap.to(['#loaderLine', loaderCounter], { opacity: 1, duration: 0.4 });
+            loadTL.play();
+          }
+        });
       } else if (!isAuto) {
         // Only shake if manually submitted and incorrect
-        gsap.to('#passwordInputWrap', { x: 10, repeat: 3, yoyo: true, duration: 0.06, ease: 'power2.inOut', onComplete: () => {
-          gsap.to('#passwordInputWrap', { x: 0, duration: 0.06 });
-          passIn.value = '';
-        }});
+        gsap.to('#passwordInputWrap', {
+          x: 10, repeat: 3, yoyo: true, duration: 0.06, ease: 'power2.inOut', onComplete: () => {
+            gsap.to('#passwordInputWrap', { x: 0, duration: 0.06 });
+            passIn.value = '';
+          }
+        });
       }
     }
 
