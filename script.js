@@ -10,14 +10,14 @@ const startDate = new Date('2023-04-19T00:00:00');
 const year3Date = new Date('2026-04-19T00:00:00');
 
 const playlist = [
-  { id: '1nml-_YE2OU', title: 'The Most Beautiful Thing', artist: 'Bruno Major' },
-  { id: 'sC75aU47GRk', title: 'K.', artist: 'Cigarettes After Sex' },
-  { id: 'Lp7X6n4v_9M', title: 'Kabisado', artist: 'IV OF SPADES' },
-  { id: 'sU2y32S8q-8', title: 'Medisina', artist: 'Zild' }
+  { src: 'spread-assets/most-beautiful-thing.mp3', title: 'The Most Beautiful Thing', artist: 'Bruno Major' },
+  { src: 'spread-assets/k.mp3', title: 'K.', artist: 'Cigarettes After Sex' },
+  { src: 'spread-assets/kabisado.mp3', title: 'Kabisado', artist: 'IV OF SPADES' },
+  { src: 'spread-assets/medisina.mp3', title: 'Medisina', artist: 'Zild' }
 ];
 
 let currentTrack = 0;
-let player;
+let player = new Audio();
 let isPlaying = false;
 
 const nicheDB = ['Vintage watches', 'Vinyl records', 'Bike parts', 'Sneakers', 'Handbags', 'Mechanical keyboards', 'Vintage guitars', 'Film cameras', 'Designer furniture', 'Rare books', 'Lego sets', 'Vintage clothing', 'Golf clubs', 'Fishing gear', 'Board games', 'Telescopes', 'Art prints', 'Musical instruments', 'Vintage jewelry', 'Drones', '3D printers', 'KitchenAid mixers', 'Dyson products', 'Vintage rugs', 'Surfboards'];
@@ -91,37 +91,11 @@ function updateCounter() {
   }
 }
 
-// YT API Loader
-const tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-const firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-window.onYouTubeIframeAPIReady = function () {
-  player = new YT.Player('ytPlayer', {
-    height: '0',
-    width: '0',
-    videoId: playlist[currentTrack].id,
-    playerVars: { 'autoplay': 0, 'controls': 0, 'disablekb': 1, 'enablejsapi': 1 },
-    events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange
-    }
-  });
-};
-
-function onPlayerReady(event) {
-  const mp = document.getElementById('musicPlayer');
-  if (mp) mp.classList.add('visible');
-  updateProgressBar();
-  loadTrack(0); // Prime the first track
-}
-
-function onPlayerStateChange(event) {
-  if (event.data === YT.PlayerState.ENDED) {
-    nextTrack();
-  }
-}
+// Music Player Initialization
+player.addEventListener('ended', () => nextTrack());
+player.addEventListener('canplay', () => {
+  if (isPlaying) player.play().catch(e => console.log("Play failed:", e));
+});
 
 function nextTrack() {
   currentTrack = (currentTrack + 1) % playlist.length;
@@ -129,9 +103,12 @@ function nextTrack() {
 }
 
 function loadTrack(idx) {
-  if (!player || !player.loadVideoById) return;
-  player.loadVideoById(playlist[idx].id);
-  player.playVideo(); // Force start after user gesture
+  if (!player) return;
+  player.src = playlist[idx].src;
+  player.load();
+  if (isPlaying) {
+    player.play().catch(e => console.log("Play blocked by browser:", e));
+  }
   currentTrack = idx;
 
   // Update labels on the Front Card
@@ -143,15 +120,15 @@ function loadTrack(idx) {
     if (pa) pa.textContent = playlist[idx].artist;
   }
 
-  isPlaying = true;
+  // Use a slight delay to ensure metadata is loaded for visual sync if needed
   if (window.syncPlayIcons) window.syncPlayIcons();
 }
 
 function updateProgressBar() {
-  if (player && player.getDuration) {
-    const duration = player.getDuration();
+  if (player && player.duration) {
+    const duration = player.duration;
     if (duration > 0) {
-      const current = player.getCurrentTime();
+      const current = player.currentTime;
       const pct = (current / duration) * 100;
       const pb = document.getElementById('progressBar');
       if (pb) pb.style.width = pct + '%';
@@ -237,6 +214,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ═══ PAGE INITIALIZATION ═══ */
   function initPage() {
+    // Start music after password entry (user gesture)
+    if (player && typeof loadTrack === 'function') {
+      loadTrack(0);
+    }
+
     // Counter Start
     setInterval(updateCounter, 1000);
     updateCounter();
@@ -498,9 +480,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (playBtn) {
           playBtn.onclick = (e) => {
             e.stopPropagation();
-            if (!player || !player.pauseVideo) return;
-            if (isPlaying) { player.pauseVideo(); isPlaying = false; }
-            else { player.playVideo(); isPlaying = true; }
+            if (!player) return;
+            if (isPlaying) { player.pause(); isPlaying = false; }
+            else { player.play().catch(e => console.log("Play blocked:", e)); isPlaying = true; }
             syncPlayIcons();
           };
         }
@@ -510,8 +492,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (prevBtn) {
           prevBtn.onclick = (e) => {
             e.stopPropagation();
-            if (player && player.getCurrentTime && player.getCurrentTime() > 3) {
-              player.seekTo(0);
+            if (player && player.currentTime > 3) {
+              player.currentTime = 0;
             } else {
               reverseCycleStack();
             }
@@ -520,10 +502,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (progress) {
           progress.onclick = (e) => {
             e.stopPropagation();
-            if (!player || !player.getDuration) return;
+            if (!player || !player.duration) return;
             const rect = e.currentTarget.getBoundingClientRect(), pct = (e.clientX - rect.left) / rect.width;
-            const duration = player.getDuration();
-            if (duration > 0) player.seekTo(duration * pct, true);
+            const duration = player.duration;
+            if (duration > 0) player.currentTime = duration * pct;
           };
         }
       }
@@ -661,10 +643,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // UPDATED ProgressBar Logic for dynamic cards
   function updateMasterProgressBar() {
-    if (player && player.getDuration) {
-      const duration = player.getDuration();
+    if (player && player.duration) {
+      const duration = player.duration;
       if (duration > 0) {
-        const current = player.getCurrentTime();
+        const current = player.currentTime;
         const pct = (current / duration) * 100;
 
         const fmt = (s) => {
