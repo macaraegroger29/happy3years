@@ -1147,41 +1147,260 @@
       display: block
     }
 
-    /* Money flow steps */
-    .money-steps {
+    /* ═══ MINI-GAMES STYLES ═══ */
+    .game-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 15;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(29, 27, 24, 0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 32px;
+      opacity: 1;
+      transition: opacity 0.4s ease;
+    }
+
+    .game-wrapper {
+      width: 100%;
+      height: 100%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      animation: gameFadeIn 0.5s ease;
+    }
+
+    @keyframes gameFadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Sudoku */
+    .sudoku-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-      background: rgba(255, 255, 255, .06);
-      border-radius: 12px;
-      overflow: hidden
+      grid-template-columns: repeat(9, 1fr);
+      gap: 1px;
+      width: 320px;
+      height: 320px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 2px;
+      border-radius: 8px;
+      border: 2px solid rgba(255, 255, 255, 0.4);
     }
 
-    .money-step {
-      padding: 20px 16px;
-      text-align: center;
-      background: var(--charcoal)
-    }
-
-    .money-step .step-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      color: rgba(255, 255, 255, .2);
-      margin-bottom: 8px
-    }
-
-    .money-step .step-title {
-      font-size: 13px;
-      font-weight: 500;
+    .sudoku-cell {
+      background: rgba(29, 27, 24, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 600;
       color: #fff;
-      margin-bottom: 4px
+      cursor: pointer;
+      transition: all 0.2s;
+      aspect-ratio: 1/1;
     }
 
-    .money-step .step-desc {
-      font-size: 11.5px;
-      color: rgba(255, 255, 255, .35);
-      line-height: 1.5
+    /* Subgrid borders */
+    .sudoku-cell:nth-child(3n) { border-right: 2px solid rgba(255, 255, 255, 0.6); }
+    .sudoku-cell:nth-child(9n) { border-right: none; }
+    .sudoku-cell:nth-child(n+19):nth-child(-n+27),
+    .sudoku-cell:nth-child(n+46):nth-child(-n+54) { border-bottom: 2px solid rgba(255, 255, 255, 0.6); }
+
+    .sudoku-cell:hover:not(.locked) {
+      background: rgba(255, 255, 255, 0.1);
     }
+
+    .sudoku-cell.locked {
+      color: rgba(255, 255, 255, 0.5);
+      cursor: default;
+      background: transparent;
+    }
+
+    .sudoku-cell input {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: none;
+      text-align: center;
+      color: inherit;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 600;
+      outline: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* Word Search */
+    .word-search-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      width: 100%;
+    }
+
+    .wordsearch-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 2px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px;
+      border-radius: 12px;
+      user-select: none;
+      -webkit-user-select: none;
+      width: 100%;
+      max-width: 440px;
+    }
+
+    .ws-cell {
+      aspect-ratio: 1/1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.2s;
+      user-select: none;
+    }
+
+    .ws-cell:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .ws-cell.selected {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .ws-cell.found {
+      background: var(--positive);
+      color: #fff;
+    }
+
+    .word-list {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .word-item {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.4);
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .word-item.found {
+      color: var(--positive);
+      background: var(--positive-bg);
+      text-decoration: line-through;
+    }
+
+    /* 20x20 Grid Maze - Expanded & Denser */
+    .maze-grid-container {
+      display: grid;
+      grid-template-columns: repeat(20, 1fr);
+      grid-template-rows: repeat(20, 1fr);
+      gap: 0;
+      width: 400px;
+      height: 400px;
+      aspect-ratio: 1 / 1;
+      background: transparent;
+      padding: 0;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      user-select: none;
+      cursor: crosshair;
+    }
+
+    .m-cell {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.1s;
+    }
+
+    .m-cell.wall {
+      background: rgba(255, 255, 255, 0.4); /* Solid line look */
+    }
+
+    .m-cell.path {
+      background: transparent;
+    }
+
+    .m-cell.active {
+      background: var(--blue);
+      box-shadow: 0 0 10px var(--blue);
+    }
+
+    .m-cell.start {
+      background: #4A8B6F;
+      color: #fff;
+      font-size: 8px;
+    }
+
+    .m-cell.end {
+      background: #FF6B6B;
+      font-size: 14px;
+    }
+
+    /* Success Pop */
+    .game-success {
+      position: absolute;
+      inset: 0;
+      background: rgba(29, 27, 24, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 20;
+      border-radius: 20px;
+      animation: successPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes successPop {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .success-heart {
+      font-size: 64px;
+      color: #FF6B6B;
+      margin-bottom: 16px;
+      animation: heartBeat 1.5s infinite;
+    }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .success-content h3 {
+      font-size: 32px;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .success-content p {
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 24px;
+      font-size: 16px;
+    }
+
+
 
     /* Statement section */
     .statement-section {
@@ -1991,13 +2210,7 @@
         padding: 16px 12px
       }
 
-      .money-step .step-title {
-        font-size: 12px
-      }
 
-      .money-step .step-desc {
-        font-size: 10.5px
-      }
 
       .niche-header {
         gap: 12px;
@@ -2628,52 +2841,57 @@
 
   <section class="control-section" id="control">
     <div class="control-left">
-      <div class="tag gs-reveal">Our Journey</div>
-      <h2 class="gs-reveal">Our Love. Our Rules. Choose how hands-on we want to be.</h2>
-      <p class="gs-reveal">Today, we cherish every moment. Every day is a manual choice to love. Soon, we'll have built
-        so much trust that our happiness feels like autopilot. You decide when to hold tight.</p>
+      <div class="tag gs-reveal">Fun & Games</div>
+      <h2 class="gs-reveal">Our Story. Our Puzzles. Play along with us.</h2>
+      <p class="gs-reveal">Every game is a reminder of how we solve things together. From the first day until forever, we're the perfect match.</p>
 
       <div class="control-toggle gs-reveal">
         <div class="control-toggle-bar">
-          <button class="ct-btn active" onclick="setControl(0)">Manual</button>
-          <button class="ct-btn" onclick="setControl(1)">Assisted</button>
-          <button class="ct-btn" onclick="setControl(2)">Autopilot</button>
+          <button class="ct-btn active" onclick="setControl(0)">Sudoku</button>
+          <button class="ct-btn" onclick="setControl(1)">Word Search</button>
+          <button class="ct-btn" onclick="setControl(2)">Maze</button>
         </div>
         <div class="control-desc" id="controlDesc">
-          <p class="active">Making memories every day. We decide every date, every meal, and every laugh. Full heart,
-            full visibility, full happiness.</p>
-          <p>The 'Us' handles more—negotiating who chooses the movie, auto-buy of flowers, and semi-autonomous brunch
-            planning.</p>
-          <p>Effortless connection. We don't even have to say it. A lifetime of understanding where the heart just knows
-            what to do.</p>
+          <p class="active">A standard 9x9 Sudoku. Fill in the numbers 1-9 to complete the grid. Each row, column, and 3x3 subgrid must be unique.</p>
+          <p>Find the words that define us. Click the letters to highlight them as you find our story.</p>
+          <p>Find your way back to me. Navigate through the path to reach the heart at the end.</p>
         </div>
       </div>
 
-      <div class="money-steps gs-reveal">
-        <div class="money-step">
-          <div class="step-num">01</div>
-          <div class="step-title">First Day</div>
-          <div class="step-desc">April 19, 2023</div>
-        </div>
-        <div class="money-step">
-          <div class="step-num">02</div>
-          <div class="step-title">Growth</div>
-          <div class="step-desc">1,000+ days of us</div>
-        </div>
-        <div class="money-step">
-          <div class="step-num">03</div>
-          <div class="step-title">Moments</div>
-          <div class="step-desc">Building our story</div>
-        </div>
-        <div class="money-step">
-          <div class="step-num">04</div>
-          <div class="step-title">Forever</div>
-          <div class="step-desc">The best is yet to come</div>
-        </div>
-      </div>
+
     </div>
     <div class="control-right">
       <img src="spread-assets/placeholder.png" id="controlImage" alt="">
+      
+      <div class="game-overlay" id="gameOverlay">
+        <!-- Sudoku Game -->
+        <div class="game-wrapper" id="gameSudoku" style="display: flex;">
+          <div class="sudoku-grid" id="sudokuGrid"></div>
+        </div>
+
+        <!-- Word Search Game -->
+        <div class="game-wrapper" id="gameWordsearch" style="display: none;">
+          <div class="word-search-container">
+            <div class="wordsearch-grid" id="wordSearchGrid"></div>
+            <div class="word-list" id="wordList"></div>
+          </div>
+        </div>
+
+        <!-- 20x20 Grid Maze Game -->
+        <div class="game-wrapper" id="gameMaze" style="display: none;">
+          <div class="maze-grid-container" id="mazeGrid"></div>
+        </div>
+
+        <div class="game-success" id="gameSuccess">
+          <div class="success-content">
+            <div class="success-heart">❤</div>
+            <h3>Amazing!</h3>
+            <p id="successMessage">You found your way to my heart.</p>
+            <button class="btn-dark-main" onclick="resetCurrentGame()">Play Again</button>
+          </div>
+        </div>
+      </div>
+
       <div class="control-right-overlay"></div>
     </div>
   </section>

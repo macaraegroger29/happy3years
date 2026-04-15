@@ -24,6 +24,10 @@ const nicheDB = ['Vintage watches', 'Vinyl records', 'Bike parts', 'Sneakers', '
 
 // ═══ HELPER FUNCTIONS ═══
 
+function reverseString(str) {
+  return str.split("").reverse().join("");
+}
+
 function updateCounter() {
   const now = new Date();
   const cYears = document.getElementById('countYears');
@@ -540,21 +544,16 @@ document.addEventListener('DOMContentLoaded', () => {
       let tTimer = setInterval(() => setT((tIdx + 1) % tQ.length), 5000);
       tAv.forEach((av, i) => av.addEventListener('click', () => setT(i)));
     }
+
+    // Initialize the first game
+    setControl(0);
   }
 
   // Control Section Toggle
   window.setControl = function (idx) {
     const btns = document.querySelectorAll('.ct-btn');
     const descs = document.querySelectorAll('#controlDesc p');
-    const controlImage = document.getElementById('controlImage');
-
-    // We can define variable background images based on the index. For now we use the same placeholder but you can specify distinct files.
-    // E.g., 'spread-assets/manual.jpg', 'spread-assets/assisted.jpg', 'spread-assets/autopilot.jpg'
-    const images = [
-      'spread-assets/placeholder.png',  // 0: Manual
-      'spread-assets/pic2.jpg',  // 1: Assisted
-      'spread-assets/pic3.jpeg'   // 2: Autopilot
-    ];
+    const wraps = document.querySelectorAll('.game-wrapper');
 
     btns.forEach((b, i) => {
       if (i === idx) b.classList.add('active');
@@ -566,15 +565,269 @@ document.addEventListener('DOMContentLoaded', () => {
       else p.classList.remove('active');
     });
 
-    if (controlImage && images[idx]) {
-      // Simple fade out/in effect for image change
-      gsap.to(controlImage, {
-        opacity: 0, duration: 0.2, onComplete: () => {
-          controlImage.src = images[idx];
-          gsap.to(controlImage, { opacity: 1, duration: 0.3 });
+    wraps.forEach((w, i) => {
+      w.style.display = (i === idx) ? 'flex' : 'none';
+    });
+
+    // Reset success state when switching
+    document.getElementById('gameSuccess').style.display = 'none';
+
+    // Init the game if needed
+    if (idx === 0) initSudoku();
+    else if (idx === 1) initWordSearch();
+    else if (idx === 2) initMaze();
+  }
+
+  // ═══ SUDOKU 9x9 ═══
+  let sudokuState = [];
+  const sudokuSolution = [
+    5, 3, 4, 6, 7, 8, 9, 1, 2,
+    6, 7, 2, 1, 9, 5, 3, 4, 8,
+    1, 9, 8, 3, 4, 2, 5, 6, 7,
+    8, 5, 9, 7, 6, 1, 4, 2, 3,
+    4, 2, 6, 8, 5, 3, 7, 9, 1,
+    7, 1, 3, 9, 2, 4, 8, 5, 6,
+    9, 6, 1, 5, 3, 7, 2, 8, 4,
+    2, 8, 7, 4, 1, 9, 6, 3, 5,
+    3, 4, 5, 2, 8, 6, 1, 7, 9
+  ];
+  const sudokuInitial = [
+    5, 3, 0, 0, 7, 0, 0, 0, 0,
+    6, 0, 0, 1, 9, 5, 0, 0, 0,
+    0, 9, 8, 0, 0, 0, 0, 6, 0,
+    8, 0, 0, 0, 6, 0, 0, 0, 3,
+    4, 0, 0, 8, 0, 3, 0, 0, 1,
+    7, 0, 0, 0, 2, 0, 0, 0, 6,
+    0, 6, 0, 0, 0, 0, 2, 8, 0,
+    0, 0, 0, 4, 1, 9, 0, 0, 5,
+    0, 0, 0, 0, 8, 0, 0, 7, 9
+  ];
+
+  function initSudoku() {
+    const grid = document.getElementById('sudokuGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    sudokuState = [...sudokuInitial];
+
+    sudokuInitial.forEach((val, i) => {
+      const cell = document.createElement('div');
+      cell.className = 'sudoku-cell';
+      if (val !== 0) {
+        cell.classList.add('locked');
+        cell.textContent = val;
+      } else {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.inputMode = 'numeric';
+        input.maxLength = 1;
+        input.oninput = (e) => {
+          const v = parseInt(e.target.value);
+          if (v >= 1 && v <= 9) {
+            sudokuState[i] = v;
+            checkSudokuWin();
+          } else {
+            e.target.value = '';
+            sudokuState[i] = 0;
+          }
+        };
+        cell.appendChild(input);
+      }
+      grid.appendChild(cell);
+    });
+  }
+
+  function checkSudokuWin() {
+    const isWin = sudokuState.every((val, i) => val === sudokuSolution[i]);
+    if (isWin) showGameSuccess("A perfect match of logic and love! ❤️");
+  }
+
+  // ═══ WORD SEARCH ═══
+  const wsWords = ['LOVE', 'ALWAYS', 'ANNIVERSARY', 'TOGETHER', 'FOREVER', 'STORY', 'ROMANCE', 'SMILE', 'THREE', 'YEARS', 'APRIL'];
+  const wsLetters = [
+    'A', 'L', 'W', 'A', 'Y', 'S', 'Y', 'E', 'A', 'R', 'S', 'S',
+    'N', 'N', 'I', 'V', 'E', 'R', 'S', 'A', 'R', 'Y', 'L', 'M',
+    'N', 'O', 'P', 'R', 'I', 'L', 'O', 'M', 'A', 'N', 'C', 'I',
+    'I', 'V', 'E', 'R', 'S', 'A', 'R', 'Y', 'G', 'O', 'O', 'L',
+    'T', 'O', 'G', 'E', 'T', 'H', 'E', 'R', 'H', 'U', 'N', 'E',
+    'H', 'J', 'R', 'O', 'M', 'A', 'N', 'C', 'E', 'K', 'L', 'T',
+    'R', 'O', 'A', 'P', 'R', 'I', 'L', 'C', 'A', 'T', 'O', 'X',
+    'E', 'F', 'O', 'R', 'E', 'V', 'E', 'R', 'P', 'O', 'M', 'P',
+    'E', 'S', 'T', 'O', 'R', 'Y', 'M', 'S', 'T', 'O', 'R', 'Y',
+    'M', 'A', 'L', 'W', 'A', 'Y', 'S', 'L', 'M', 'N', 'O', 'P',
+    'A', 'G', 'V', 'I', 'B', 'M', 'X', 'O', 'V', 'V', 'E', 'O',
+    'S', 'I', 'A', 'P', 'R', 'I', 'L', 'S', 'L', 'O', 'V', 'E'
+  ];
+  let wsFound = [];
+  let wsSelected = [];
+
+  function initWordSearch() {
+    const grid = document.getElementById('wordSearchGrid');
+    const list = document.getElementById('wordList');
+    if (!grid || !list) return;
+
+    grid.innerHTML = '';
+    list.innerHTML = '';
+    wsFound = [];
+    wsSelected = [];
+
+    let isDragging = false;
+    wsLetters.forEach((letter, i) => {
+      const cell = document.createElement('div');
+      cell.className = 'ws-cell';
+      cell.textContent = letter;
+
+      cell.onmousedown = (e) => {
+        if (cell.classList.contains('found')) return;
+        isDragging = true;
+        // Start fresh selection
+        document.querySelectorAll('.ws-cell').forEach(c => c.classList.remove('selected'));
+        cell.classList.add('selected');
+        updateWordSearch();
+      };
+
+      cell.onmouseenter = () => {
+        if (isDragging && !cell.classList.contains('found')) {
+          cell.classList.add('selected');
+          updateWordSearch();
         }
-      });
+      };
+
+      grid.appendChild(cell);
+    });
+
+    // Reset isDragging on mouseup and clear unsuccessful selections
+    const handleMouseUp = () => {
+      if (typeof isDragging !== 'undefined') {
+        isDragging = false;
+        document.querySelectorAll('.ws-cell:not(.found)').forEach(c => c.classList.remove('selected'));
+      }
+    };
+    window.onmouseup = handleMouseUp;
+    // Removed redundant window listener logic
+
+    wsWords.forEach(word => {
+      const item = document.createElement('div');
+      item.className = 'word-item';
+      item.textContent = word;
+      item.id = `ws-item-${word}`;
+      list.appendChild(item);
+    });
+  }
+
+  function updateWordSearch() {
+    const selectedCells = document.querySelectorAll('.ws-cell.selected');
+    const selectedString = Array.from(selectedCells).map(c => c.textContent).join('');
+
+    wsWords.forEach(word => {
+      if (!wsFound.includes(word) && (selectedString.includes(word) || reverseString(selectedString).includes(word))) {
+        wsFound.push(word);
+        document.getElementById(`ws-item-${word}`).classList.add('found');
+        selectedCells.forEach(c => {
+          if (word.includes(c.textContent)) {
+            c.classList.remove('selected');
+            c.classList.add('found');
+          }
+        });
+      }
+    });
+
+    if (wsFound.length === wsWords.length) showGameSuccess("You found the pieces of our story! ✨");
+  }
+
+  // ═══ 20x20 GRID MAZE ═══ (Synced with Reference Image)
+  const mazeLayout = [
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1,
+    1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1,
+    1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1,
+    1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1,
+    1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1,
+    1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1,
+    1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1,
+    1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1,
+    1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1,
+    1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1,
+    1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1,
+    1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1,
+    1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1,
+    1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1,
+    1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1,
+    1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1,
+    1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1,
+    1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1
+  ];
+
+  function initMaze() {
+    const grid = document.getElementById('mazeGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    let isDrawing = false;
+
+    mazeLayout.forEach((type, i) => {
+      const cell = document.createElement('div');
+      cell.className = 'm-cell';
+      if (type === 1) cell.classList.add('wall');
+      else if (type === 0) cell.classList.add('path');
+      else if (type === 2) {
+        cell.classList.add('start');
+        cell.textContent = 'S';
+      }
+      else if (type === 3) {
+        cell.classList.add('end');
+        cell.textContent = '❤';
+      }
+
+      cell.onmousedown = (e) => {
+        if (type === 2) {
+          isDrawing = true;
+          document.querySelectorAll('.m-cell').forEach(c => c.classList.remove('active'));
+          cell.classList.add('active');
+        }
+      };
+
+      cell.onmouseenter = () => {
+        if (!isDrawing) return;
+        if (type === 1) {
+          resetMaze();
+          return;
+        }
+        cell.classList.add('active');
+        if (type === 3) {
+          isDrawing = false;
+          showGameSuccess("You found your way to my heart. ❤️");
+        }
+      };
+
+      grid.appendChild(cell);
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDrawing = false;
+    });
+
+    function resetMaze() {
+      isDrawing = false;
+      document.querySelectorAll('.m-cell').forEach(c => c.classList.remove('active'));
     }
+  }
+
+  // ═══ GLOBALS ═══
+  window.showGameSuccess = function (msg) {
+    const success = document.getElementById('gameSuccess');
+    if (success) {
+      document.getElementById('successMessage').textContent = msg || "You found your way to my heart.";
+      success.style.display = 'flex';
+      const controlRight = document.querySelector('.control-right');
+      if (controlRight) spawnHeartBurst(controlRight);
+    }
+  }
+
+  window.resetCurrentGame = function () {
+    const btns = document.querySelectorAll('.ct-btn');
+    let currentIdx = 0;
+    btns.forEach((b, i) => { if (b.classList.contains('active')) currentIdx = i; });
+    setControl(currentIdx);
   }
 
   // Memory Database for The Little Things
