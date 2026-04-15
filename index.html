@@ -1307,15 +1307,24 @@
       text-decoration: line-through;
     }
 
-    /* 20x20 Grid Maze - Expanded & Denser */
+    /* 31x31 Grid Maze - Expanded & Denser */
+    .game-wrapper {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      width: 100%;
+    }
+
     .maze-grid-container {
       display: grid;
-      grid-template-columns: repeat(20, 1fr);
-      grid-template-rows: repeat(20, 1fr);
+      grid-template-columns: repeat(31, 1fr);
+      grid-template-rows: repeat(31, 1fr);
       gap: 0;
-      width: 400px;
-      height: 400px;
+      width: 100%;
+      max-width: 420px;
       aspect-ratio: 1 / 1;
+      height: auto; /* Allow aspect-ratio to control height */
       background: transparent;
       padding: 0;
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1355,6 +1364,50 @@
     .m-cell.end {
       background: #FF6B6B;
       font-size: 14px;
+    }
+
+    /* Maze Controls */
+    .maze-controls {
+      display: grid;
+      grid-template-areas:
+        ". up ."
+        "left down right";
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .m-ctrl-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .m-ctrl-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .m-ctrl-btn:active {
+      transform: scale(0.95);
+    }
+
+    .m-ctrl-btn.up { grid-area: up; }
+    .m-ctrl-btn.down { grid-area: down; }
+    .m-ctrl-btn.left { grid-area: left; }
+    .m-ctrl-btn.right { grid-area: right; }
+
+    .m-ctrl-btn svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
     }
 
     /* Success Pop */
@@ -2877,9 +2930,24 @@
           </div>
         </div>
 
-        <!-- 20x20 Grid Maze Game -->
+        <!-- 31x31 Grid Maze Game -->
         <div class="game-wrapper" id="gameMaze" style="display: none;">
           <div class="maze-grid-container" id="mazeGrid"></div>
+          
+          <div class="maze-controls">
+            <button class="m-ctrl-btn up" onclick="moveMazePlayer('up')">
+              <svg viewBox="0 0 24 24"><path d="M7 14l5-5 5 5H7z"/></svg>
+            </button>
+            <button class="m-ctrl-btn left" onclick="moveMazePlayer('left')">
+              <svg viewBox="0 0 24 24"><path d="M14 7l-5 5 5 5V7z"/></svg>
+            </button>
+            <button class="m-ctrl-btn down" onclick="moveMazePlayer('down')">
+              <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z"/></svg>
+            </button>
+            <button class="m-ctrl-btn right" onclick="moveMazePlayer('right')">
+              <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg>
+            </button>
+          </div>
         </div>
 
         <div class="game-success" id="gameSuccess">
