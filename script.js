@@ -645,7 +645,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const wsWords = ['LOVE', 'ALWAYS', 'ANNIVERSARY', 'TOGETHER', 'FOREVER', 'STORY', 'ROMANCE', 'SMILE', 'THREE', 'YEARS', 'APRIL'];
   const wsLetters = [
     'A', 'L', 'W', 'A', 'Y', 'S', 'Y', 'E', 'A', 'R', 'S', 'S',
-    'N', 'N', 'I', 'V', 'E', 'R', 'S', 'A', 'R', 'Y', 'L', 'M',
+    'A', 'N', 'N', 'I', 'V', 'E', 'R', 'S', 'A', 'R', 'Y', 'M',
     'N', 'O', 'P', 'R', 'I', 'L', 'O', 'M', 'A', 'N', 'C', 'I',
     'I', 'V', 'E', 'R', 'S', 'A', 'R', 'Y', 'G', 'O', 'O', 'L',
     'T', 'O', 'G', 'E', 'T', 'H', 'E', 'R', 'H', 'U', 'N', 'E',
@@ -671,23 +671,47 @@ document.addEventListener('DOMContentLoaded', () => {
     wsSelected = [];
 
     let isDragging = false;
+    let startCellIdx = -1;
+    const wsCols = 12;
     wsLetters.forEach((letter, i) => {
       const cell = document.createElement('div');
       cell.className = 'ws-cell';
       cell.textContent = letter;
 
       cell.onmousedown = (e) => {
-        if (cell.classList.contains('found')) return;
         isDragging = true;
-        // Start fresh selection
+        startCellIdx = i;
+        // Start fresh selection (keep 'found' class, only remove 'selected')
         document.querySelectorAll('.ws-cell').forEach(c => c.classList.remove('selected'));
         cell.classList.add('selected');
         updateWordSearch();
       };
 
       cell.onmouseenter = () => {
-        if (isDragging && !cell.classList.contains('found')) {
-          cell.classList.add('selected');
+        if (!isDragging || startCellIdx === -1) return;
+
+        const startRow = Math.floor(startCellIdx / wsCols);
+        const startCol = startCellIdx % wsCols;
+        const curRow = Math.floor(i / wsCols);
+        const curCol = i % wsCols;
+
+        const dRow = curRow - startRow;
+        const dCol = curCol - startCol;
+
+        if (dRow === 0 || dCol === 0 || Math.abs(dRow) === Math.abs(dCol)) {
+          document.querySelectorAll('.ws-cell').forEach(c => c.classList.remove('selected'));
+
+          const stepRow = dRow === 0 ? 0 : dRow / Math.abs(dRow);
+          const stepCol = dCol === 0 ? 0 : dCol / Math.abs(dCol);
+          const steps = Math.max(Math.abs(dRow), Math.abs(dCol));
+
+          const cells = document.querySelectorAll('.ws-cell');
+          for (let step = 0; step <= steps; step++) {
+            const r = startRow + step * stepRow;
+            const c = startCol + step * stepCol;
+            cells[r * wsCols + c].classList.add('selected');
+          }
+
           updateWordSearch();
         }
       };
@@ -699,7 +723,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleMouseUp = () => {
       if (typeof isDragging !== 'undefined') {
         isDragging = false;
-        document.querySelectorAll('.ws-cell:not(.found)').forEach(c => c.classList.remove('selected'));
+        startCellIdx = -1;
+        // Remove 'selected' from all cells; 'found' class keeps the highlight for found words
+        document.querySelectorAll('.ws-cell').forEach(c => c.classList.remove('selected'));
       }
     };
     window.onmouseup = handleMouseUp;
@@ -830,6 +856,26 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('mouseup', () => {
       isDrawing = false;
     });
+
+    // Keyboard arrow key support (attach only once)
+    if (!window._mazeKeyListenerAttached) {
+      window._mazeKeyListenerAttached = true;
+      document.addEventListener('keydown', (e) => {
+        const mazeVisible = document.getElementById('gameMaze') &&
+          document.getElementById('gameMaze').style.display !== 'none';
+        if (!mazeVisible) return;
+        const map = {
+          'ArrowUp': 'up',
+          'ArrowDown': 'down',
+          'ArrowLeft': 'left',
+          'ArrowRight': 'right'
+        };
+        if (map[e.key]) {
+          e.preventDefault(); // stop page from scrolling
+          window.moveMazePlayer(map[e.key]);
+        }
+      });
+    }
   }
 
   function resetMaze() {
@@ -844,9 +890,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  window.moveMazePlayer = function(dir) {
+  window.moveMazePlayer = function (dir) {
     if (playerPos === -1) return;
-    
+
     let nextPos = playerPos;
     const row = Math.floor(playerPos / mazeDim);
     const col = playerPos % mazeDim;
@@ -861,7 +907,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const grid = document.getElementById('mazeGrid');
       const cells = grid.querySelectorAll('.m-cell');
       cells[playerPos].classList.add('active');
-      
+
       if (mazeLayout[playerPos] === 3) {
         showGameSuccess("You found your way to my heart. ❤️");
       }

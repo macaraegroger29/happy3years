@@ -1173,8 +1173,15 @@
     }
 
     @keyframes gameFadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     /* Sudoku */
@@ -1204,10 +1211,18 @@
     }
 
     /* Subgrid borders */
-    .sudoku-cell:nth-child(3n) { border-right: 2px solid rgba(255, 255, 255, 0.6); }
-    .sudoku-cell:nth-child(9n) { border-right: none; }
+    .sudoku-cell:nth-child(3n) {
+      border-right: 2px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .sudoku-cell:nth-child(9n) {
+      border-right: none;
+    }
+
     .sudoku-cell:nth-child(n+19):nth-child(-n+27),
-    .sudoku-cell:nth-child(n+46):nth-child(-n+54) { border-bottom: 2px solid rgba(255, 255, 255, 0.6); }
+    .sudoku-cell:nth-child(n+46):nth-child(-n+54) {
+      border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+    }
 
     .sudoku-cell:hover:not(.locked) {
       background: rgba(255, 255, 255, 0.1);
@@ -1309,6 +1324,7 @@
 
     /* 31x31 Grid Maze - Expanded & Denser */
     .game-wrapper {
+      display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
@@ -1324,16 +1340,20 @@
       width: 100%;
       max-width: 420px;
       aspect-ratio: 1 / 1;
-      height: auto; /* Allow aspect-ratio to control height */
+      height: auto;
+      align-content: start;
+      justify-content: center;
       background: transparent;
       padding: 0;
       border: 1px solid rgba(255, 255, 255, 0.1);
       position: relative;
       user-select: none;
       cursor: crosshair;
+      overflow: hidden;
     }
 
     .m-cell {
+      aspect-ratio: 1 / 1;
       width: 100%;
       height: 100%;
       display: flex;
@@ -1343,7 +1363,8 @@
     }
 
     .m-cell.wall {
-      background: rgba(255, 255, 255, 0.4); /* Solid line look */
+      background: rgba(255, 255, 255, 0.4);
+      /* Solid line look */
     }
 
     .m-cell.path {
@@ -1399,10 +1420,21 @@
       transform: scale(0.95);
     }
 
-    .m-ctrl-btn.up { grid-area: up; }
-    .m-ctrl-btn.down { grid-area: down; }
-    .m-ctrl-btn.left { grid-area: left; }
-    .m-ctrl-btn.right { grid-area: right; }
+    .m-ctrl-btn.up {
+      grid-area: up;
+    }
+
+    .m-ctrl-btn.down {
+      grid-area: down;
+    }
+
+    .m-ctrl-btn.left {
+      grid-area: left;
+    }
+
+    .m-ctrl-btn.right {
+      grid-area: right;
+    }
 
     .m-ctrl-btn svg {
       width: 24px;
@@ -1425,8 +1457,15 @@
     }
 
     @keyframes successPop {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .success-heart {
@@ -1437,8 +1476,15 @@
     }
 
     @keyframes heartBeat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
     }
 
     .success-content h3 {
@@ -2692,35 +2738,35 @@
     <div class="hero-pin" id="heroPin">
       <!-- Scattered gallery photos -->
       <div class="hero-scatter-wrap" id="hs0" style="width:180px;height:140px;top:6%;left:4%">
-        <div class="hero-polaroid"><img src="spread-assets/placeholder.png" alt=""></div>
+        <div class="hero-polaroid"><img src="spread-assets/pic2.jpg" alt=""></div>
       </div>
       <div class="hero-scatter-wrap" id="hs1" style="width:160px;height:200px;top:4%;right:6%">
-        <div class="hero-polaroid"><img src="spread-assets/placeholder.png" alt=""></div>
+        <div class="hero-polaroid"><img src="spread-assets/pic6.JPG" alt=""></div>
       </div>
       <div class="hero-scatter-wrap" id="hs2" style="width:200px;height:150px;top:42%;left:1%">
-        <div class="hero-polaroid"><img src="spread-assets/placeholder.png" alt=""></div>
+        <div class="hero-polaroid"><img src="spread-assets/pic3.JPG" alt=""></div>
       </div>
       <div class="hero-scatter-wrap" id="hs3" style="width:170px;height:170px;top:50%;right:2%">
-        <div class="hero-polaroid"><img src="spread-assets/placeholder.png" alt=""></div>
+        <div class="hero-polaroid"><img src="spread-assets/pic4.JPG" alt=""></div>
       </div>
       <div class="hero-scatter-wrap" id="hs4" style="width:150px;height:190px;bottom:6%;left:10%">
-        <div class="hero-polaroid"><img src="spread-assets/placeholder.png" alt=""></div>
+        <div class="hero-polaroid"><img src="spread-assets/pic1.JPG" alt=""></div>
       </div>
       <div class="hero-scatter-wrap" id="hs5" style="width:190px;height:140px;bottom:4%;right:8%">
-        <div class="hero-polaroid"><img src="spread-assets/placeholder.png" alt=""></div>
+        <div class="hero-polaroid"><img src="spread-assets/pic5.JPG" alt=""></div>
       </div>
       <div class="hero-scatter-wrap" id="hs6" style="width:140px;height:120px;top:20%;left:18%">
-        <div class="hero-polaroid"><img src="spread-assets/placeholder.png" alt=""></div>
+        <div class="hero-polaroid"><img src="spread-assets/pic7.jpg" alt=""></div>
       </div>
       <div class="hero-scatter-wrap" id="hs7" style="width:150px;height:130px;top:18%;right:16%">
-        <div class="hero-polaroid"><img src="spread-assets/placeholder.png" alt=""></div>
+        <div class="hero-polaroid"><img src="spread-assets/pic7.HEIC" alt=""></div>
       </div>
 
 
       <!-- Main hero video -->
       <div class="hero-main" id="heroMain">
-        <img class="hero-video" src="spread-assets/placeholder.png"
-          style="width: 100%; height: 100%; object-fit: cover;" alt="">
+        <img class="hero-video" src="spread-assets/pic6.JPG" style="width: 100%; height: 100%; object-fit: cover;"
+          alt="">
         <div class="hero-overlay"></div>
         <div class="hero-content">
           <h1 class="hero-h1"><span class="hero-word"><span>Happy</span></span> <span
@@ -2757,7 +2803,7 @@
       <div class="carnation-dec">
         <img src="spread-assets/carnation_bouquet.png" class="carnation-img" alt="Carnation Bouquet">
       </div>
-      <img src="spread-assets/placeholder.png" alt="">
+      <img src="spread-assets/pic6.JPG" alt="">
       <img src="spread-assets/placeholder.png" alt="" class="hide">
     </div>
   </section>
@@ -2765,7 +2811,7 @@
   <section class="feature-section reversed">
     <div class="feature-text">
       <div class="tag gs-reveal">Our First Conversation</div>
-      <h2 class="gs-reveal">Social & Scraps</h2>
+      <h2 class="gs-reveal">How everthing started</h2>
       <p class="gs-reveal">Our digital footprints. Captured in real time. Every chat, every photo, and every late-night
         conversation we've shared. From the silly TikToks to the student portal updates, it's all part of our story.</p>
       <div class="chat-card gs-reveal" id="chatCard">
@@ -2783,13 +2829,13 @@
       </div>
     </div>
     <div class="feature-img-wrap">
-      <img src="spread-assets/placeholder.png" alt="">
-      <img src="spread-assets/placeholder.png" alt="" class="hide">
+      <img src="spread-assets/pic1.JPG" alt="">
+      <img src="spread-assets/pic6.JPG" alt="" class="hide">
     </div>
   </section>
 
   <div class="photo-full tall" style="height:100vh;min-height:700px">
-    <img src="spread-assets/placeholder.png" alt="" class="pf-img" style="object-position:center 40%">
+    <img src="spread-assets/pic3.JPG" alt="" class="pf-img" style="object-position:center 40%">
     <div class="photo-full-overlay" style="background:rgba(29,27,24,.48)">
       <div class="photo-stats-inner">
         <div class="photo-full-text" style="margin-bottom:64px">
@@ -2845,7 +2891,7 @@
   </section>
 
   <div class="testimonial-break" id="testimonialBreak">
-    <img src="spread-assets/placeholder.png" alt="" class="tb-bg">
+    <img src="spread-assets/pic5.JPG" alt="" class="tb-bg">
     <div class="testimonial-break-overlay"></div>
     <div class="testimonial-inner">
       <div class="t-big-quote">&ldquo;</div>
@@ -2867,19 +2913,19 @@
       </div>
       <div class="t-avatars" id="tAvatars">
         <button class="t-avatar active" onclick="setT(0)">
-          <img src="spread-assets/placeholder.png" alt="">
+          <img src="spread-assets/pic7.jpg" alt="">
           <span class="t-avatar-name">Sarah K.</span>
         </button>
         <button class="t-avatar" onclick="setT(1)">
-          <img src="spread-assets/placeholder.png" alt="">
+          <img src="spread-assets/pic6.JPG" alt="">
           <span class="t-avatar-name">Marcus T.</span>
         </button>
         <button class="t-avatar" onclick="setT(2)">
-          <img src="spread-assets/placeholder.png" alt="">
+          <img src="spread-assets/pic5.JPG" alt="">
           <span class="t-avatar-name">David L.</span>
         </button>
         <button class="t-avatar" onclick="setT(3)">
-          <img src="spread-assets/placeholder.png" alt="">
+          <img src="spread-assets/pic4.JPG" alt="">
           <span class="t-avatar-name">Amy R.</span>
         </button>
       </div>
@@ -2896,7 +2942,8 @@
     <div class="control-left">
       <div class="tag gs-reveal">Fun & Games</div>
       <h2 class="gs-reveal">Our Story. Our Puzzles. Play along with us.</h2>
-      <p class="gs-reveal">Every game is a reminder of how we solve things together. From the first day until forever, we're the perfect match.</p>
+      <p class="gs-reveal">Every game is a reminder of how we solve things together. From the first day until forever,
+        we're the perfect match.</p>
 
       <div class="control-toggle gs-reveal">
         <div class="control-toggle-bar">
@@ -2905,7 +2952,8 @@
           <button class="ct-btn" onclick="setControl(2)">Maze</button>
         </div>
         <div class="control-desc" id="controlDesc">
-          <p class="active">A standard 9x9 Sudoku. Fill in the numbers 1-9 to complete the grid. Each row, column, and 3x3 subgrid must be unique.</p>
+          <p class="active">A standard 9x9 Sudoku. Fill in the numbers 1-9 to complete the grid. Each row, column, and
+            3x3 subgrid must be unique.</p>
           <p>Find the words that define us. Click the letters to highlight them as you find our story.</p>
           <p>Find your way back to me. Navigate through the path to reach the heart at the end.</p>
         </div>
@@ -2914,8 +2962,8 @@
 
     </div>
     <div class="control-right">
-      <img src="spread-assets/placeholder.png" id="controlImage" alt="">
-      
+      <img src="spread-assets/pic2.jpg" id="controlImage" alt="">
+
       <div class="game-overlay" id="gameOverlay">
         <!-- Sudoku Game -->
         <div class="game-wrapper" id="gameSudoku" style="display: flex;">
@@ -2933,21 +2981,8 @@
         <!-- 31x31 Grid Maze Game -->
         <div class="game-wrapper" id="gameMaze" style="display: none;">
           <div class="maze-grid-container" id="mazeGrid"></div>
-          
-          <div class="maze-controls">
-            <button class="m-ctrl-btn up" onclick="moveMazePlayer('up')">
-              <svg viewBox="0 0 24 24"><path d="M7 14l5-5 5 5H7z"/></svg>
-            </button>
-            <button class="m-ctrl-btn left" onclick="moveMazePlayer('left')">
-              <svg viewBox="0 0 24 24"><path d="M14 7l-5 5 5 5V7z"/></svg>
-            </button>
-            <button class="m-ctrl-btn down" onclick="moveMazePlayer('down')">
-              <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z"/></svg>
-            </button>
-            <button class="m-ctrl-btn right" onclick="moveMazePlayer('right')">
-              <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5v10z"/></svg>
-            </button>
-          </div>
+
+
         </div>
 
         <div class="game-success" id="gameSuccess">
@@ -3010,7 +3045,7 @@
       <div id="nicheResult" style="display:none; text-align: center;">
         <div class="niche-polaroid-wrap">
           <div class="niche-polaroid" id="nichePhoto">
-            <img src="spread-assets/placeholder.png" alt="Memory" id="nicheImg">
+            <img src="spread-assets/pic3.jpeg" alt="Memory" id="nicheImg">
             <div class="niche-polaroid-caption" id="nicheCap">Our beautiful memory</div>
           </div>
         </div>
@@ -3023,7 +3058,7 @@
   </section>
 
   <div class="photo-full tall">
-    <img src="spread-assets/placeholder.png" alt="" class="pf-img">
+    <img src="spread-assets/pic4.JPG" alt="" class="pf-img">
     <div class="photo-full-overlay" style="background:rgba(29,27,24,.42)">
       <div class="photo-full-text">
         <h2 class="gs-reveal">Opportunities land while you sleep.</h2>
@@ -3040,20 +3075,20 @@
       <p class="gs-reveal">Deals surface in the background. Your life stays in the foreground.</p>
     </div>
     <div class="photo-scroller" id="photoScroller">
+      <div class="scroller-img"><img src="spread-assets/pic1.JPG" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/pic2.jpg" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/pic3.jpeg" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/pic4.JPG" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/pic3.JPG" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/pic5.JPG" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/pic6.JPG" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/pic7.jpg" alt=""></div>
       <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/pic3.jpeg" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/pic5.JPG" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/pic1.JPG" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/pic3.JPG" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/pic7.jpg" alt=""></div>
     </div>
   </section>
 
