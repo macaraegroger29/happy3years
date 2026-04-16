@@ -10,6 +10,7 @@ const startDate = new Date('2023-04-19T00:00:00');
 const year3Date = new Date('2026-04-19T00:00:00');
 
 const playlist = [
+  { src: 'spread-assets/paru-paro.mp3', title: 'Paru-paro', artist: 'IV OF SPADES' },
   { src: 'spread-assets/most-beautiful-thing.mp3', title: 'The Most Beautiful Thing', artist: 'Bruno Major' },
   { src: 'spread-assets/k.mp3', title: 'K.', artist: 'Cigarettes After Sex' },
   { src: 'spread-assets/kabisado.mp3', title: 'Kabisado', artist: 'IV OF SPADES' },
@@ -638,7 +639,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function checkSudokuWin() {
     const isWin = sudokuState.every((val, i) => val === sudokuSolution[i]);
-    if (isWin) showGameSuccess("A perfect match of logic and love! ❤️");
+    if (isWin) showGameSuccess("Perfect match! Parang tayo lang, loveyy. ❤️");
   }
 
   // ═══ WORD SEARCH ═══
@@ -757,7 +758,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    if (wsFound.length === wsWords.length) showGameSuccess("You found the pieces of our story! ✨");
+    if (wsFound.length === wsWords.length) showGameSuccess("Nahanap mo lahat! Galing talaga ng Pauline ko. ✨");
   }
 
   // ═══ 31x31 GRID MAZE ═══ (Synced with Reference Image)
@@ -840,7 +841,7 @@ document.addEventListener('DOMContentLoaded', () => {
         playerPos = i;
         if (type === 3) {
           isDrawing = false;
-          showGameSuccess("You found your way to my heart. ❤️");
+          showGameSuccess("Nakarating ka rin sa puso ko. ❤️");
         }
       };
 
@@ -909,7 +910,7 @@ document.addEventListener('DOMContentLoaded', () => {
       cells[playerPos].classList.add('active');
 
       if (mazeLayout[playerPos] === 3) {
-        showGameSuccess("You found your way to my heart. ❤️");
+        showGameSuccess("Nakarating ka rin sa puso ko. ❤️");
       }
     }
   }
@@ -918,7 +919,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.showGameSuccess = function (msg) {
     const success = document.getElementById('gameSuccess');
     if (success) {
-      document.getElementById('successMessage').textContent = msg || "You found your way to my heart.";
+      document.getElementById('successMessage').textContent = msg || "Nakarating ka rin sa puso ko.";
       success.style.display = 'flex';
       const controlRight = document.querySelector('.control-right');
       if (controlRight) spawnHeartBurst(controlRight);
@@ -934,18 +935,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Memory Database for The Little Things
   const memoryDB = {
-    'Coffee Dates': { img: 'spread-assets/pic2.jpg', cap: 'Our 50th coffee date at that corner cafe.' },
-    'Movie Nights': { img: 'spread-assets/pic3.jpeg', cap: 'Cuddling up for our Marvel marathon.' },
-    'Late Night Talks': { img: 'spread-assets/placeholder.png', cap: 'Talking until the sun came up.' },
-    'Beach Walks': { img: 'spread-assets/placeholder.png', cap: 'Sand in our toes, hand in hand.' },
-    'Travel Adventures': { img: 'spread-assets/placeholder.png', cap: 'Getting gloriously lost in a new city.' },
-    'Cooking Together': { img: 'spread-assets/placeholder.png', cap: 'Making a mess, but it tasted perfect.' },
-    'Music Playlists': { img: 'spread-assets/placeholder.png', cap: 'Dancing in the kitchen to our songs.' },
-    'Long Drives': { img: 'spread-assets/placeholder.png', cap: 'Windows down, singing off key.' },
-    'Cozy Mornings': { img: 'spread-assets/placeholder.png', cap: 'Breakfast in bed and lazy Sundays.' },
-    'Family Time': { img: 'spread-assets/placeholder.png', cap: 'Holidays filled with laughter.' },
-    'Growing Old': { img: 'spread-assets/placeholder.png', cap: 'Every grey hair is a memory earned.' },
-    'default': { img: 'spread-assets/placeholder.png', cap: 'Every moment with you is my favorite.' }
+    'First Date': { img: 'spread-assets/pic2.jpg', cap: 'Yung unang beses tayong nagkita. Sobrang kaba ko nun.' },
+    'Coffee Dates': { img: 'spread-assets/pic3.jpeg', cap: 'Coffee shop hopping tayo palagi.' },
+    'Movie Nights': { img: 'spread-assets/placeholder.png', cap: 'Marvel marathon hanggang makatulog.' },
+    'Beach Walks': { img: 'spread-assets/placeholder.png', cap: 'Sand sa paa, kamay mo sa kamay ko.' },
+    'Travel Adventures': { img: 'spread-assets/placeholder.png', cap: 'Nawawala tayo pero okay lang, basta kasama ka.' },
+    'Cooking Together': { img: 'spread-assets/placeholder.png', cap: 'Gulo sa kitchen, pero masarap naman yung luto.' },
+    'Music Playlists': { img: 'spread-assets/placeholder.png', cap: 'Sayaw-sayaw sa loob ng kwarto.' },
+    'Long Drives': { img: 'spread-assets/placeholder.png', cap: 'Bukas yung bintana, kanta lang tayo ng off key.' },
+    'Cozy Mornings': { img: 'spread-assets/placeholder.png', cap: 'Lazy Sundays and breakfast.' },
+    'Family Time': { img: 'spread-assets/placeholder.png', cap: 'Tawanan lang kasama sila.' },
+    'Growing Old': { img: 'spread-assets/placeholder.png', cap: 'Kahit tumanda tayo, ikaw pa rin.' },
+    'default': { img: 'spread-assets/placeholder.png', cap: 'Memory natin na hindi ko makakalimutan.' }
   };
 
   // Niche search global attachment
@@ -963,7 +964,7 @@ document.addEventListener('DOMContentLoaded', () => {
       gsap.set(polaroid, { scale: 0, rotation: -15, opacity: 0 });
     }
 
-    document.getElementById('scanLabel').textContent = 'Recalling "' + val.trim() + '" memories...';
+    document.getElementById('scanLabel').textContent = 'Naaalala ko nung "' + val.trim() + '"...';
     setTimeout(() => { document.getElementById('scanFill').style.width = '100%' }, 50);
 
     setTimeout(() => {
@@ -980,8 +981,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (capEl) capEl.textContent = mem.cap;
 
       const count = Math.floor(Math.random() * 80) + 20;
-      document.getElementById('resultTitle').textContent = lookupVal + ' Series';
-      document.getElementById('resultSub').textContent = count + ' perfect moments captured. We\'re just getting started.';
+      document.getElementById('resultTitle').textContent = lookupVal + ' Moment';
+      document.getElementById('resultSub').textContent = 'Isa sa mga paborito kong memory natin.';
 
       // Animate Polaroid In
       if (polaroid) {
