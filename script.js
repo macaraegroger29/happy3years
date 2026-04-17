@@ -588,6 +588,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Control Section Toggle
+  // Preload Testimonial Backgrounds
+  const testimonialBgs = ['spread-assets/pic4.1.jpg', 'spread-assets/pic4.3.jfif', 'spread-assets/pic4.2.jfif', 'spread-assets/pic5.JPG'];
+  function preloadImages(urls) {
+    urls.forEach(url => {
+      const img = new Image();
+      img.src = url;
+    });
+  }
+  preloadImages(testimonialBgs);
+
   window.setControl = function (idx) {
     const btns = document.querySelectorAll('.ct-btn');
     const descs = document.querySelectorAll('#controlDesc p');
@@ -972,17 +982,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Memory Database for The Little Things
   const memoryDB = {
-    'First Date': { img: 'spread-assets/pic2.jpg', cap: 'Yung unang beses tayong nagkita. Sobrang kaba ko nun.' },
-    'Coffee Dates': { img: 'spread-assets/coffee.jpg', cap: 'Coffee shop hopping tayo palagi.' },
+    'First Date': { img: 'spread-assets/picmain.JPG', cap: 'Yung unang beses tayong nagkita. Sobrang kaba ko nun.' },
+    'Coffee Dates': { img: 'spread-assets/coffee.JPG', cap: 'Coffee shop hopping tayo palagi.' },
     'Sweet Dessert': { img: 'spread-assets/icecream.jpg', cap: 'Ending the day with something sweet, just like you.' },
-    'Manaoag Church': { img: 'spread-assets/manaoag.jpg', cap: 'Our favorite place to pray and give thanks together.' },
+    'Manaoag Church': { img: 'spread-assets/manaoag.JPG', cap: 'Our favorite place to pray and give thanks together.' },
     'Beach Walks': { img: 'spread-assets/beach.jpg', cap: 'Watching the waves, feeling your hand in mine. My favorite peace.' },
-    'Travel Adventures': { img: 'spread-assets/travel.jpg', cap: 'First time natin sa Baguio magkasama!' },
-    'Cooking Together': { img: 'spread-assets/luto.jpg', cap: 'Ang tagal lutuin, pero worth it sa sarap.' },
-    'Flowers': { img: 'spread-assets/flower.jpg', cap: 'You deserve to be celebrated every single day, just because.' },
-    'The Day': { img: 'spread-assets/day.jpg', cap: 'The day my life changed for the better. I love you, loveyy.' },
-    'default': { img: 'spread-assets/placeholder.png', cap: 'Memory natin na hindi ko makakalimutan.' }
+    'Travel Adventures': { img: 'spread-assets/travel.JPG', cap: 'First time natin sa Baguio magkasama!' },
+    'Cooking Together': { img: 'spread-assets/luto.JPG', cap: 'Ang tagal lutuin, pero worth it sa sarap.' },
+    'Flowers': { img: 'spread-assets/flower.JPG', cap: 'Because you deserve to be celebrated every single day, just because.' },
+    'Our Official Day': { img: 'spread-assets/day.jpg', cap: 'The day my life changed for the better. I love you, loveyy.' },
+    'default': { img: 'spread-assets/picmain.JPG', cap: 'Memory natin na hindi ko makakalimutan.' }
   };
+
+  // Preload Images for smoother experience
+  function preloadMemories() {
+    const urls = Object.values(memoryDB).map(m => m.img);
+    const testimonialBgs = ['spread-assets/pic4.1.jpg', 'spread-assets/pic4.3.jfif', 'spread-assets/pic4.2.jfif', 'spread-assets/pic5.JPG'];
+    [...urls, ...testimonialBgs].forEach(url => {
+      const img = new Image();
+      img.src = url;
+    });
+  }
+  preloadMemories();
 
   // Niche search global attachment
   window.submitNiche = function (val) {
