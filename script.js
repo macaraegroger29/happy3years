@@ -556,7 +556,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Background Image Change with Smooth Fade
         const bg = document.querySelector('.tb-bg');
-        const bgImages = ['spread-assets/message.jpg', 'spread-assets/promise.jpg', 'spread-assets/journey.jpg', 'spread-assets/forever.jpg'];
+        const bgImages = ['spread-assets/message.jpg', 'spread-assets/promise.JPG', 'spread-assets/journey.JPG', 'spread-assets/forever.JPG'];
 
         if (bg && bgImages[i]) {
           gsap.to(bg, {
@@ -564,14 +564,8 @@ document.addEventListener('DOMContentLoaded', () => {
             duration: 0.4,
             onComplete: () => {
               bg.src = bgImages[i];
-              // Wait for image to load before fading in
-              bg.onload = () => {
-                gsap.to(bg, { opacity: 1, duration: 0.4 });
-              };
-              // Fallback in case onload doesn't fire (e.g. cached)
-              if (bg.complete) {
-                gsap.to(bg, { opacity: 1, duration: 0.4 });
-              }
+              bg.onload = () => { gsap.to(bg, { opacity: 1, duration: 0.4 }); };
+              if (bg.complete) { gsap.to(bg, { opacity: 1, duration: 0.4 }); }
             }
           });
         }
@@ -581,6 +575,10 @@ document.addEventListener('DOMContentLoaded', () => {
         tTimer = setInterval(() => setT((tIdx + 1) % tQ.length), 5000);
       }
       tAv.forEach((av, i) => av.addEventListener('click', () => setT(i)));
+
+      // Preload these specific backgrounds immediately
+      const testimonialBgs = ['spread-assets/message.jpg', 'spread-assets/promise.JPG', 'spread-assets/journey.JPG', 'spread-assets/forever.JPG'];
+      testimonialBgs.forEach(url => { const img = new Image(); img.src = url; });
     }
 
     // Initialize the first game
@@ -588,15 +586,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Control Section Toggle
-  // Preload Testimonial Backgrounds
-  const testimonialBgs = ['spread-assets/pic4.1.jpg', 'spread-assets/pic4.3.jfif', 'spread-assets/pic4.2.jfif', 'spread-assets/pic5.JPG'];
-  function preloadImages(urls) {
-    urls.forEach(url => {
-      const img = new Image();
-      img.src = url;
-    });
-  }
-  preloadImages(testimonialBgs);
 
   window.setControl = function (idx) {
     const btns = document.querySelectorAll('.ct-btn');
@@ -990,14 +979,14 @@ document.addEventListener('DOMContentLoaded', () => {
     'Travel Adventures': { img: 'spread-assets/travel.JPG', cap: 'First time natin sa Baguio magkasama!' },
     'Cooking Together': { img: 'spread-assets/luto.JPG', cap: 'Ang tagal lutuin, pero worth it sa sarap.' },
     'Flowers': { img: 'spread-assets/flower.JPG', cap: 'Because you deserve to be celebrated every single day, just because.' },
-    'Our Official Day': { img: 'spread-assets/day.jpg', cap: 'The day my life changed for the better. I love you, loveyy.' },
+    'The Day': { img: 'spread-assets/day.jpg', cap: 'The day my life changed for the better. I love you, loveyy.' },
     'default': { img: 'spread-assets/picmain.JPG', cap: 'Memory natin na hindi ko makakalimutan.' }
   };
 
   // Preload Images for smoother experience
   function preloadMemories() {
     const urls = Object.values(memoryDB).map(m => m.img);
-    const testimonialBgs = ['spread-assets/pic4.1.jpg', 'spread-assets/pic4.3.jfif', 'spread-assets/pic4.2.jfif', 'spread-assets/pic5.JPG'];
+    const testimonialBgs = ['spread-assets/4l.JPG', 'spread-assets/church.JPG', 'spread-assets/journey.JPG', 'spread-assets/picmain.JPG'];
     [...urls, ...testimonialBgs].forEach(url => {
       const img = new Image();
       img.src = url;
