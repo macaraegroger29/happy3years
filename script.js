@@ -12,9 +12,12 @@ const year3Date = new Date('2026-04-19T00:00:00');
 const playlist = [
   { src: 'spread-assets/paru-paro.mp3', title: 'Paru-paro', artist: 'IV OF SPADES' },
   { src: 'spread-assets/most-beautiful-thing.mp3', title: 'The Most Beautiful Thing', artist: 'Bruno Major' },
-  { src: 'spread-assets/k.mp3', title: 'K.', artist: 'Cigarettes After Sex' },
+  { src: 'spread-assets/apocalypse.mp3', title: 'Apocalypse', artist: 'Cigarettes After Sex' },
   { src: 'spread-assets/kabisado.mp3', title: 'Kabisado', artist: 'IV OF SPADES' },
-  { src: 'spread-assets/medisina.mp3', title: 'Medisina', artist: 'Zild' }
+  { src: 'spread-assets/medisina.mp3', title: 'Medisina', artist: 'Zild' },
+  { src: 'spread-assets/satellite.mp3', title: 'Satellite', artist: 'Harry Styles' },
+  { src: 'spread-assets/from-the-start.mp3', title: 'From The Start', artist: 'Laufey' },
+  { src: 'spread-assets/count-on-me.mp3', title: 'Count On Me', artist: 'Bruno Mars' }
 ];
 
 let currentTrack = 0;
@@ -279,10 +282,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.feature-img-wrap').forEach(wrap => {
       gsap.from(wrap, { y: 40, opacity: 0, duration: .8, ease: 'power3.out', scrollTrigger: { trigger: wrap, start: 'top 88%', toggleActions: 'play none none none' } });
-      // Remove or comment out the image swap trigger that causes images to disappear
-      // const imgs = wrap.querySelectorAll('img');
-      // if (imgs.length < 2) return;
-      // ScrollTrigger.create({ trigger: wrap, start: '40% center', onEnter: () => { imgs[0].classList.add('hide'); imgs[1].classList.remove('hide') }, onLeaveBack: () => { imgs[0].classList.remove('hide'); imgs[1].classList.add('hide') } });
+
+      // Toggle hidden image on click
+      wrap.addEventListener('click', () => {
+        wrap.classList.toggle('show-hidden');
+      });
     });
 
     document.querySelectorAll('.pf-img').forEach(img => {
@@ -537,12 +541,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const tQ = document.querySelectorAll('#tQuote span'), tR = document.querySelectorAll('#tRole span'), tAv = document.querySelectorAll('.t-avatar');
     if (tQ.length && tR.length && tAv.length) {
       let tIdx = 0;
-      function setT(i) {
-        tQ.forEach(s => s.classList.remove('active')); tR.forEach(s => s.classList.remove('active')); tAv.forEach(a => a.classList.remove('active'));
-        tQ[i].classList.add('active'); tR[i].classList.add('active'); tAv[i].classList.add('active');
-        tIdx = i; clearInterval(tTimer); tTimer = setInterval(() => setT((tIdx + 1) % tQ.length), 5000);
-      }
       let tTimer = setInterval(() => setT((tIdx + 1) % tQ.length), 5000);
+
+      function setT(i) {
+        if (i === tIdx && tQ[i].classList.contains('active')) return;
+
+        tQ.forEach(s => s.classList.remove('active'));
+        tR.forEach(s => s.classList.remove('active'));
+        tAv.forEach(a => a.classList.remove('active'));
+
+        tQ[i].classList.add('active');
+        tR[i].classList.add('active');
+        tAv[i].classList.add('active');
+
+        // Background Image Change with Smooth Fade
+        const bg = document.querySelector('.tb-bg');
+        const bgImages = ['spread-assets/message.jpg', 'spread-assets/promise.jpg', 'spread-assets/journey.jpg', 'spread-assets/forever.jpg'];
+
+        if (bg && bgImages[i]) {
+          gsap.to(bg, {
+            opacity: 0,
+            duration: 0.4,
+            onComplete: () => {
+              bg.src = bgImages[i];
+              // Wait for image to load before fading in
+              bg.onload = () => {
+                gsap.to(bg, { opacity: 1, duration: 0.4 });
+              };
+              // Fallback in case onload doesn't fire (e.g. cached)
+              if (bg.complete) {
+                gsap.to(bg, { opacity: 1, duration: 0.4 });
+              }
+            }
+          });
+        }
+
+        tIdx = i;
+        clearInterval(tTimer);
+        tTimer = setInterval(() => setT((tIdx + 1) % tQ.length), 5000);
+      }
       tAv.forEach((av, i) => av.addEventListener('click', () => setT(i)));
     }
 
@@ -936,16 +973,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Memory Database for The Little Things
   const memoryDB = {
     'First Date': { img: 'spread-assets/pic2.jpg', cap: 'Yung unang beses tayong nagkita. Sobrang kaba ko nun.' },
-    'Coffee Dates': { img: 'spread-assets/pic3.jpeg', cap: 'Coffee shop hopping tayo palagi.' },
-    'Movie Nights': { img: 'spread-assets/placeholder.png', cap: 'Marvel marathon hanggang makatulog.' },
-    'Beach Walks': { img: 'spread-assets/placeholder.png', cap: 'Sand sa paa, kamay mo sa kamay ko.' },
-    'Travel Adventures': { img: 'spread-assets/placeholder.png', cap: 'Nawawala tayo pero okay lang, basta kasama ka.' },
-    'Cooking Together': { img: 'spread-assets/placeholder.png', cap: 'Gulo sa kitchen, pero masarap naman yung luto.' },
-    'Music Playlists': { img: 'spread-assets/placeholder.png', cap: 'Sayaw-sayaw sa loob ng kwarto.' },
-    'Long Drives': { img: 'spread-assets/placeholder.png', cap: 'Bukas yung bintana, kanta lang tayo ng off key.' },
-    'Cozy Mornings': { img: 'spread-assets/placeholder.png', cap: 'Lazy Sundays and breakfast.' },
-    'Family Time': { img: 'spread-assets/placeholder.png', cap: 'Tawanan lang kasama sila.' },
-    'Growing Old': { img: 'spread-assets/placeholder.png', cap: 'Kahit tumanda tayo, ikaw pa rin.' },
+    'Coffee Dates': { img: 'spread-assets/coffee.jpg', cap: 'Coffee shop hopping tayo palagi.' },
+    'Sweet Dessert': { img: 'spread-assets/icecream.jpg', cap: 'Ending the day with something sweet, just like you.' },
+    'Manaoag Church': { img: 'spread-assets/manaoag.jpg', cap: 'Our favorite place to pray and give thanks together.' },
+    'Beach Walks': { img: 'spread-assets/beach.jpg', cap: 'Watching the waves, feeling your hand in mine. My favorite peace.' },
+    'Travel Adventures': { img: 'spread-assets/travel.jpg', cap: 'First time natin sa Baguio magkasama!' },
+    'Cooking Together': { img: 'spread-assets/luto.jpg', cap: 'Ang tagal lutuin, pero worth it sa sarap.' },
+    'Flowers': { img: 'spread-assets/flower.jpg', cap: 'You deserve to be celebrated every single day, just because.' },
+    'The Day': { img: 'spread-assets/day.jpg', cap: 'The day my life changed for the better. I love you, loveyy.' },
     'default': { img: 'spread-assets/placeholder.png', cap: 'Memory natin na hindi ko makakalimutan.' }
   };
 
@@ -981,7 +1016,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (capEl) capEl.textContent = mem.cap;
 
       const count = Math.floor(Math.random() * 80) + 20;
-      document.getElementById('resultTitle').textContent = lookupVal + ' Moment';
+      document.getElementById('resultTitle').textContent = lookupVal;
       document.getElementById('resultSub').textContent = 'Isa sa mga paborito kong memory natin.';
 
       // Animate Polaroid In

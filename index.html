@@ -444,12 +444,33 @@
       inset: 0;
       border-radius: 20px;
       z-index: 10;
-      transition: opacity .6s cubic-bezier(.16, 1, .3, 1), transform .6s cubic-bezier(.16, 1, .3, 1)
+      transition: opacity .6s cubic-bezier(.16, 1, .3, 1), transform .6s cubic-bezier(.16, 1, .3, 1);
+      pointer-events: none;
     }
 
     .feature-img-wrap img.hide {
       opacity: 0;
       transform: scale(1.04)
+    }
+
+    .feature-img-wrap:hover>img:not(.hide),
+    .feature-img-wrap.show-hidden>img:not(.hide) {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+
+    .feature-img-wrap:hover>img.hide,
+    .feature-img-wrap.show-hidden>img.hide {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .feature-img-wrap {
+      cursor: pointer;
+    }
+
+    .carnation-dec {
+      pointer-events: none;
     }
 
     .chat-card {
@@ -878,7 +899,8 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      object-position: center center
+      object-position: center center;
+      transition: opacity 0.6s ease-in-out;
     }
 
     .testimonial-break-overlay {
@@ -991,19 +1013,42 @@
       background: rgba(255, 255, 255, .08)
     }
 
-    .t-avatar img {
+    .t-avatar-symbol {
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      object-fit: cover;
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+      color: #fff;
       transition: all .3s;
       border: 2px solid transparent;
-      flex-shrink: 0
+      flex-shrink: 0;
+      font-family: 'JetBrains Mono', monospace;
     }
 
-    .t-avatar.active img {
-      border-color: rgba(255, 255, 255, .3)
+    .t-avatar.active .t-avatar-symbol {
+      border-color: rgba(255, 255, 255, .5);
+      transform: scale(1.1);
+    }
+
+    /* Symbol Colors & Gradients - Earth Tones */
+    .t-avatar:nth-child(1) .t-avatar-symbol {
+      background: linear-gradient(135deg, #3C2A21, #54372B);
+    }
+
+    .t-avatar:nth-child(2) .t-avatar-symbol {
+      background: linear-gradient(135deg, #9A6133, #B8733E);
+    }
+
+    .t-avatar:nth-child(3) .t-avatar-symbol {
+      background: linear-gradient(135deg, #7B614B, #93785B);
+    }
+
+    .t-avatar:nth-child(4) .t-avatar-symbol {
+      background: linear-gradient(135deg, #AF8F6F, #C8AE95);
     }
 
     .t-avatar-name {
@@ -1020,9 +1065,10 @@
     }
 
     .t-avatar.active .t-avatar-name {
-      max-width: 100px;
+      max-width: 120px;
       opacity: 1;
-      margin-left: 8px
+      margin-left: 10px;
+      padding-right: 4px;
     }
 
     /* Money / Control section — 100vh */
@@ -2644,14 +2690,14 @@
 
     .niche-polaroid-caption {
       position: absolute;
-      bottom: 20px;
+      bottom: 8px;
       left: 16px;
       right: 16px;
       text-align: center;
       color: var(--charcoal-deep);
-      font-size: 15px;
+      font-size: 13.5px;
       font-weight: 500;
-      line-height: 1.3;
+      line-height: 1.2;
     }
 
     .heart-bubble-container {
@@ -2739,34 +2785,34 @@
     <div class="hero-pin" id="heroPin">
       <!-- Scattered gallery photos -->
       <div class="hero-scatter-wrap" id="hs0" style="width:180px;height:140px;top:6%;left:4%">
-        <div class="hero-polaroid"><img src="spread-assets/pic2.jpg" alt=""></div>
+        <div class="hero-polaroid"><img src="spread-assets/1r.JPG" alt=""></div>
       </div>
       <div class="hero-scatter-wrap" id="hs1" style="width:160px;height:200px;top:4%;right:6%">
-        <div class="hero-polaroid"><img src="spread-assets/pic6.JPG" alt=""></div>
+        <div class="hero-polaroid"><img src="spread-assets/1l.jpg" alt=""></div>
       </div>
       <div class="hero-scatter-wrap" id="hs2" style="width:200px;height:150px;top:42%;left:1%">
-        <div class="hero-polaroid"><img src="spread-assets/pic3.JPG" alt=""></div>
+        <div class="hero-polaroid"><img src="spread-assets/3r.JPG" alt=""></div>
       </div>
       <div class="hero-scatter-wrap" id="hs3" style="width:170px;height:170px;top:50%;right:2%">
-        <div class="hero-polaroid"><img src="spread-assets/pic4.JPG" alt=""></div>
+        <div class="hero-polaroid"><img src="spread-assets/3l.JPG" alt=""></div>
       </div>
       <div class="hero-scatter-wrap" id="hs4" style="width:150px;height:190px;bottom:6%;left:10%">
-        <div class="hero-polaroid"><img src="spread-assets/pic1.JPG" alt=""></div>
+        <div class="hero-polaroid"><img src="spread-assets/4r.JPG" alt=""></div>
       </div>
       <div class="hero-scatter-wrap" id="hs5" style="width:190px;height:140px;bottom:4%;right:8%">
-        <div class="hero-polaroid"><img src="spread-assets/pic5.JPG" alt=""></div>
+        <div class="hero-polaroid"><img src="spread-assets/4l.JPG" alt=""></div>
       </div>
       <div class="hero-scatter-wrap" id="hs6" style="width:140px;height:120px;top:20%;left:18%">
-        <div class="hero-polaroid"><img src="spread-assets/pic7.jpg" alt=""></div>
+        <div class="hero-polaroid"><img src="spread-assets/2r.JPG" alt=""></div>
       </div>
       <div class="hero-scatter-wrap" id="hs7" style="width:150px;height:130px;top:18%;right:16%">
-        <div class="hero-polaroid"><img src="spread-assets/pic7.HEIC" alt=""></div>
+        <div class="hero-polaroid"><img src="spread-assets/2l.jpg" alt=""></div>
       </div>
 
 
       <!-- Main hero video -->
       <div class="hero-main" id="heroMain">
-        <img class="hero-video" src="spread-assets/pic6.JPG" style="width: 100%; height: 100%; object-fit: cover;"
+        <img class="hero-video" src="spread-assets/picmain.JPG" style="width: 100%; height: 100%; object-fit: cover;"
           alt="">
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -2776,9 +2822,12 @@
             <span class="hero-word"><span>Years,</span></span><br>
             <span class="hero-word"><span>Loveyy!</span></span>
           </h1>
-          <p class="hero-sub">1,095 days na kitang kasama, loveyy. Pinakamagandang 3 years ng buhay ko, hands down.</p>
+          <p class="hero-sub">1,095 days of us, loveyy. I built this so you can see how every moment with you became my
+            favorite story. Every part of this is a reminder of how much you mean to me, and I hope it makes you feel
+            how deeply I appreciate you.
+          </p>
           <div class="hero-actions">
-            <a href="#how" class="btn-ghost">Kuwento Natin →</a>
+            <a href="#how" class="btn-ghost">Continue →</a>
           </div>
         </div>
 
@@ -2788,32 +2837,41 @@
 
   <section class="feature-section" id="how">
     <div class="feature-text">
-      <div class="tag gs-reveal">Tayo</div>
       <!-- Roger Dito Mo Ilagay yung Memories Mo -->
-      <span style="color: #ff3e3e; font-size: 11px; font-weight: bold;">&lt;EDITOR: Memoring Tayo Dito&gt;</span>
-      <h2 class="gs-reveal">Hindi naman kailangan ng mahabang paliwanag.</h2>
-      <p class="gs-reveal">Start nung April 19, 2023. Walang masyadong drama, tayo lang lab. Sobrang dali lang kapag
-        ikaw yung kasama. Salamat sa pagtitiyaga sa introvert mong boyfriend.</p>
+      <h2 class="gs-reveal">From Then Until Now.</h2>
+      <p class="gs-reveal">Dati, hindi pa tayo magkakilala, tapos ngayon ganito na tayo. Ang bilis, no?
+        Noong first year, halos wala lang tayo sa isa’t isa. Hindi pa kasi yun yung panahon na iniisip ko ang
+        pagkakaroon ng karelasyon. Pero simula nung January, doon na kita unti-unting napapansin.
+
+        Fast forward, eto na tayo ngayon. Mula first year, second sem na nagligawan, hanggang sa pareho na tayong
+        graduating.
+
+        Congrats sa atin, hindi lang sa 3 years, kundi sa mga pangarap na unti-unti nating naaabot. Susunod naman yung
+        mas malaki, yung mabigyan natin ng magandang buhay ang mga pamilya natin. At gagawin natin yon, magkasama.
+
+        Ang dali ng lahat kapag ikaw yung kasama. Salamat sa pagtitiyaga sa pogi mong boyfriend.
+      </p>
       <div class="feature-sub gs-reveal"
         style="font-size:14px;color:var(--muted);padding-top:20px;border-top:1px solid var(--border)">
-        <strong style="color:var(--charcoal)">3 Years.</strong> And counting.
       </div>
     </div>
     <div class="feature-img-wrap">
       <div class="carnation-dec">
         <img src="spread-assets/carnation_bouquet.png" class="carnation-img" alt="Carnation Bouquet">
       </div>
-      <img src="spread-assets/pic6.JPG" alt="">
-      <img src="spread-assets/placeholder.png" alt="" class="hide">
+      <img src="spread-assets/pic2.2.png" alt="">
+      <img src="spread-assets/pic2.1.png" alt="" class="hide">
     </div>
   </section>
 
   <section class="feature-section reversed">
     <div class="feature-text">
-      <div class="tag gs-reveal">Yung Unang Pag-uusap</div>
-      <h2 class="gs-reveal">Kung paano tayo nagsimula.</h2>
-      <p class="gs-reveal">Siyempre, hindi mawawala yung mga screenshots. Dito tayo nagsimula, sa mga random messages
-        hanggang sa hindi na tayo natatapos mag-usap.</p>
+      <h2 class="gs-reveal">How It Began.</h2>
+      <p class="gs-reveal">Nagsimula tayo sa parinigan ng story from "me n who" to "me n my love". Sa umaga magnanakaw
+        ng tingin, gabi-gabi namang magkausap.
+
+        Unang chat natin sa IG nung nagrequest ka na mag TikTok ako. Kolit mo, what if i-remake ko? Pero mas okay yata
+        kung tayong dalawa na lang. BWAHAHAHAHA.</p>
       <div class="chat-card gs-reveal" id="chatCard">
         <div class="chat-top">
           <div class="chat-dot"></div><span>Pauline</span>
@@ -2829,22 +2887,20 @@
       </div>
     </div>
     <div class="feature-img-wrap">
-      <img src="spread-assets/pic1.JPG" alt="">
-      <img src="spread-assets/pic6.JPG" alt="" class="hide">
+      <img src="spread-assets/pic3.1.jfif" alt="">
+      <img src="spread-assets/pic3.2.jfif" alt="" class="hide">
     </div>
   </section>
 
   <div class="photo-full tall" style="height:100vh;min-height:700px">
-    <img src="spread-assets/pic3.JPG" alt="" class="pf-img" style="object-position:center 40%">
+    <img src="spread-assets/3r.JPG" alt="" class="pf-img" style="object-position:center 40%">
     <div class="photo-full-overlay" style="background:rgba(29,27,24,.48)">
       <div class="photo-stats-inner">
         <div class="photo-full-text" style="margin-bottom:64px">
           <!-- Roger Dito Mo Ilagay yung Memories Mo -->
-          <span style="color: #ff3e3e; font-size: 11px; font-weight: bold;">&lt;EDITOR: Memoring Bilis ng
-            Panahon&gt;</span>
-          <h2 class="gs-reveal">Bilis ng panahon, 'no?</h2>
-          <p class="gs-reveal">Since April 19, 2023 hanggang ngayon. Parang kailan lang nung nagsimula tayo love, pero
-            ang dami na nating nagawa. Every second counts kapag kasama kita.</p>
+          <h2 class="gs-reveal">Bilis ng oras, 'no?</h2>
+          <p class="gs-reveal">Since April 19, 2023 hanggang ngayon. Parang kailan lang nung nagsimula tayo, pero
+            ang dami na nating nagawa. Every second counts when I'm with you.</p>
         </div>
         <div class="stats-row-overlay" id="anniversaryCounter">
           <div class="stat-item">
@@ -2882,9 +2938,10 @@
   <section class="section-pad" id="deal" style="padding-bottom:0; position: relative;">
     <div class="heart-bubble-container" id="heartBubbleContainer"></div>
     <div class="deal-header-center">
-      <div class="sec-tag gs-reveal">Playlist Natin</div>
-      <h2 class="sec-title gs-reveal" style="margin-bottom:0">Mga kanta na para sa'yo.</h2>
-      <p class="sec-desc gs-reveal">Bawat kanta dito, naaalala kita. Tap mo lang yung card para magpalit ng track.</p>
+      <div class="sec-tag gs-reveal">For You Song</div>
+      <h2 class="sec-title gs-reveal" style="margin-bottom:0">Songs just for you.</h2>
+      <p class="sec-desc gs-reveal">Bawat kanta rito, parang kwento nating dalawa. Kahit anong track ang patugtugin,
+        ikaw at ikaw pa rin ang naaalala ko.</p>
     </div>
     <div class="deal-stack-outer">
       <div class="deal-stack-wrap" id="dealStack"></div>
@@ -2893,51 +2950,45 @@
   </section>
 
   <div class="testimonial-break" id="testimonialBreak">
-    <img src="spread-assets/pic5.JPG" alt="" class="tb-bg">
+    <img src="spread-assets/pic4.1.jpg" alt="" class="tb-bg">
     <div class="testimonial-break-overlay"></div>
     <div class="testimonial-inner">
-      <span style="color: #ff3e3e; font-size: 11px; font-weight: bold; display: block; margin-bottom: 8px;">&lt;EDITOR:
-        Memoring Testimonials&gt;</span>
       <div class="t-big-quote">&ldquo;</div>
       <div class="testimonial-quote" id="tQuote">
-        <span class="active">Akala ko dati matagal na yung 3 years. Ngayon, alam ko na simula pa lang 'to. Buti na lang
-          kumausap ako sa'yo.</span>
-        <span>Sobrang saya makita kung paano tayo nag-grow. Mahal kita since day one, pero mas iba yung feeling ngayong
-          3 years na tayo.</span>
-        <span>Infinite coffee dates and late night talks. Tripled yung saya ko since nung April 19, 2023. Can't wait for
-          what's next.</span>
-        <span>Kahit saan, kahit kailan. Basta ikaw yung kasama ko, okay na ako. Ang dami na nating memories na
-          binuo.</span>
+        <span class="active">I'm not much for words, but you know you're the only one for me. Happy 3 years,
+          loveyy.</span>
+        <span>To the person who makes every day better—thank you for choosing me, lab. I'm so lucky to have you.</span>
+        <span>From April 19, 2023, until forever. Every milestone we've reached together is my favorite memory.</span>
+        <span>Infinite food dates and travels. I can't wait to build a lifetime of more memories with you.</span>
       </div>
       <div class="testimonial-role" id="tRole">
-        <span class="active">Sabi ni Roger</span>
-        <span>Sabi ni Pauline</span>
-        <span>Common Goal</span>
-        <span>Us Together</span>
+        <span class="active">A Message</span>
+        <span>A Promise</span>
+        <span>Our Journey</span>
+        <span>Forever</span>
       </div>
       <div class="t-avatars" id="tAvatars">
-        <button class="t-avatar active" onclick="setT(0)">
-          <img src="spread-assets/pic7.jpg" alt="">
-          <span class="t-avatar-name">Sarah K.</span>
+        <button class="t-avatar active">
+          <div class="t-avatar-symbol">R</div>
+          <span class="t-avatar-name">Roger</span>
         </button>
-        <button class="t-avatar" onclick="setT(1)">
-          <img src="spread-assets/pic6.JPG" alt="">
-          <span class="t-avatar-name">Marcus T.</span>
+        <button class="t-avatar">
+          <div class="t-avatar-symbol">P</div>
+          <span class="t-avatar-name">My Pauline</span>
         </button>
-        <button class="t-avatar" onclick="setT(2)">
-          <img src="spread-assets/pic5.JPG" alt="">
-          <span class="t-avatar-name">David L.</span>
+        <button class="t-avatar">
+          <div class="t-avatar-symbol">♡</div>
+          <span class="t-avatar-name">Us</span>
         </button>
-        <button class="t-avatar" onclick="setT(3)">
-          <img src="spread-assets/pic4.JPG" alt="">
-          <span class="t-avatar-name">Amy R.</span>
+        <button class="t-avatar">
+          <div class="t-avatar-symbol">∞</div>
+          <span class="t-avatar-name">My Love</span>
         </button>
       </div>
     </div>
   </div>
 
   <section class="statement-section" id="statementSection">
-    <div class="statement-tag gs-reveal">Gawa para sa'tin</div>
     <div class="statement-line"><span>Every journey has its ups and downs.</span></div>
     <div class="statement-line"><span>Pero sa huli, tayo pa rin.</span></div>
   </section>
@@ -2946,7 +2997,7 @@
     <div class="control-left">
       <div class="tag gs-reveal">Games Muna</div>
       <h2 class="gs-reveal">Laro tayo.</h2>
-      <p class="gs-reveal">Kahit sa laro, team tayo. Subukan mo itong mga puzzles na ginawa ko para sa'yo.</p>
+      <p class="gs-reveal">Kahit sa laro, team tayo. Try mo nga ito.</p>
 
       <div class="control-toggle gs-reveal">
         <div class="control-toggle-bar">
@@ -2957,15 +3008,15 @@
         <div class="control-desc" id="controlDesc">
           <p class="active">Standard 9x9 Sudoku. Fill mo lang yung 1-9. Alam ko namang matalino ka, kayang-kaya mo 'to.
           </p>
-          <p>Hanapin mo yung mga words na related sa'ten. Click mo lang yung letters para ma-highlight.</p>
-          <p>Hanapin mo yung daan pabalik sa akin. Gamitin mo yung arrow keys o controls para makarating sa puso.</p>
+          <p>Hanapin mo yung mga words na related sa'tin.</p>
+          <p>Hanapin mo yung daan pabalik sa akin. Gamitin mo yung arrow keys o controls para makarating sa puso ko.</p>
         </div>
       </div>
 
 
     </div>
     <div class="control-right">
-      <img src="spread-assets/pic2.jpg" id="controlImage" alt="">
+      <img src="spread-assets/game.jpg" id="controlImage" alt="">
 
       <div class="game-overlay" id="gameOverlay">
         <!-- Sudoku Game -->
@@ -3004,17 +3055,17 @@
 
   <section class="section-pad" id="niches" style="padding-bottom:64px; position: relative;">
     <div class="niche-header">
-      <div class="sec-tag gs-reveal">The Little Things</div>
-      <h2 class="sec-title gs-reveal" style="margin-bottom:0">Our Favorites</h2>
-      <p class="niche-header-sub gs-reveal">These are the pieces of our story that mean the most. Every choice is a
-        memory we've made together.</p>
+      <div class="sec-tag gs-reveal">Little Things</div>
+      <h2 class="sec-title gs-reveal" style="margin-bottom:0">Mga Paborito Natin</h2>
+      <p class="niche-header-sub gs-reveal">Dito nakatago yung mga memories na pinaka-importante sa'tin. Every click
+        holds a memory.</p>
     </div>
     <div class="niche-pills" id="nichePills">
       <button class="niche-pill" onclick="submitNiche('Coffee Dates')">Coffee Dates <span
           class="pill-spread">♡</span></button>
-      <button class="niche-pill" onclick="submitNiche('Movie Nights')">Movie Nights <span
+      <button class="niche-pill" onclick="submitNiche('Sweet Dessert')">Sweet Dessert <span
           class="pill-spread">♡</span></button>
-      <button class="niche-pill" onclick="submitNiche('Late Night Talks')">Late Night Talks <span
+      <button class="niche-pill" onclick="submitNiche('Manaoag Church')">Manaoag Church <span
           class="pill-spread">♡</span></button>
       <button class="niche-pill" onclick="submitNiche('Beach Walks')">Beach Walks <span
           class="pill-spread">♡</span></button>
@@ -3022,16 +3073,9 @@
           class="pill-spread">♡</span></button>
       <button class="niche-pill" onclick="submitNiche('Cooking Together')">Cooking Together <span
           class="pill-spread">♡</span></button>
-      <button class="niche-pill" onclick="submitNiche('Music Playlists')">Music Playlists <span
+      <button class="niche-pill" onclick="submitNiche('Flowers')">Flowers <span class="pill-spread">♡</span></button>
+      <button class="niche-pill" onclick="submitNiche('The Day')">Our Official Day <span
           class="pill-spread">♡</span></button>
-      <button class="niche-pill" onclick="submitNiche('Long Drives')">Long Drives <span
-          class="pill-spread">♡</span></button>
-      <button class="niche-pill" onclick="submitNiche('Cozy Mornings')">Cozy Mornings <span
-          class="pill-spread">♡</span></button>
-      <button class="niche-pill" onclick="submitNiche('Family Time')">Family Time <span
-          class="pill-spread">♡</span></button>
-      <button class="niche-pill" onclick="submitNiche('Growing Old')">Growing Old <span
-          class="pill-spread">∞</span></button>
     </div>
 
     <div class="heart-bubble-container" id="nicheHeartContainer"></div>
@@ -3042,8 +3086,8 @@
             <div class="scan-fill" id="scanFill"></div>
           </div>
         </div>
-        <h3 id="scanLabel">Recalling memory...</h3>
-        <p id="scanSub" style="color:var(--muted)">Checking the archives of us...</p>
+        <h3 id="scanLabel">Naaalala ko nung...</h3>
+        <p id="scanSub" style="color:var(--muted)">Hinanap ko sa archives natin...</p>
       </div>
       <div id="nicheResult" style="display:none; text-align: center;">
         <div class="niche-polaroid-wrap">
@@ -3061,11 +3105,13 @@
   </section>
 
   <div class="photo-full tall">
-    <img src="spread-assets/pic4.JPG" alt="" class="pf-img">
+    <img src="spread-assets/sleepy.JPG" alt="" class="pf-img">
     <div class="photo-full-overlay" style="background:rgba(29,27,24,.42)">
       <div class="photo-full-text">
-        <h2 class="gs-reveal">Opportunities land while you sleep.</h2>
-        <p class="gs-reveal">The AI never stops scanning. Wake up to scored deals ready for your review.</p>
+        <!-- Roger Dito Mo Ilagay yung Memories Mo -->
+        <h2 class="gs-reveal">I love you, even in your sleep.</h2>
+        <p class="gs-reveal">Even when we're not talking, you're always on my mind. Just know that when you wake up,
+          I'll always be right here for you.</p>
       </div>
     </div>
   </div>
@@ -3074,38 +3120,41 @@
 
   <section class="scroller-section">
     <div class="scroller-header">
-      <h2 class="gs-reveal">Built for the way you actually flip.</h2>
-      <p class="gs-reveal">Deals surface in the background. Your life stays in the foreground.</p>
+      <h2 class="gs-reveal">You're always on my mind.</h2>
+      <p class="gs-reveal">Even when days feel packed and time runs fast, ikaw pa rin yung hindi ko nakakalimutang
+        balikan.
+      </p>
     </div>
     <div class="photo-scroller" id="photoScroller">
-      <div class="scroller-img"><img src="spread-assets/pic1.JPG" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/pic2.jpg" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/pic3.jpeg" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/pic4.JPG" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/pic3.JPG" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/pic5.JPG" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/pic6.JPG" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/pic7.jpg" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/placeholder.png" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/pic3.jpeg" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/pic5.JPG" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/pic1.JPG" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/pic3.JPG" alt=""></div>
-      <div class="scroller-img"><img src="spread-assets/pic7.jpg" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/last1.JPG" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/last2.JPG" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/last3.JPG" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/last4.JPG" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/last5.JPG" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/last6.jpg" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/last7.JPG" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/last8.JPG" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/last9.jpg" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/last10.jpg" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/last11.jpg" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/last12.JPG" alt=""></div>
+      <div class="scroller-img"><img src="spread-assets/last13.jpg" alt=""></div>
     </div>
   </section>
 
   <section class="closing">
-    <h2 class="gs-reveal">Every marketplace has a spread.<br>Start capturing yours.</h2>
-    <p class="gs-reveal">Same item. Different platforms. Different prices. The AI finds the gap — you keep what's left.
+    <h2 class="gs-reveal">Bawat moment, may meaning.<br>Thank you sa 3 years, loveyy!</h2>
+    <p class="gs-reveal">Hindi lang basta panahon yung lumipas. Bawat araw, mas nakikilala kita. Ikaw ang
+      pinakamagandandits na babaeng nakilala ko. I love you always love mwaamwaa!!
     </p>
-
   </section>
 
   <footer>
-    <div class="nav-logo"><img src="spread-assets/logo-dark.svg" alt="Spread" style="height:15px"></div>
-    <div class="f-links"><a href='/terms'>Terms</a><a href='/privacy'>Privacy</a></div>
-    <span>© 2026 Spread</span>
+    <div class="nav-logo"
+      style="font-family: 'Satoshi', sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -1px;">Roger &
+      Pauline</div>
+    <div class="f-links"><a href='#'>∞</a><a href='#'>Since 2023</a></div>
+    <span>© 2026 Roger & Pauline</span>
   </footer>
 
   <script src="script.js" defer></script>
